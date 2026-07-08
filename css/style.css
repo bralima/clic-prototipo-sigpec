@@ -1,0 +1,483 @@
+/* =================================================================
+   CLIC - Protótipo | style.css
+   Estrutura pensada para conversão futura para PHP
+   ================================================================= */
+
+/* ---------- Variáveis (paleta oficial CLIC baseada no Figma) ---------- */
+:root {
+    --azul-sigpec: #325FAA;
+    --azul-medio: #5F94D9;
+    --azul-claro: #6EABFA;
+    --teal: #03989E;
+    --cinza-word: #565555;
+    --cinza-claro: #F4F4F4;
+    --cinza-borda: #C0C0C0;
+    --laranja: #FFBE5A;
+    --branco: #FFFFFF;
+
+    --sombra-card: 3px 7px 4px rgba(0, 0, 0, 0.25);
+    --raio-padrao: 8px;
+
+    --fonte: 'Roboto', 'Segoe UI', Arial, sans-serif;
+}
+
+/* ---------- Reset básico ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--fonte);
+    color: var(--cinza-word);
+    background: var(--branco);
+    line-height: 1.5;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+/* Container centralizado, sem px travado */
+.container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Acessibilidade: esconder visualmente mantendo para leitores de tela */
+.sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); border: 0;
+}
+
+/* ---------- TOPO / NAVEGAÇÃO ---------- */
+.topo {
+    background: var(--branco);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    padding: 15px 0;
+}
+.topo__conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.topo__menu ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+.topo__menu a {
+    color: var(--azul-claro);
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color .2s;
+}
+.topo__menu a:hover,
+.topo__menu a.ativo { color: var(--azul-sigpec); }
+
+/* Placeholder do logo */
+.logo-placeholder {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--azul-sigpec);
+    color: var(--branco);
+    font-weight: 800;
+    border-radius: 6px;
+    letter-spacing: 2px;
+}
+.logo-placeholder--pref {
+    background: var(--cinza-word);
+    font-size: .75rem;
+    text-align: center;
+    line-height: 1.2;
+}
+.logo-img {
+    max-height: 100px; /* ajuste conforme a altura desejada */
+    width: auto;
+    display: block;
+}
+
+
+/* ---------- BUSCA ---------- */
+.busca {
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+}
+.busca__form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 560px;
+    border: 1px solid var(--cinza-borda);
+    border-radius: 40px;
+    padding: 4px 6px 4px 20px;
+    background: var(--branco);
+    transition: border-color .2s;
+}
+.busca__form:focus-within { border-color: var(--azul-claro); }
+.busca__input {
+    flex: 1;
+    border: 0;
+    outline: 0;
+    padding: 10px 0;
+    font-size: 1rem;
+    background: transparent;
+    color: var(--cinza-word);
+}
+.busca__input::placeholder { color: var(--cinza-borda); }
+.busca__botao {
+    border: 0;
+    background: transparent;
+    color: var(--azul-claro);
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: grid; place-items: center;
+    transition: background .2s;
+}
+.busca__botao:hover { background: var(--cinza-claro); }
+
+/* ---------- TÍTULO DE SEÇÃO ---------- */
+.titulo-secao {
+    text-align: center;
+    color: var(--cinza-word);
+    font-size: clamp(1.4rem, 2.2vw, 2rem);
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+/* ---------- NOTÍCIAS ---------- */
+.noticias { padding: 40px 0; }
+.noticias__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+.card-noticia {
+    background: var(--cinza-claro);
+    border-radius: var(--raio-padrao);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform .2s, box-shadow .2s;
+}
+.card-noticia:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-card);
+}
+.card-noticia__foto {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(135deg, var(--cinza-borda), #a8a8a8);
+    overflow: hidden; /* para garantir que a imagem não vaze */
+    border-radius: 4px;
+}
+.card-noticia__foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* corta a imagem para preencher o quadrado sem distorcer */
+    display: block;
+}
+
+.card-noticia__titulo {
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--cinza-word);
+    flex-grow: 1;
+}
+.card-noticia__link {
+    align-self: flex-end;
+    font-size: .85rem;
+    color: var(--cinza-word);
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: var(--branco);
+    transition: background .2s;
+}
+.card-noticia__link:hover { background: var(--azul-claro); color: var(--branco); }
+
+.noticias__ver-mais { text-align: right; margin-top: 20px; }
+.botao-secundario {
+    display: inline-block;
+    background: var(--cinza-claro);
+    color: var(--cinza-word);
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background .2s;
+}
+.botao-secundario:hover { background: var(--cinza-borda); }
+
+/* ---------- PERFIS DE USUÁRIO ---------- */
+/* ---------- PERFIS DE USUÁRIO ---------- */
+.perfis { padding: 40px 0; }
+.perfis__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+.card-perfil {
+    padding: 10px;         /* ou 0, dependendo do espaçamento desejado */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;     /* pode ajustar conforme a altura total */
+}
+.card-perfil:hover { border: none; }
+
+.card-perfil__icone {
+    width: 220px;          /* tamanho fixo do quadrado */
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;        /* centraliza horizontalmente */
+    background: transparent; /* sem fundo */
+    border: none;          /* sem borda */
+    padding: 0;            /* sem padding */
+    border-radius: 0;      /* sem arredondamento, se quiser mantenha */
+}
+
+.card-perfil__icone img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;   /* a imagem inteira cabe dentro, sem cortar */
+    display: block;
+    background: transparent;
+    border: none;
+}
+
+
+
+
+/* ---------- ATALHOS (círculos) ---------- */
+.atalhos {
+    padding: 60px 0;
+    background: linear-gradient(180deg, transparent 0%, transparent 40%, var(--cinza-claro) 40%, var(--cinza-claro) 100%);
+}
+.atalhos__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    justify-items: center;
+}
+.card-atalho {
+    display: flex;
+    flex-direction: column-reverse; /* título em cima, círculo embaixo */
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+    transition: transform .2s;
+}
+.card-atalho:hover { transform: translateY(-6px); }
+.card-atalho__circulo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    display: flex;                /* mudar de grid para flex */
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;             /* garante que a imagem não vaze */
+    box-shadow: var(--sombra-card);
+}
+
+/* Remove font-size e qualquer referência a ícones */
+
+.card-atalho__circulo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;          /* a imagem inteira sem cortar */
+    display: block;
+}
+.card-atalho__circulo--azul-claro { background: var(--azul-claro); }
+.card-atalho__circulo--azul       { background: var(--azul-medio); }
+.card-atalho__titulo {
+    font-weight: 700;
+    color: var(--cinza-word);
+    font-size: 1.1rem;
+}
+
+/* ---------- QUEM SOMOS ---------- */
+
+.quem-somos {
+    background: var(--azul-medio);
+    color: var(--branco);
+    padding: 0; /* remove o padding da section para a imagem ocupar toda largura */
+    text-align: center;
+}
+
+.quem-somos__imagem-wrapper {
+    width: 100%;
+    margin: 0;          /* remove margens */
+    padding: 0;         /* remove paddings */
+    line-height: 0;     /* remove espaço extra abaixo da imagem */
+}
+
+.quem-somos__imagem {
+    width: 100%;        /* ocupa toda a largura do wrapper */
+    height: auto;       /* mantém a proporção */
+    display: block;     /* remove espaço extra abaixo */
+    border: none;       /* remove qualquer borda */
+    border-radius: 0;   /* remove arredondamento se quiser */
+}
+
+/* conteúdo do container continua com padding */
+.quem-somos .container {
+    padding: 50px 20px; /* mantém o espaçamento interno do conteúdo */
+}
+
+.quem-somos h2 {
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.quem-somos p {
+    max-width: 1000px;
+    margin: 0 auto 24px;
+    font-size: 1.1rem;
+}
+.botao-destaque {
+    display: inline-block;
+    background: var(--laranja);
+    color: var(--branco);
+    padding: 12px 30px;
+    border-radius: 40px;
+    font-weight: 700;
+    transition: transform .2s, filter .2s;
+}
+.botao-destaque:hover { transform: scale(1.05); filter: brightness(1.05); }
+
+/* ---------- RODAPÉ ---------- */
+
+.rodape {
+    background: var(--branco);
+    padding: 40px 0 0;
+    border-top: 1px solid var(--cinza-claro);
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.06);
+}
+
+.rodape__conteudo {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    padding-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.rodape__logo {
+    flex: 0 0 auto;
+    line-height: 0;           /* elimina espaço extra abaixo da imagem */
+    display: flex;
+    align-items: flex-start;
+}
+
+.rodape__logo-img {
+    width: 250px;
+    height: auto;
+    display: block;
+    transform: translateY(-50px); /* ajuste este valor até alinhar */
+}
+
+.rodape__texto {
+    flex: 1;                  /* ocupa o espaço restante */
+}
+
+.rodape__texto p {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+    color: var(--cinza-word);
+}
+.rodape__texto p:first-child {
+    margin-top: 0;            /* remove margem superior do título */
+}
+
+.rodape__texto a {
+    color: var(--azul-sigpec);
+    text-decoration: none;
+}
+.rodape__texto a:hover {
+    text-decoration: underline;
+}
+
+.rodape__atencao-lista {
+    list-style: disc;
+    padding-left: 25px;
+    margin-top: 6px;
+    font-size: 0.95rem;
+    color: var(--cinza-word);
+}
+.rodape__atencao-lista li + li {
+    margin-top: 4px;
+}
+
+.rodape__redes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    justify-items: center;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+.rodape__redes a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    transition: transform 0.2s;
+}
+.rodape__redes a:hover {
+    transform: scale(1.1);
+}
+.rodape__redes img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Copyright */
+.rodape__copyright {
+    text-align: center;
+    padding: 12px;
+    background: var(--cinza-claro);
+    font-size: 0.85rem;
+    color: var(--cinza-word);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .rodape__conteudo {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+        gap: 20px;
+    }
+    .rodape__atencao-lista {
+        text-align: left;
+        padding-left: 20px;
+    }
+    .rodape__redes {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+}
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 768px) {
+    .topo__conteudo { justify-content: center; }
+    .topo__menu ul { justify-content: center; gap: 10px; }
+    .topo__menu a { font-size: .9rem; }
+    .rodape__conteudo { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+    .card-atalho__circulo { width: 140px; height: 140px; font-size: 3rem; }
+}

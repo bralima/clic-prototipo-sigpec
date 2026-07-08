@@ -1,0 +1,143 @@
+/* =================================================================
+   CLIC - Motivo da Solicitação | motivo-solicitacao.css
+   ================================================================= */
+
+.motivo-page {
+    background: #F0EDE6;
+    min-height: calc(100vh - 300px);
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.motivo-container {
+    background: #FFFFFF;
+    width: 1180px;
+    max-width: 100%;
+    padding: 40px 40px 60px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.motivo-titulo {
+    font-size: 40px;
+    font-weight: 800;
+    color: #325FAA;
+    text-align: center;
+    margin: 0 0 20px 0;
+    letter-spacing: 1px;
+}
+
+/* Divisor entre título e cards */
+.motivo-divisor {
+    border: 0;
+    border-top: 2px solid rgba(0,0,0,0.2);
+    margin: 10px 0 35px 0;
+    opacity: 0.8;
+}
+
+.motivo-linha {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.motivo-linha--centralizada {
+    justify-content: center;
+    gap: 30px;
+}
+
+.motivo-card {
+    background: #325FAA;
+    border-radius: 20px;
+    width: 280px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    padding: 20px 25px;
+    gap: 20px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+.motivo-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+.motivo-card:active {
+    transform: scale(0.97);
+}
+
+.motivo-card-icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.motivo-card-icon svg {
+    width: 30px;
+    height: 30px;
+    stroke: #325FAA;
+    stroke-width: 2;
+    fill: none;
+}
+
+.motivo-card-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: #FFFFFF;
+    line-height: 1.3;
+    text-align: left;
+}
+
+@media (max-width: 992px) {
+    .motivo-linha {
+        gap: 20px;
+    }
+    .motivo-card {
+        width: 100%;
+        max-width: 300px;
+        height: 120px;
+        padding: 15px 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .motivo-container {
+        padding: 30px 20px;
+    }
+    .motivo-titulo {
+        font-size: 26px;
+    }
+    .motivo-linha {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    .motivo-card {
+        height: 100px;
+        padding: 12px 16px;
+        max-width: 100%;
+    }
+    .motivo-card-icon {
+        width: 48px;
+        height: 48px;
+    }
+    .motivo-card-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+    .motivo-card-text {
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,223 @@
+/* =================================================================
+   CLIC - Página de Cadastro SIGPEC | cadastro-sigpec.css
+   ================================================================= */
+
+.cadastro-page {
+    background: #FFFFFF;
+    min-height: calc(100vh - 300px);
+    padding: 40px 0; /* remove o padding lateral para o aviso encostar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Imagem de fundo */
+.cadastro-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../img/cadastro sigpec/fundo central.png') no-repeat center center;
+    background-size: cover;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.cadastro-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1300px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 20px; /* espaço interno para o formulário não encostar */
+    gap: 40px;
+}
+
+/* ---------- AVISO (lado esquerdo, encostado na borda) ---------- */
+.cadastro-aviso {
+    flex: 0 0 auto;
+    width: 380px; /* largura fixa, mas pode ser ajustada */
+    align-self: flex-end; /* alinha na parte inferior */
+    margin-bottom: 40px;
+    margin-left: -20px; /* encosta na borda esquerda */
+}
+
+.aviso-caixa {
+    background: #03989E;
+    border-radius: 20px;
+    padding: 30px 25px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    color: #FFFFFF;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.aviso-icone {
+    font-size: 48px;
+    line-height: 1;
+    color: #000000;
+    flex-shrink: 0;
+}
+
+.aviso-texto {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+/* ---------- FORMULÁRIO (lado direito) ---------- */
+.cadastro-form {
+    background: rgba(244, 244, 244, 0.85);
+    backdrop-filter: blur(2px);
+    width: 589px;
+    padding: 40px 35px 50px;
+    border-radius: 20px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.45);
+    flex: 0 0 auto;
+}
+
+.cadastro-header h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #325FAA;
+    margin: 0 0 25px 0;
+    line-height: 1.2;
+}
+
+.campo-cadastro {
+    margin-bottom: 24px;
+}
+
+.campo-cadastro label {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    color: #325FAA;
+    margin-bottom: 4px;
+}
+
+.campo-cadastro input,
+.campo-cadastro select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #C0C0C0;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    background: #FFFFFF;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+    appearance: auto;
+}
+
+.campo-cadastro input:focus,
+.campo-cadastro select:focus {
+    outline: none;
+    border-color: #325FAA;
+}
+
+.campo-cadastro input::placeholder,
+.campo-cadastro select option:first-child {
+    color: #C0C0C0;
+    opacity: 0.8;
+}
+
+.botao-solicitar {
+    width: 300px;
+    display: block;
+    margin: 20px auto 0;
+    background: #325FAA;
+    color: #FFFFFF;
+    border: none;
+    padding: 12px;
+    border-radius: 60px;
+    font-size: 28px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+.botao-solicitar:hover {
+    background: #1e3f73;
+}
+.botao-solicitar:active {
+    transform: scale(0.97);
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #000000;
+}
+.login-link a {
+    color: #325FAA;
+    font-weight: 700;
+    text-decoration: none;
+}
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 992px) {
+    .cadastro-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 20px;
+    }
+    .cadastro-aviso {
+        width: 100%;
+        margin-left: 0; /* remove o deslocamento negativo */
+        align-self: stretch;
+        margin-bottom: 20px;
+    }
+    .cadastro-form {
+        width: 100%;
+        max-width: 589px;
+    }
+}
+
+@media (max-width: 600px) {
+    .cadastro-page {
+        padding: 20px 0;
+    }
+    .cadastro-form {
+        padding: 25px 20px;
+    }
+    .cadastro-header h2 {
+        font-size: 20px;
+    }
+    .campo-cadastro label {
+        font-size: 16px;
+    }
+    .campo-cadastro input,
+    .campo-cadastro select {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+    .botao-solicitar {
+        width: 100%;
+        font-size: 22px;
+    }
+    .aviso-caixa {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+    .aviso-icone {
+        font-size: 36px;
+    }
+    .aviso-texto {
+        font-size: 16px;
+    }
+    .login-link {
+        font-size: 14px;
+    }
+}

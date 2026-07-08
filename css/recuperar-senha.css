@@ -1,0 +1,130 @@
+/* =================================================================
+   CLIC - Recuperação de Senha | recuperar-senha.css
+   ================================================================= */
+
+.recuperar-page {
+    background: #F0EDE6;
+    min-height: calc(100vh - 300px);
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recuperar-container {
+    background: #FFFFFF;
+    width: 1137px;
+    max-width: 100%;
+    padding: 40px 50px 50px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.recuperar-titulo {
+    font-size: 40px;
+    font-weight: 800;
+    color: #325FAA;
+    text-align: center;
+    margin: 0 0 10px 0;
+    letter-spacing: 1px;
+}
+
+.recuperar-divisor {
+    border: 0;
+    border-top: 2px solid #C0C0C0;
+    margin: 10px 0 30px 0;
+}
+
+.campo-recuperar {
+    margin-bottom: 30px;
+}
+
+.campo-recuperar label {
+    display: block;
+    font-size: 24px;
+    font-weight: 600;
+    color: #325FAA;
+    margin-bottom: 8px;
+}
+
+.campo-recuperar input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #C0C0C0;
+    border-radius: 6px;
+    font-size: 20px;
+    color: #333;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.campo-recuperar input:focus {
+    outline: none;
+    border-color: #325FAA;
+    box-shadow: 0 0 0 3px rgba(50, 95, 170, 0.2);
+}
+
+.campo-recuperar input::placeholder {
+    color: #C0C0C0;
+}
+
+.btn-continuar {
+    display: block;
+    width: 328px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 14px;
+    background: #325FAA;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 30px;
+    font-size: 36px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.btn-continuar:hover {
+    background: #1e3f73;
+}
+.btn-continuar:active {
+    transform: scale(0.97);
+}
+
+.recuperar-voltar {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.recuperar-voltar a {
+    color: #325FAA;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 16px;
+}
+.recuperar-voltar a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 600px) {
+    .recuperar-container {
+        padding: 25px 20px;
+    }
+    .recuperar-titulo {
+        font-size: 28px;
+    }
+    .campo-recuperar label {
+        font-size: 18px;
+    }
+    .campo-recuperar input {
+        font-size: 16px;
+        padding: 12px 14px;
+    }
+    .btn-continuar {
+        font-size: 28px;
+        width: 100%;
+        padding: 12px;
+    }
+}
