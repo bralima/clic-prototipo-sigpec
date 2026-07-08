@@ -47,6 +47,7 @@ Tudo foi desenvolvido com foco em **componentização** e **reutilização de c�
 
 ## 📁 Estrutura de diretórios
 
+```
 clic-prototipo/
 ├── index.html                 # Página inicial
 ├── pages/
@@ -70,6 +71,7 @@ clic-prototipo/
 ├── img/                       # Imagens (logos, ícones, ilustrações)
 └── js/
     └── script.js              # Funções JS compartilhadas
+```
 
 
 ---
