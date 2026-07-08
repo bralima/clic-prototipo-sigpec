@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CLIC - Inclusão de Novo Usuário</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/formularios.css" />
+</head>
+<body>
+
+    <header class="topo">
+        <div class="container topo__conteudo">
+            <a href="../../index.html" class="topo__logo">
+                <img src="../../img/clic/logo-clic-completa.png" alt="Logo da CLIC" class="logo-img" />
+            </a>
+            <nav class="topo__menu">
+                <ul>
+                    <li><a href="../../index.html">Página Inicial</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/quem-somos')">Quem Somos</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/mapa-da-clic')">Mapa da CLIC</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/fale-com-a-cogep')">Fale com a COGEP</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/fale-com-sua-urh')">Fale com sua URH</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/acesso-rapido')">Links Úteis</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/glossario')">Glossário</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="formulario-page">
+        <div class="formulario-container">
+            <h1 class="formulario-titulo">INCLUSÃO DE NOVO USUÁRIO</h1>
+            <hr class="formulario-divisor" />
+
+            <form id="form-inclusao" class="formulario" onsubmit="return false;">
+                <!-- TIPO DE USUÁRIO -->
+                <div class="campo-form">
+                    <label for="tipo-usuario">TIPO DE USUÁRIO:</label>
+                    <div class="opcoes-radio">
+                        <label><input type="radio" name="tipo" value="servidor" checked /> Servidor</label>
+                        <label><input type="radio" name="tipo" value="estagiario" /> Estagiário</label>
+                        <label><input type="radio" name="tipo" value="tercerizado" /> Terceirizado</label>
+                    </div>
+                </div>
+
+                <!-- Nome (comum a todos) -->
+                <div class="campo-form">
+                    <label for="nome">Nome Completo *</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite o nome completo" required />
+                </div>
+
+                <!-- Campos específicos por tipo -->
+                <div id="campos-servidor" class="campos-especificos">
+                    <div class="campo-form">
+                        <label for="registro-servidor">Registro/Vínculo *</label>
+                        <input type="text" id="registro-servidor" name="registro" placeholder="Número do registro" />
+                    </div>
+                </div>
+
+                <div id="campos-estagiario" class="campos-especificos" style="display:none;">
+                    <div class="campo-form">
+                        <label for="rg-estagiario">RG *</label>
+                        <input type="text" id="rg-estagiario" name="rg" placeholder="Número do RG" />
+                    </div>
+                    <div class="aviso-form">⚠️ Apenas para consultas, sem alterações.</div>
+                </div>
+
+                <div id="campos-tercerizado" class="campos-especificos" style="display:none;">
+                    <div class="campo-form">
+                        <label for="rg-tercerizado">RG *</label>
+                        <input type="text" id="rg-tercerizado" name="rg" placeholder="Número do RG" />
+                    </div>
+                    <div class="campo-form">
+                        <label for="justificativa-tercerizado">Justificativa *</label>
+                        <textarea id="justificativa-tercerizado" name="justificativa" rows="3" placeholder="Descreva a justificativa"></textarea>
+                    </div>
+                </div>
+
+                <!-- Padrão de Acesso -->
+                <div class="campo-form">
+                    <label for="padrao-acesso">PADRÃO DE ACESSO:</label>
+                    <select id="padrao-acesso" name="padrao-acesso" required>
+                        <option value="" disabled selected>Selecione o padrão</option>
+                        <option value="Padrão A">Padrão A</option>
+                        <option value="Padrão B">Padrão B</option>
+                        <option value="Padrão C">Padrão C</option>
+                        <option value="Padrão D">Padrão D</option>
+                        <option value="Padrão E">Padrão E</option>
+                    </select>
+                </div>
+
+                <!-- Setor de Acesso -->
+                <div class="campo-form">
+                    <label for="setor-acesso">SETOR DE ACESSO:</label>
+                    <select id="setor-acesso" name="setor-acesso" required>
+                        <option value="" disabled selected>Selecione o setor</option>
+                        <option value="Setor 1">Setor 1</option>
+                        <option value="Setor 2">Setor 2</option>
+                        <option value="Setor 3">Setor 3</option>
+                        <option value="Setor 4">Setor 4</option>
+                        <option value="Setor 5">Setor 5</option>
+                    </select>
+                </div>
+
+                <!-- Botões -->
+                <div class="formulario-botoes">
+                    <button type="submit" class="btn-enviar" onclick="alert('Solicitação enviada com sucesso! (protótipo)')">SOLICITAR</button>
+                    <button type="reset" class="btn-limpar">LIMPAR</button>
+                </div>
+            </form>
+
+            <div class="formulario-voltar">
+                <a href="../motivo-solicitacao.html">← Voltar para Motivo da Solicitação</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="rodape">
+        <!-- mesmo rodapé padrão, com links atualizados para ../img/... -->
+        <div class="container rodape__conteudo">
+            <div class="rodape__logo">
+                <a href="#" onclick="return confirmarSaida('https://prefeitura.sp.gov.br/gestao/')">
+                    <img src="../../img/principal/logo_PrefSP_sem fundo_horizontal_fundo claro.png" alt="Prefeitura de São Paulo" class="rodape__logo-img" />
+                </a>
+            </div>
+            <div class="rodape__texto">
+                <p><strong>CLIC - Central de Informações e Apoio da COGEP/SEGES</strong></p>
+                <p>
+                    Contate a CLIC pelo <a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/fale-com-a-cogep')" class="link-fale">Fale Com a COGEP</a> ou pelo e-mail
+                    <a href="mailto:clic@prefeitura.sp.gov.br">clic@prefeitura.sp.gov.br</a>
+                </p>
+                <p><strong>ATENÇÃO:</strong></p>
+                <ul class="rodape__atencao-lista">
+                    <li>Questões específicas sobre a vida funcional devem ser direcionadas à sua Unidade de Recursos Humanos.</li>
+                    <li>Para demandas sobre serviços de outros órgãos, verifique na página consultando o canal de contato.</li>
+                </ul>
+            </div>
+            <div class="rodape__redes">
+                <a href="#" onclick="return confirmarSaida('https://www.facebook.com/gestaoprefsp/')"><img src="../../img/principal/icons/facebook.png" alt="Facebook" /></a>
+                <a href="#" onclick="return confirmarSaida('https://open.spotify.com/show/7k40YvPejELy045znwj0Er?si=a718ff29e31a4cf8&utm_medium=share&utm_source=linktree&nd=1&dlsi=200dadb692294a9d')"><img src="../../img/principal/icons/spotify-logo.png" alt="Spotify" /></a>
+                <a href="#" onclick="return confirmarSaida('https://www.linkedin.com/company/segessp/')"><img src="../../img/principal/icons/linkedin-logo.png" alt="LinkedIn" /></a>
+                <a href="#" onclick="return confirmarSaida('https://www.youtube.com/channel/UCsWU48a61IT4Yh2ZAI06kjw')"><img src="../../img/principal/icons/youtube.png" alt="YouTube" /></a>
+                <a href="#" onclick="return confirmarSaida('https://www.instagram.com/gestaoprefsp/')"><img src="../../img/principal/icons/instagram.png" alt="Instagram" /></a>
+                <a href="#" onclick="return confirmarSaida('https://www.whatsapp.com/channel/0029Vb8LumICBtxLjsXllo3h')"><img src="../../img/principal/icons/whatsapp.png" alt="WhatsApp" /></a>
+            </div>
+        </div>
+        <div class="rodape__copyright">
+            Copyright © Prefeitura de São Paulo - SEGES/COTIC 2026
+        </div>
+    </footer>
+
+    <script src="../../js/script.js"></script>
+    <script>
+        // Lógica para mostrar/ocultar campos conforme o tipo de usuário
+        document.querySelectorAll('input[name="tipo"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                var tipo = this.value;
+                document.getElementById('campos-servidor').style.display = (tipo === 'servidor') ? 'block' : 'none';
+                document.getElementById('campos-estagiario').style.display = (tipo === 'estagiario') ? 'block' : 'none';
+                document.getElementById('campos-tercerizado').style.display = (tipo === 'tercerizado') ? 'block' : 'none';
+                // Habilitar/desabilitar campos para não enviar dados desnecessários
+                document.querySelectorAll('#campos-servidor input, #campos-estagiario input, #campos-tercerizado input, #campos-tercerizado textarea').forEach(function(el) {
+                    el.disabled = (el.closest('.campos-especificos').style.display === 'none');
+                });
+            });
+        });
+        // Inicializar estado
+        document.querySelector('input[name="tipo"][value="servidor"]').dispatchEvent(new Event('change'));
+    </script>
+</body>
+</html>

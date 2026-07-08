@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CLIC - Inclusão de Novo Padrão</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/formularios.css" />
+</head>
+<body>
+    <!-- cabeçalho igual ao anterior, com links para ../ -->
+    <header class="topo"><!-- ... mesmo código ... --></header>
+
+    <main class="formulario-page">
+        <div class="formulario-container">
+            <h1 class="formulario-titulo">INCLUSÃO DE NOVO PADRÃO</h1>
+            <hr class="formulario-divisor" />
+            <form class="formulario" onsubmit="return false;">
+                <div class="campo-form">
+                    <label for="nome-padrao">Nome da Pessoa *</label>
+                    <input type="text" id="nome-padrao" name="nome" placeholder="Digite o nome completo" required />
+                </div>
+                <div class="campo-form">
+                    <label for="rg-padrao">RG ou Registro *</label>
+                    <input type="text" id="rg-padrao" name="rg" placeholder="Número do RG ou registro" required />
+                </div>
+                <div class="campo-form">
+                    <label for="novo-padrao">Novo Padrão *</label>
+                    <select id="novo-padrao" name="novo-padrao" required>
+                        <option value="" disabled selected>Selecione o novo padrão</option>
+                        <option value="Padrão X">Padrão X</option>
+                        <option value="Padrão Y">Padrão Y</option>
+                        <option value="Padrão Z">Padrão Z</option>
+                    </select>
+                </div>
+                <div class="formulario-botoes">
+                    <button type="submit" class="btn-enviar" onclick="alert('Solicitação enviada!')">SOLICITAR</button>
+                    <button type="reset" class="btn-limpar">LIMPAR</button>
+                </div>
+            </form>
+            <div class="formulario-voltar"><a href="../motivo-solicitacao.html">← Voltar</a></div>
+        </div>
+    </main>
+
+    <footer class="rodape"><!-- mesmo rodapé com caminhos ../img/... --></footer>
+    <script src="../../js/script.js"></script>
+</body>
+</html>

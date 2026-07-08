@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CLIC - Alteração de Setor de Acesso</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/formularios.css" />
+</head>
+<body>
+    <header class="topo"><!-- cabeçalho padrão --></header>
+
+    <main class="formulario-page">
+        <div class="formulario-container">
+            <h1 class="formulario-titulo">ALTERAÇÃO DE SETOR DE ACESSO</h1>
+            <hr class="formulario-divisor" />
+            <form class="formulario" onsubmit="return false;">
+                <div class="campo-form">
+                    <label for="nome">Nome da Pessoa *</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite o nome completo" required />
+                </div>
+                <div class="campo-form">
+                    <label for="rg">RG ou Registro *</label>
+                    <input type="text" id="rg" name="rg" placeholder="Número do RG ou registro" required />
+                </div>
+                <div class="campo-form">
+                    <label for="setor-anterior">Setor Anterior *</label>
+                    <select id="setor-anterior" name="setor-anterior" required>
+                        <option value="" disabled selected>Selecione o setor atual</option>
+                        <option value="Setor 1">Setor 1</option>
+                        <option value="Setor 2">Setor 2</option>
+                        <option value="Setor 3">Setor 3</option>
+                    </select>
+                </div>
+                <div class="campo-form">
+                    <label for="novo-setor">Novo Setor *</label>
+                    <select id="novo-setor" name="novo-setor" required>
+                        <option value="" disabled selected>Selecione o novo setor</option>
+                        <option value="Setor A">Setor A</option>
+                        <option value="Setor B">Setor B</option>
+                        <option value="Setor C">Setor C</option>
+                    </select>
+                </div>
+                <div class="formulario-botoes">
+                    <button type="submit" class="btn-enviar" onclick="alert('Solicitação enviada!')">SOLICITAR</button>
+                    <button type="reset" class="btn-limpar">LIMPAR</button>
+                </div>
+            </form>
+            <div class="formulario-voltar"><a href="../motivo-solicitacao.html">← Voltar</a></div>
+        </div>
+    </main>
+
+    <footer class="rodape"><!-- rodapé padrão --></footer>
+    <script src="../../js/script.js"></script>
+</body>
+</html>

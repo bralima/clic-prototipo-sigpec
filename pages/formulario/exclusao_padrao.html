@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CLIC - Exclusão de um Padrão</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/formularios.css" />
+</head>
+<body>
+    <header class="topo"><!-- cabeçalho padrão --></header>
+
+    <main class="formulario-page">
+        <div class="formulario-container">
+            <h1 class="formulario-titulo">EXCLUSÃO DE UM PADRÃO</h1>
+            <hr class="formulario-divisor" />
+            <form class="formulario" onsubmit="return false;">
+                <div class="campo-form">
+                    <label for="nome">Nome da Pessoa *</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite o nome completo" required />
+                </div>
+                <div class="campo-form">
+                    <label for="rg">RG ou Registro *</label>
+                    <input type="text" id="rg" name="rg" placeholder="Número do RG ou registro" required />
+                </div>
+                <div class="campo-form">
+                    <label for="padrao-excluir">Padrão a ser Excluído *</label>
+                    <select id="padrao-excluir" name="padrao-excluir" required>
+                        <option value="" disabled selected>Selecione o padrão</option>
+                        <option value="Padrão A">Padrão A</option>
+                        <option value="Padrão B">Padrão B</option>
+                        <option value="Padrão C">Padrão C</option>
+                    </select>
+                </div>
+                <div class="formulario-botoes">
+                    <button type="submit" class="btn-enviar" onclick="alert('Solicitação enviada!')">SOLICITAR</button>
+                    <button type="reset" class="btn-limpar">LIMPAR</button>
+                </div>
+            </form>
+            <div class="formulario-voltar"><a href="../motivo-solicitacao.html">← Voltar</a></div>
+        </div>
+    </main>
+
+    <footer class="rodape"><!-- rodapé padrão --></footer>
+    <script src="../../js/script.js"></script>
+</body>
+</html>

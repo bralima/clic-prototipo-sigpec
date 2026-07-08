@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CLIC - Ativar/Desativar Acesso</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <<link rel="stylesheet" href="../../css/formularios.css" />
+</head>
+<body>
+    <header class="topo"><!-- cabeçalho padrão --></header>
+
+    <main class="formulario-page">
+        <div class="formulario-container">
+            <h1 class="formulario-titulo">ATIVAR / DESATIVAR ACESSO</h1>
+            <hr class="formulario-divisor" />
+            <form id="form-ativar" class="formulario" onsubmit="return false;">
+                <!-- Ação: Ativar ou Desativar -->
+                <div class="campo-form">
+                    <label>Ação:</label>
+                    <div class="opcoes-radio">
+                        <label><input type="radio" name="acao" value="ativar" checked /> Ativar</label>
+                        <label><input type="radio" name="acao" value="desativar" /> Desativar</label>
+                    </div>
+                </div>
+
+                <!-- TIPO DE USUÁRIO (sempre visível) -->
+                <div class="campo-form">
+                    <label for="tipo-usuario-ativar">TIPO DE USUÁRIO:</label>
+                    <div class="opcoes-radio">
+                        <label><input type="radio" name="tipo-ativar" value="servidor" checked /> Servidor</label>
+                        <label><input type="radio" name="tipo-ativar" value="estagiario" /> Estagiário</label>
+                        <label><input type="radio" name="tipo-ativar" value="tercerizado" /> Terceirizado</label>
+                    </div>
+                </div>
+
+                <!-- Nome (comum) -->
+                <div class="campo-form">
+                    <label for="nome-ativar">Nome Completo *</label>
+                    <input type="text" id="nome-ativar" name="nome" placeholder="Digite o nome completo" required />
+                </div>
+
+                <!-- RG/Registro (comum) -->
+                <div class="campo-form">
+                    <label for="rg-ativar">RG ou Registro *</label>
+                    <input type="text" id="rg-ativar" name="rg" placeholder="Número do RG ou registro" required />
+                </div>
+
+                <!-- Login (comum) -->
+                <div class="campo-form">
+                    <label for="login-ativar">Login de Usuário *</label>
+                    <input type="text" id="login-ativar" name="login" placeholder="Digite o login" required />
+                </div>
+
+                <!-- Campos extras para Ativar (servidor/estagiario/tercerizado) -->
+                <div id="campos-ativar" style="display:none;">
+                    <div id="ativar-servidor" class="campos-especificos">
+                        <div class="campo-form">
+                            <label for="registro-ativar-servidor">Registro/Vínculo *</label>
+                            <input type="text" id="registro-ativar-servidor" name="registro-servidor" placeholder="Número do registro" />
+                        </div>
+                    </div>
+                    <div id="ativar-estagiario" class="campos-especificos" style="display:none;">
+                        <div class="campo-form">
+                            <label for="rg-ativar-estagiario">RG *</label>
+                            <input type="text" id="rg-ativar-estagiario" name="rg-estagiario" placeholder="Número do RG" />
+                        </div>
+                        <div class="aviso-form">⚠️ Apenas para consultas, sem alterações.</div>
+                    </div>
+                    <div id="ativar-tercerizado" class="campos-especificos" style="display:none;">
+                        <div class="campo-form">
+                            <label for="rg-ativar-tercerizado">RG *</label>
+                            <input type="text" id="rg-ativar-tercerizado" name="rg-tercerizado" placeholder="Número do RG" />
+                        </div>
+                        <div class="campo-form">
+                            <label for="justificativa-ativar">Justificativa *</label>
+                            <textarea id="justificativa-ativar" name="justificativa" rows="3" placeholder="Descreva a justificativa"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formulario-botoes">
+                    <button type="submit" class="btn-enviar" onclick="alert('Solicitação enviada!')">SOLICITAR</button>
+                    <button type="reset" class="btn-limpar">LIMPAR</button>
+                </div>
+            </form>
+            <div class="formulario-voltar"><a href="../motivo-solicitacao.html">← Voltar</a></div>
+        </div>
+    </main>
+
+    <footer class="rodape"><!-- rodapé padrão --></footer>
+    <script src="../../js/script.js"></script>
+    <script>
+        // Controle de exibição de campos para Ativar/Desativar
+        const acaoRadios = document.querySelectorAll('input[name="acao"]');
+        const camposAtivar = document.getElementById('campos-ativar');
+
+        function toggleCamposAtivar() {
+            const acao = document.querySelector('input[name="acao"]:checked').value;
+            camposAtivar.style.display = (acao === 'ativar') ? 'block' : 'none';
+            // Desabilitar campos se não estiver ativo para não enviar
+            const inputs = camposAtivar.querySelectorAll('input, textarea');
+            inputs.forEach(el => el.disabled = (acao !== 'ativar'));
+        }
+
+        acaoRadios.forEach(radio => radio.addEventListener('change', toggleCamposAtivar));
+        toggleCamposAtivar();
+
+        // Controle de tipo de usuário para os campos de ativação
+        const tipoRadiosAtivar = document.querySelectorAll('input[name="tipo-ativar"]');
+        function toggleTipoAtivar() {
+            const tipo = document.querySelector('input[name="tipo-ativar"]:checked').value;
+            document.getElementById('ativar-servidor').style.display = (tipo === 'servidor') ? 'block' : 'none';
+            document.getElementById('ativar-estagiario').style.display = (tipo === 'estagiario') ? 'block' : 'none';
+            document.getElementById('ativar-tercerizado').style.display = (tipo === 'tercerizado') ? 'block' : 'none';
+            // Habilitar/desabilitar
+            document.querySelectorAll('#ativar-servidor input, #ativar-estagiario input, #ativar-tercerizado input, #ativar-tercerizado textarea').forEach(el => {
+                el.disabled = (el.closest('.campos-especificos').style.display === 'none');
+            });
+        }
+        tipoRadiosAtivar.forEach(radio => radio.addEventListener('change', toggleTipoAtivar));
+        document.querySelector('input[name="tipo-ativar"][value="servidor"]').dispatchEvent(new Event('change'));
+    </script>
+</body>
+</html>
