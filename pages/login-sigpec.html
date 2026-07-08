@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CLIC - Suporte SIGPEC</title>
+    <!-- Estilos globais (compartilhados) -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <!-- Estilos específicos da página de login -->
+    <link rel="stylesheet" href="../css/login-sigpec.css" />
+</head>
+<body>
+
+    <!-- ============================================= -->
+    <!-- CABEÇALHO (mesmo do index)                     -->
+    <!-- ============================================= -->
+    <header class="topo">
+        <div class="container topo__conteudo">
+            <a href="../index.html" class="topo__logo" aria-label="CLIC - Página Inicial">
+                <img src="../img/clic/logo-clic-completa.png" alt="Logo da CLIC" class="logo-img" />
+            </a>
+            <nav class="topo__menu" aria-label="Menu principal">
+                <ul>
+                    <li><a href="../index.html">Página Inicial</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/quem-somos')">Quem Somos</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/mapa-da-clic')">Mapa da CLIC</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/fale-com-a-cogep')">Fale com a COGEP</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/fale-com-sua-urh')">Fale com sua URH</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/acesso-rapido')">Links Úteis</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/glossario')">Glossário</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================= -->
+    <!-- CONTEÚDO PRINCIPAL - LOGIN SIGPEC             -->
+    <!-- ============================================= -->
+    <main class="login-page">
+
+        <!-- Coluna esquerda: vídeo + texto -->
+        <div class="login-col-esquerda">
+            <div class="video-wrapper">
+                <!-- Vídeo do YouTube (substitua o ID pelo seu) -->
+                <iframe 
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=5sK5VvP8y-lL0Pz7" 
+                    title="Vídeo institucional SIGPEC" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p class="texto-atencao">
+                <strong>ATENÇÃO:</strong> Conforme Portaria *** cada unidade deve indicar 
+                <strong>DUAS pessoas servidoras</strong> que serão responsáveis por preencher o formulário e 
+                solicitar a liberação ou alteração de acessos para os outros servidores e servidoras ao 
+                <strong>SIGPEC</strong>, dentro da sua URH.
+            </p>
+        </div>
+
+        <!-- Coluna direita: formulário de login -->
+        <div class="login-col-direita">
+
+            <!-- Botão REGISTRAR (no topo, alinhado à direita) -->
+            <div class="botao-registrar-wrapper">
+                <button class="botao-registrar" onclick="window.location.href='cadastro-sigpec.html'">REGISTRAR</button>
+            </div>
+
+            <!-- Título com ícone de informação -->
+            <div class="login-header">
+                <h1>Faça seu login</h1>
+                <span class="icone-info" aria-label="Informação">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+                        <path d="M440-280h80v-240h-80v240Zm68.5-331.5Q520-623 520-640t-11.5-28.5Q497-680 480-680t-28.5 11.5Q440-657 440-640t11.5 28.5Q463-600 480-600t28.5-11.5ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
+                    </svg>
+                    <span class="tooltip-text">
+                        Este cadastro é voltado aos <strong>servidores(as) que atuam em Recursos Humanos</strong> e serve para liberar o acesso ao sistema do <strong>Formulário de Liberação/Alteração de Acessos ao SIGPEC</strong>.
+                    </span>
+                </span>
+            </div>
+
+            <!-- Formulário -->
+            <form id="form-login" onsubmit="return false;">
+                <div class="campo-login">
+                    <label for="email-login">E-mail*</label>
+                    <input type="email" id="email-login" name="email" placeholder="xxxxxxxxxx@prefeitura.sp.gov.br" required />
+                </div>
+
+                <div class="campo-login">
+                    <label for="senha-login">Senha*</label>
+                    <input type="password" id="senha-login" name="senha" placeholder="Digite sua senha" required />
+                </div>
+
+                <button type="submit" class="botao-acessar" onclick="window.location.href='motivo-solicitacao.html'">ACESSAR</button>
+            </form>
+
+            <div class="esqueceu-senha">
+                Esqueceu sua senha? <a href="recuperar-senha.html">Clique Aqui</a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ============================================= -->
+    <!-- RODAPÉ (mesmo do index)                        -->
+    <!-- ============================================= -->
+    <footer class="rodape">
+        <div class="container rodape__conteudo">
+            <div class="rodape__logo">
+                <a href="#" onclick="return confirmarSaida('https://prefeitura.sp.gov.br/gestao/')">
+                    <img src="../img/principal/logo_PrefSP_sem fundo_horizontal_fundo claro.png" alt="Prefeitura de São Paulo" class="rodape__logo-img" />
+                </a>
+            </div>
+            <div class="rodape__texto">
+                <p><strong>CLIC - Central de Informações e Apoio da COGEP/SEGES</strong></p>
+                <p>
+                    Contate a CLIC pelo <a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/fale-com-a-cogep')" class="link-fale">Fale Com a COGEP</a> ou pelo e-mail
+                    <a href="mailto:clic@prefeitura.sp.gov.br">clic@prefeitura.sp.gov.br</a>
+                </p>
+                <p><strong>ATENÇÃO:</strong></p>
+                <ul class="rodape__atencao-lista">
+                    <li>Questões específicas sobre a vida funcional devem ser direcionadas à sua Unidade de Recursos Humanos.</li>
+                    <li>Para demandas sobre serviços de outros órgãos, verifique na página consultando o canal de contato.</li>
+                </ul>
+            </div>
+            <div class="rodape__redes" aria-label="Redes sociais">
+                <a href="#" onclick="return confirmarSaida('https://www.facebook.com/gestaoprefsp/')" aria-label="Facebook"><img src="../img/principal/icons/facebook.png" alt="Facebook" /></a>
+                <a href="#" onclick="return confirmarSaida('https://open.spotify.com/show/7k40YvPejELy045znwj0Er?si=a718ff29e31a4cf8&utm_medium=share&utm_source=linktree&nd=1&dlsi=200dadb692294a9d')" aria-label="Spotify"><img src="../img/principal/icons/spotify-logo.png" alt="Spotify" /></a>
+                <a href="#" onclick="return confirmarSaida('https://www.linkedin.com/company/segessp/')" aria-label="LinkedIn"><img src="../img/principal/icons/linkedin-logo.png" alt="LinkedIn" /></a>
+                <a href="#" onclick="return confirmarSaida('https://www.youtube.com/channel/UCsWU48a61IT4Yh2ZAI06kjw')" aria-label="YouTube"><img src="../img/principal/icons/youtube.png" alt="YouTube" /></a>
+                <a href="#" onclick="return confirmarSaida('https://www.instagram.com/gestaoprefsp/')" aria-label="Instagram"><img src="../img/principal/icons/instagram.png" alt="Instagram" /></a>
+                <a href="#" onclick="return confirmarSaida('https://www.whatsapp.com/channel/0029Vb8LumICBtxLjsXllo3h')" aria-label="WhatsApp"><img src="../img/principal/icons/whatsapp.png" alt="WhatsApp" /></a>
+            </div>
+        </div>
+        <div class="rodape__copyright">
+            Copyright © Prefeitura de São Paulo - SEGES/COTIC 2026
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/script.js"></script>
+</body>
+</html>

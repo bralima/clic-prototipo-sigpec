@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CLIC - Recuperação de Senha</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/recuperar-senha.css" />
+</head>
+<body>
+
+    <!-- ============================================= -->
+    <!-- CABEÇALHO (padrão)                             -->
+    <!-- ============================================= -->
+    <header class="topo">
+        <div class="container topo__conteudo">
+            <a href="../index.html" class="topo__logo" aria-label="CLIC - Página Inicial">
+                <img src="../img/clic/logo-clic-completa.png" alt="Logo da CLIC" class="logo-img" />
+            </a>
+            <nav class="topo__menu" aria-label="Menu principal">
+                <ul>
+                    <li><a href="../index.html">Página Inicial</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/quem-somos')">Quem Somos</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/mapa-da-clic')">Mapa da CLIC</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/fale-com-a-cogep')">Fale com a COGEP</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/fale-com-sua-urh')">Fale com sua URH</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/acesso-rapido')">Links Úteis</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/glossario')">Glossário</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================= -->
+    <!-- CONTEÚDO PRINCIPAL - RECUPERAÇÃO DE SENHA     -->
+    <!-- ============================================= -->
+    <main class="recuperar-page">
+        <div class="recuperar-container">
+            <h1 class="recuperar-titulo">RECUPERAÇÃO DE SENHA</h1>
+            <hr class="recuperar-divisor" />
+
+            <form id="form-recuperar" class="recuperar-form" onsubmit="return false;">
+                <div class="campo-recuperar">
+                    <label for="email-recuperar">Informe seu E-mail: *</label>
+                    <input type="email" id="email-recuperar" name="email" placeholder="seuemail@prefeitura.sp.gov.br" required />
+                </div>
+
+                <button type="submit" class="btn-continuar" onclick="alert('Instruções de recuperação enviadas para seu e-mail. (protótipo)')">CONTINUAR</button>
+            </form>
+
+            <div class="recuperar-voltar">
+                <a href="login-sigpec.html">← Voltar para o login</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- ============================================= -->
+    <!-- RODAPÉ (padrão)                                -->
+    <!-- ============================================= -->
+    <footer class="rodape">
+        <div class="container rodape__conteudo">
+            <div class="rodape__logo">
+                <a href="#" onclick="return confirmarSaida('https://prefeitura.sp.gov.br/gestao/')">
+                    <img src="../img/principal/logo_PrefSP_sem fundo_horizontal_fundo claro.png" alt="Prefeitura de São Paulo" class="rodape__logo-img" />
+                </a>
+            </div>
+            <div class="rodape__texto">
+                <p><strong>CLIC - Central de Informações e Apoio da COGEP/SEGES</strong></p>
+                <p>
+                    Contate a CLIC pelo <a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/fale-com-a-cogep')" class="link-fale">Fale Com a COGEP</a> ou pelo e-mail
+                    <a href="mailto:clic@prefeitura.sp.gov.br">clic@prefeitura.sp.gov.br</a>
+                </p>
+                <p><strong>ATENÇÃO:</strong></p>
+                <ul class="rodape__atencao-lista">
+                    <li>Questões específicas sobre a vida funcional devem ser direcionadas à sua Unidade de Recursos Humanos.</li>
+                    <li>Para demandas sobre serviços de outros órgãos, verifique na página consultando o canal de contato.</li>
+                </ul>
+            </div>
+            <div class="rodape__redes" aria-label="Redes sociais">
+                <a href="#" onclick="return confirmarSaida('https://www.facebook.com/gestaoprefsp/')" aria-label="Facebook"><img src="../img/principal/icons/facebook.png" alt="Facebook" /></a>
+                <a href="#" onclick="return confirmarSaida('https://open.spotify.com/show/7k40YvPejELy045znwj0Er?si=a718ff29e31a4cf8&utm_medium=share&utm_source=linktree&nd=1&dlsi=200dadb692294a9d')" aria-label="Spotify"><img src="../img/principal/icons/spotify-logo.png" alt="Spotify" /></a>
+                <a href="#" onclick="return confirmarSaida('https://www.linkedin.com/company/segessp/')" aria-label="LinkedIn"><img src="../img/principal/icons/linkedin-logo.png" alt="LinkedIn" /></a>
+                <a href="#" onclick="return confirmarSaida('https://www.youtube.com/channel/UCsWU48a61IT4Yh2ZAI06kjw')" aria-label="YouTube"><img src="../img/principal/icons/youtube.png" alt="YouTube" /></a>
+                <a href="#" onclick="return confirmarSaida('https://www.instagram.com/gestaoprefsp/')" aria-label="Instagram"><img src="../img/principal/icons/instagram.png" alt="Instagram" /></a>
+                <a href="#" onclick="return confirmarSaida('https://www.whatsapp.com/channel/0029Vb8LumICBtxLjsXllo3h')" aria-label="WhatsApp"><img src="../img/principal/icons/whatsapp.png" alt="WhatsApp" /></a>
+            </div>
+        </div>
+        <div class="rodape__copyright">
+            Copyright © Prefeitura de São Paulo - SEGES/COTIC 2026
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

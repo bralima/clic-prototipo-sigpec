@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CLIC - Motivo da Solicitação</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/motivo-solicitacao.css" />
+</head>
+<body>
+
+    <!-- ============================================= -->
+    <!-- CABEÇALHO (padrão)                             -->
+    <!-- ============================================= -->
+    <header class="topo">
+        <div class="container topo__conteudo">
+            <a href="../index.html" class="topo__logo" aria-label="CLIC - Página Inicial">
+                <img src="../img/clic/logo-clic-completa.png" alt="Logo da CLIC" class="logo-img" />
+            </a>
+            <nav class="topo__menu" aria-label="Menu principal">
+                <ul>
+                    <li><a href="../index.html">Página Inicial</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/quem-somos')">Quem Somos</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/mapa-da-clic')">Mapa da CLIC</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/fale-com-a-cogep')">Fale com a COGEP</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/fale-com-sua-urh')">Fale com sua URH</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/acesso-rapido')">Links Úteis</a></li>
+                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/glossario')">Glossário</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================= -->
+    <!-- CONTEÚDO PRINCIPAL - MOTIVO DA SOLICITAÇÃO    -->
+    <!-- ============================================= -->
+    <main class="motivo-page">
+        <div class="motivo-container">
+            <h1 class="motivo-titulo">MOTIVO DA SOLICITAÇÃO</h1>
+            <hr class="motivo-divisor" />
+
+            <!-- Primeira linha: 3 cards -->
+            <div class="motivo-linha">
+                <div class="motivo-card" onclick="window.location.href='formulario/inclusao_usuario.html'">
+                    <div class="motivo-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#325FAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                    </div>
+                    <span class="motivo-card-text">Inclusão de<br />Novo Usuário</span>
+                </div>
+
+                <div class="motivo-card" onclick="window.location.href='formulario/inclusao_padrao.html'">
+                    <div class="motivo-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#325FAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+                        </svg>
+                    </div>
+                    <span class="motivo-card-text">Inclusão de<br />Novo Padrão</span>
+                </div>
+
+                <div class="motivo-card" onclick="window.location.href='formulario/alteracao_setor.html'">
+                    <div class="motivo-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#325FAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            <path d="M12 8v4M12 16h.01" />
+                        </svg>
+                    </div>
+                    <span class="motivo-card-text">Alteração de<br />Setor de Acesso</span>
+                </div>
+            </div>
+
+            <!-- Segunda linha: 2 cards (centralizados) -->
+            <div class="motivo-linha motivo-linha--centralizada">
+                <div class="motivo-card" onclick="window.location.href='formulario/exclusao_padrao.html'">
+                    <div class="motivo-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#325FAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                            <path d="M10 11v6M14 11v6" />
+                        </svg>
+                    </div>
+                    <span class="motivo-card-text">Exclusão de<br />um Padrão</span>
+                </div>
+
+                <div class="motivo-card" onclick="window.location.href='formulario/ativar_desativar_acesso.html'">
+                    <div class="motivo-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#325FAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+                        </svg>
+                    </div>
+                    <span class="motivo-card-text">Ativar/Desativar<br />Acesso</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ============================================= -->
+    <!-- RODAPÉ (padrão)                                -->
+    <!-- ============================================= -->
+    <footer class="rodape">
+        <div class="container rodape__conteudo">
+            <div class="rodape__logo">
+                <a href="#" onclick="return confirmarSaida('https://prefeitura.sp.gov.br/gestao/')">
+                    <img src="../img/principal/logo_PrefSP_sem fundo_horizontal_fundo claro.png" alt="Prefeitura de São Paulo" class="rodape__logo-img" />
+                </a>
+            </div>
+            <div class="rodape__texto">
+                <p><strong>CLIC - Central de Informações e Apoio da COGEP/SEGES</strong></p>
+                <p>
+                    Contate a CLIC pelo <a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/fale-com-a-cogep')" class="link-fale">Fale Com a COGEP</a> ou pelo e-mail
+                    <a href="mailto:clic@prefeitura.sp.gov.br">clic@prefeitura.sp.gov.br</a>
+                </p>
+                <p><strong>ATENÇÃO:</strong></p>
+                <ul class="rodape__atencao-lista">
+                    <li>Questões específicas sobre a vida funcional devem ser direcionadas à sua Unidade de Recursos Humanos.</li>
+                    <li>Para demandas sobre serviços de outros órgãos, verifique na página consultando o canal de contato.</li>
+                </ul>
+            </div>
+            <div class="rodape__redes" aria-label="Redes sociais">
+                <a href="#" onclick="return confirmarSaida('https://www.facebook.com/gestaoprefsp/')" aria-label="Facebook"><img src="../img/principal/icons/facebook.png" alt="Facebook" /></a>
+                <a href="#" onclick="return confirmarSaida('https://open.spotify.com/show/7k40YvPejELy045znwj0Er?si=a718ff29e31a4cf8&utm_medium=share&utm_source=linktree&nd=1&dlsi=200dadb692294a9d')" aria-label="Spotify"><img src="../img/principal/icons/spotify-logo.png" alt="Spotify" /></a>
+                <a href="#" onclick="return confirmarSaida('https://www.linkedin.com/company/segessp/')" aria-label="LinkedIn"><img src="../img/principal/icons/linkedin-logo.png" alt="LinkedIn" /></a>
+                <a href="#" onclick="return confirmarSaida('https://www.youtube.com/channel/UCsWU48a61IT4Yh2ZAI06kjw')" aria-label="YouTube"><img src="../img/principal/icons/youtube.png" alt="YouTube" /></a>
+                <a href="#" onclick="return confirmarSaida('https://www.instagram.com/gestaoprefsp/')" aria-label="Instagram"><img src="../img/principal/icons/instagram.png" alt="Instagram" /></a>
+                <a href="#" onclick="return confirmarSaida('https://www.whatsapp.com/channel/0029Vb8LumICBtxLjsXllo3h')" aria-label="WhatsApp"><img src="../img/principal/icons/whatsapp.png" alt="WhatsApp" /></a>
+            </div>
+        </div>
+        <div class="rodape__copyright">
+            Copyright © Prefeitura de São Paulo - SEGES/COTIC 2026
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
