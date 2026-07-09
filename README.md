@@ -79,7 +79,7 @@ clic-prototipo/
 ## 🖥️ Como visualizar o protótipo
 
 1. Acesse o link do GitHub Pages:  
-   `https://SEU_USUARIO.github.io/clic-prototipo/`
+   `https://bralima.github.io/clic-prototipo-sigpec/`
 2. Navegue pelas páginas usando os menus e botões.
 3. Interaja com formulários e links (todos exibem alertas simulados).
 
