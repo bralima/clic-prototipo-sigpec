@@ -31,14 +31,13 @@
 
 /* ---------- AVISO (lado esquerdo, encostado na borda) ---------- */
 .cadastro-aviso {
-    border: 20px solid red;
+    border: 2px solid red; /* para teste */
     flex: 0 0 auto;
-    width: 380px; 
+    width: 380px;
     align-self: flex-end;
     margin-bottom: 40px;
-    margin-left: 0 !important;
-    position: relative;
-    left: -20px;
+    margin-left: -40px;    /* compensa o padding + gap */
+    margin-right: auto;    /* força o aviso a ficar à esquerda */
 }
 
 .aviso-caixa {
