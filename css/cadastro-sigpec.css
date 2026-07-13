@@ -35,7 +35,7 @@
     width: 380px; /* largura fixa, mas pode ser ajustada */
     align-self: flex-end; /* alinha na parte inferior */
     margin-bottom: 40px;
-    margin-left: -20px; /* encosta na borda esquerda */
+    margin-left: -200px; /* encosta na borda esquerda */
 }
 
 .aviso-caixa {
