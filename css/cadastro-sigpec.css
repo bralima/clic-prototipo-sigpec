@@ -4,17 +4,27 @@
 
 .cadastro-page {
     position: relative;
-    overflow: hidden; /* esconde o excesso para não criar scroll desnecessário */
+    overflow: hidden;
     background: #F0EDE6;
-    background-image: url('../img/cadastro-sigpec/fundo-central.png');
+    background-image: url('/img/cadastro-sigpec/fundo-central.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100vh;
     padding: 40px 20px;
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    align-items: center;      /* centraliza verticalmente */
+    justify-content: flex-end; /* alinha conteúdo à direita */
+}
+
+.cadastro-container {
+    position: relative;
+    z-index: 1;
+    max-width: 589px;
+    width: 100%;
+    margin-right: 40px;       /* espaço da borda direita */
+    /* remove justify-content e usa margin-left: auto para empurrar */
+    margin-left: auto;        /* empurra o container para a direita */
 }
 
 /* AVISO - posicionado absolutamente na esquerda inferior */
