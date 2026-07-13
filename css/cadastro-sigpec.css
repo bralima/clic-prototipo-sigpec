@@ -16,19 +16,6 @@
     position: relative;
 }
 
-/* Imagem de fundo */
-.cadastro-page::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('../img/cadastro sigpec/fundo central.png') no-repeat center center;
-    background-size: cover;
-    opacity: 0.5;
-    z-index: 0;
-}
 
 .cadastro-container {
     position: relative;
