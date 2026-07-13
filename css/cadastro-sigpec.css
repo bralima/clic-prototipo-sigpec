@@ -35,6 +35,7 @@
     width: 380px; 
     align-self: flex-end;
     margin-bottom: 40px;
+    margin-left: 0 !important;
     position: relative;
     left: -20px;
 }
