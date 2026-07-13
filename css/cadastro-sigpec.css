@@ -6,7 +6,7 @@
     position: relative;
     min-height: 100vh;
     background: #F0EDE6;
-    background-image: url('/img/cadastro-sigpec/fundo-central.png'); /* caminho absoluto */
+    background-image: url('../img/cadastro-sigpec/fundo-central.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
