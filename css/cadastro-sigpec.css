@@ -4,11 +4,11 @@
 
 .cadastro-page {
     background: #F0EDE6;
-    background-image: url('/img/cadastro-sigpec/fundo central.png');
+    background-image: url('/img/cadastro-sigpec/fundo-central.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 100vh; /* força altura total */
+    min-height: 100vh;
     padding: 40px 20px;
     display: flex;
     align-items: center;
@@ -32,10 +32,11 @@
 /* ---------- AVISO (lado esquerdo, encostado na borda) ---------- */
 .cadastro-aviso {
     flex: 0 0 auto;
-    width: 380px; /* largura fixa, mas pode ser ajustada */
-    align-self: flex-end; /* alinha na parte inferior */
+    width: 380px; 
+    align-self: flex-end;
     margin-bottom: 40px;
-    margin-left: -200px; /* encosta na borda esquerda */
+    position: relative;
+    left: -20px;
 }
 
 .aviso-caixa {
