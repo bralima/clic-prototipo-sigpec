@@ -4,38 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CLIC - Cadastro SIGPEC</title>
-    <!-- Estilos globais -->
+    <!-- Estilos globais (cabeçalho + rodape) -->
     <link rel="stylesheet" href="../css/style.css" />
     <!-- Estilos específicos do cadastro -->
     <link rel="stylesheet" href="../css/cadastro-sigpec.css" />
 </head>
 <body>
 
-    <!-- ============================================= -->
-    <!-- CABEÇALHO (mesmo do index)                     -->
-    <!-- ============================================= -->
+
+    <!-- CABEÇALHO-->
+
     <header class="topo">
         <div class="container topo__conteudo">
-            <a href="index.html" class="topo__logo" aria-label="CLIC - Página Inicial">
-                <img src="img/clic/logo-clic-completa.png" alt="Logo da CLIC" class="logo-img" />
+            <a href="../index.html" class="topo__logo" aria-label="CLIC - Página Inicial">
+                <img src="../img/clic/logo-clic-completa.png" alt="Logo da CLIC" class="logo-img" />
             </a>
             <nav class="topo__menu" aria-label="Menu principal">
                 <ul>
                     <li><a href="index.html">Página Inicial</a></li>
-                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/quem-somos')">Quem Somos</a></li>
-                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/mapa-da-clic')">Mapa da CLIC</a></li>
-                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/fale-com-a-cogep')">Fale com a COGEP</a></li>
-                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/fale-com-sua-urh')">Fale com sua URH</a></li>
-                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/acesso-rapido')">Links Úteis</a></li>
-                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/glossario')">Glossário</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Quem Somos</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Mapa da CLIC</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Fale com a COGEP</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Fale com sua URH</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Links Úteis</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Glossário</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- ============================================= -->
+
     <!-- CONTEÚDO PRINCIPAL - CADASTRO SIGPEC          -->
-    <!-- ============================================= -->
+
     <main class="cadastro-page">
         <div class="cadastro-container">
             <!-- Coluna esquerda: aviso -->
@@ -103,20 +103,20 @@
         </div>
     </main>
 
-    <!-- ============================================= -->
-    <!-- RODAPÉ (mesmo do index)                        -->
-    <!-- ============================================= -->
+
+    <!-- RODAPÉ (mesmo do index) -->
+
     <footer class="rodape">
         <div class="container rodape__conteudo">
             <div class="rodape__logo">
-                <a href="#" onclick="return confirmarSaida('https://prefeitura.sp.gov.br/gestao/')">
+                <a href="#" onclick="return linkExterno()">
                     <img src="img/principal/logo_PrefSP_sem fundo_horizontal_fundo claro.png" alt="Prefeitura de São Paulo" class="rodape__logo-img" />
                 </a>
             </div>
             <div class="rodape__texto">
                 <p><strong>CLIC - Central de Informações e Apoio da COGEP/SEGES</strong></p>
                 <p>
-                    Contate a CLIC pelo <a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/fale-com-a-cogep')" class="link-fale">Fale Com a COGEP</a> ou pelo e-mail
+                    Contate a CLIC pelo <a href="#" onclick="return linkExterno()" class="link-fale">Fale Com a COGEP</a> ou pelo e-mail
                     <a href="mailto:clic@prefeitura.sp.gov.br">clic@prefeitura.sp.gov.br</a>
                 </p>
                 <p><strong>ATENÇÃO:</strong></p>
@@ -126,12 +126,12 @@
                 </ul>
             </div>
             <div class="rodape__redes" aria-label="Redes sociais">
-                <a href="#" onclick="return confirmarSaida('https://www.facebook.com/gestaoprefsp/')" aria-label="Facebook"><img src="img/principal/icons/facebook.png" alt="Facebook" /></a>
-                <a href="#" onclick="return confirmarSaida('https://open.spotify.com/show/7k40YvPejELy045znwj0Er?si=a718ff29e31a4cf8&utm_medium=share&utm_source=linktree&nd=1&dlsi=200dadb692294a9d')" aria-label="Spotify"><img src="img/principal/icons/spotify-logo.png" alt="Spotify" /></a>
-                <a href="#" onclick="return confirmarSaida('https://www.linkedin.com/company/segessp/')" aria-label="LinkedIn"><img src="img/principal/icons/linkedin-logo.png" alt="LinkedIn" /></a>
-                <a href="#" onclick="return confirmarSaida('https://www.youtube.com/channel/UCsWU48a61IT4Yh2ZAI06kjw')" aria-label="YouTube"><img src="img/principal/icons/youtube.png" alt="YouTube" /></a>
-                <a href="#" onclick="return confirmarSaida('https://www.instagram.com/gestaoprefsp/')" aria-label="Instagram"><img src="img/principal/icons/instagram.png" alt="Instagram" /></a>
-                <a href="#" onclick="return confirmarSaida('https://www.whatsapp.com/channel/0029Vb8LumICBtxLjsXllo3h')" aria-label="WhatsApp"><img src="img/principal/icons/whatsapp.png" alt="WhatsApp" /></a>
+                <a href="#" onclick="return linkExterno()" aria-label="Facebook"><img src="img/principal/icons/facebook.png" alt="Facebook" /></a>
+                <a href="#" onclick="return linkExterno()" aria-label="Spotify"><img src="img/principal/icons/spotify-logo.png" alt="Spotify" /></a>
+                <a href="#" onclick="return linkExterno()" aria-label="LinkedIn"><img src="img/principal/icons/linkedin-logo.png" alt="LinkedIn" /></a>
+                <a href="#" onclick="return linkExterno()" aria-label="YouTube"><img src="img/principal/icons/youtube.png" alt="YouTube" /></a>
+                <a href="#" onclick="return linkExterno()" aria-label="Instagram"><img src="img/principal/icons/instagram.png" alt="Instagram" /></a>
+                <a href="#" onclick="return linkExterno()" aria-label="WhatsApp"><img src="img/principal/icons/whatsapp.png" alt="WhatsApp" /></a>
             </div>
         </div>
         <div class="rodape__copyright">
@@ -140,6 +140,6 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>
