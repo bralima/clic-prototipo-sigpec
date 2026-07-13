@@ -4,41 +4,37 @@
 
 .cadastro-page {
     position: relative;
-    overflow: visible;
+    overflow: hidden; /* impede o aviso de criar scroll horizontal, mas permite que ele fique na borda */
     background: #F0EDE6;
-    background-image: url('/img/cadastro-sigpec/fundo-central.png');
+    background-image: url('../img/cadastro-sigpec/fundo-central.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100vh;
-    padding: 40px 20px;
+    padding: 40px 0; /* remove padding lateral para o aviso encostar */
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
-
 
 .cadastro-container {
     position: relative;
     z-index: 1;
     max-width: 1300px;
     width: 100%;
+    padding: 0 20px; /* apenas o formulário fica com padding */
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 0; /* removido o padding */
-    gap: 40px;
+    justify-content: flex-end; /* alinha o formulário à direita */
 }
 
-/* ---------- AVISO (lado esquerdo, encostado na borda) ---------- */
+/* ---------- AVISO (lado esquerdo, encostado) ---------- */
 .cadastro-aviso {
     position: absolute;
-    bottom: 40px;
+    bottom: 80px;
     left: 0;
     width: 380px;
-    border: 3px solid red; /* para teste, depois remova */
+    z-index: 2;
 }
-
 
 .aviso-caixa {
     background: #03989E;
@@ -70,10 +66,11 @@
     background: rgba(244, 244, 244, 0.85);
     backdrop-filter: blur(2px);
     width: 589px;
+    max-width: 100%;
     padding: 40px 35px 50px;
     border-radius: 20px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.45);
-    flex: 0 0 auto;
+    flex-shrink: 0;
 }
 
 .cadastro-header h2 {
@@ -160,15 +157,19 @@
 
 /* ---------- RESPONSIVO ---------- */
 @media (max-width: 992px) {
+    .cadastro-page {
+        justify-content: center;
+        padding: 40px 20px;
+    }
     .cadastro-container {
-        flex-direction: column;
-        align-items: center;
-        padding: 0 20px;
+        justify-content: center;
+        padding: 0;
     }
     .cadastro-aviso {
+        position: relative; /* volta ao fluxo normal */
+        bottom: auto;
+        left: auto;
         width: 100%;
-        margin-left: 0; /* remove o deslocamento negativo */
-        align-self: stretch;
         margin-bottom: 20px;
     }
     .cadastro-form {
@@ -179,7 +180,7 @@
 
 @media (max-width: 600px) {
     .cadastro-page {
-        padding: 20px 0;
+        padding: 20px 10px;
     }
     .cadastro-form {
         padding: 25px 20px;
