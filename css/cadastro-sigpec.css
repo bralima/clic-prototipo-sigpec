@@ -5,6 +5,7 @@
 .cadastro-page {
     position: relative;
     min-height: 100vh;
+    background-color: red !important;
     background: #000000;
     background-image: url('https://images4.alphacoders.com/568/thumb-1920-568792.jpg');
     background-size: cover;
