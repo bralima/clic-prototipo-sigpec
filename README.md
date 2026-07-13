@@ -88,7 +88,7 @@ clic-prototipo/
 ## 👥 Créditos
 
 - **Design original** – Paulo (concepção no Photoshop).
-- **Figma ** - Eu (ajustes no Figma)
+- **Figma** - Eu (ajustes no Figma)
 - **Estruturação e desenvolvimento do protótipo** – equipe interna, com **apoio técnico do DeepSeek** para organização do código, componentização e ajustes de navegação.
 - **COGEP/SEGES** – pela idealização do projeto e diretrizes de usabilidade.
 
