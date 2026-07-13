@@ -8,8 +8,24 @@
     <link rel="stylesheet" href="../../css/formularios.css" />
 </head>
 <body>
-    <!-- cabeçalho igual ao anterior, com links para ../ -->
-    <header class="topo"><!-- ... mesmo código ... --></header>
+    <header class="topo">
+        <div class="container topo__conteudo">
+            <a href="../../index.html" class="topo__logo" aria-label="CLIC - Página Inicial">
+                <img src="../../img/clic/logo-clic-completa.png" alt="Logo da CLIC" class="logo-img" />
+            </a>
+            <nav class="topo__menu" aria-label="Menu principal">
+                <ul>
+                    <li><a href="../../index.html">Página Inicial</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Quem Somos</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Mapa da CLIC</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Fale com a COGEP</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Fale com sua URH</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Links Úteis</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Glossário</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
     <main class="formulario-page">
         <div class="formulario-container">
@@ -42,7 +58,39 @@
         </div>
     </main>
 
-    <footer class="rodape"><!-- mesmo rodapé com caminhos ../img/... --></footer>
+    <footer class="rodape">
+        <div class="container rodape__conteudo">
+            <div class="rodape__logo">
+                <a href="#" onclick="return linkExterno()">
+                    <img src="../../img/principal/logo_PrefSP_sem fundo_horizontal_fundo claro.png" alt="Prefeitura de São Paulo" class="rodape__logo-img" />
+                </a>
+            </div>
+            <div class="rodape__texto">
+                <p><strong>CLIC - Central de Informações e Apoio da COGEP/SEGES</strong></p>
+                <p>
+                    Contate a CLIC pelo <a href="#" onclick="return linkExterno()" class="link-fale">Fale Com a COGEP</a> ou pelo e-mail
+                    <a href="mailto:clic@prefeitura.sp.gov.br">clic@prefeitura.sp.gov.br</a>
+                </p>
+                <p><strong>ATENÇÃO:</strong></p>
+                <ul class="rodape__atencao-lista">
+                    <li>Questões específicas sobre a vida funcional devem ser direcionadas à sua Unidade de Recursos Humanos.</li>
+                    <li>Para demandas sobre serviços de outros órgãos, verifique na página consultando o canal de contato.</li>
+                </ul>
+            </div>
+            <div class="rodape__redes" aria-label="Redes sociais">
+                <a href="#" onclick="return linkExterno()" aria-label="Facebook"><img src="../../img/principal/icons/facebook.png" alt="Facebook" /></a>
+                <a href="#" onclick="return linkExterno()" aria-label="Spotify"><img src="../../img/principal/icons/spotify-logo.png" alt="Spotify" /></a>
+                <a href="#" onclick="return linkExterno()" aria-label="LinkedIn"><img src="../../img/principal/icons/linkedin-logo.png" alt="LinkedIn" /></a>
+                <a href="#" onclick="return linkExterno()" aria-label="YouTube"><img src="../../img/principal/icons/youtube.png" alt="YouTube" /></a>
+                <a href="#" onclick="return linkExterno()" aria-label="Instagram"><img src="../../img/principal/icons/instagram.png" alt="Instagram" /></a>
+                <a href="#" onclick="return linkExterno()" aria-label="WhatsApp"><img src="../../img/principal/icons/whatsapp.png" alt="WhatsApp" /></a>
+            </div>
+        </div>
+        <div class="rodape__copyright">
+            Copyright © Prefeitura de São Paulo - SEGES/COTIC 2026
+        </div>
+    </footer>
+
     <script src="../../js/script.js"></script>
 </body>
 </html>
