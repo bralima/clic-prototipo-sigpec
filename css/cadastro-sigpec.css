@@ -3,6 +3,8 @@
    ================================================================= */
 
 .cadastro-page {
+    position: relative;
+    overflow: visible;
     background: #F0EDE6;
     background-image: url('/img/cadastro-sigpec/fundo-central.png');
     background-size: cover;
@@ -13,7 +15,6 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    position: relative;
 }
 
 
@@ -25,21 +26,19 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 0 20px; /* espaço interno para o formulário não encostar */
+    padding: 0; /* removido o padding */
     gap: 40px;
 }
 
 /* ---------- AVISO (lado esquerdo, encostado na borda) ---------- */
 .cadastro-aviso {
-    flex: 0 0 auto;
+    position: absolute;
+    bottom: 40px;
+    left: 0;
     width: 380px;
-    align-self: flex-end;
-    margin-bottom: 40px;
-    margin-left: -40px;     /* ajuste fino: comece com -40px e aumente se necessário */
-    margin-right: auto;     /* força à esquerda */
-    position: relative;
-    left: -10px;            /* pequeno ajuste extra */
+    border: 3px solid red; /* para teste, depois remova */
 }
+
 
 .aviso-caixa {
     background: #03989E;
