@@ -4,15 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CLIC - Cadastro SIGPEC</title>
-    <!-- Estilos globais (cabeçalho + rodape) -->
     <link rel="stylesheet" href="../css/style.css" />
-    <!-- Estilos específicos do cadastro -->
     <link rel="stylesheet" href="../css/cadastro-sigpec.css" />
 </head>
 <body>
-
-
-    <!-- CABEÇALHO-->
 
     <header class="topo">
         <div class="container topo__conteudo">
@@ -33,52 +28,40 @@
         </div>
     </header>
 
-
-    <!-- CONTEÚDO PRINCIPAL - CADASTRO SIGPEC          -->
-
     <main class="cadastro-page">
-        <div class="cadastro-container">
-            <!-- Coluna esquerda: aviso -->
-            <div class="cadastro-aviso">
-                <div class="aviso-caixa">
-                    <span class="aviso-icone">⚠️</span>
-                    <span class="aviso-texto">
-                        A seleção da “Lotação” definirá quais formulários serão disponibilizados ao usuário.
-                    </span>
-                </div>
+        <!-- Aviso (posicionado absolutamente à esquerda) -->
+        <div class="cadastro-aviso">
+            <div class="aviso-caixa">
+                <span class="aviso-icone">⚠️</span>
+                <span class="aviso-texto">
+                    A seleção da “Lotação” definirá quais formulários serão disponibilizados ao usuário.
+                </span>
             </div>
+        </div>
 
-            <!-- Coluna direita: formulário -->
+        <!-- Formulário -->
+        <div class="cadastro-container">
             <div class="cadastro-form">
                 <div class="cadastro-header">
                     <h2>Preencha o formulário para ter acesso ao sistema de liberação do SIGPEC</h2>
                 </div>
                 <form id="form-cadastro" onsubmit="return false;">
-                    <!-- Nome Completo do Responsável -->
                     <div class="campo-cadastro">
                         <label for="nome-responsavel">Nome Completo do Responsável *</label>
                         <input type="text" id="nome-responsavel" name="nome" placeholder="Fulano Silva Santos" required />
                     </div>
-
-                    <!-- E-mail do Responsável -->
                     <div class="campo-cadastro">
                         <label for="email-responsavel">E-mail do Responsável *</label>
                         <input type="email" id="email-responsavel" name="email" placeholder="fulanosilva@prefeitura.sp.gov.br" required />
                     </div>
-
-                    <!-- Nome do Coordenador/Chefia -->
                     <div class="campo-cadastro">
                         <label for="nome-coordenador">Nome do Coordenador/Chefia *</label>
                         <input type="text" id="nome-coordenador" name="nome_coordenador" placeholder="Ciclana Lima Sousa" required />
                     </div>
-
-                    <!-- E-mail do Coordenador/Chefia -->
                     <div class="campo-cadastro">
                         <label for="email-coordenador">E-mail do Coordenador/Chefia *</label>
                         <input type="email" id="email-coordenador" name="email_coordenador" placeholder="ciclanalima@prefeitura.sp.gov.br" required />
                     </div>
-
-                    <!-- Selecione sua Lotação -->
                     <div class="campo-cadastro">
                         <label for="lotacao">Selecione sua Lotação *</label>
                         <select id="lotacao" name="lotacao" required>
@@ -91,11 +74,8 @@
                             <option value="Outra">Outra</option>
                         </select>
                     </div>
-
-                    <!-- Botão SOLICITAR -->
                     <button type="submit" class="botao-solicitar" onclick="alert('Solicitação enviada com sucesso! (protótipo)')">SOLICITAR</button>
                 </form>
-
                 <div class="login-link">
                     já possui login? <a href="#" onclick="window.location.href='login-sigpec.html'">Clique Aqui</a>
                 </div>
@@ -103,8 +83,6 @@
         </div>
     </main>
 
-
-    <!-- RODAPÉ (mesmo do index)-->
 
     <footer class="rodape">
         <div class="container rodape__conteudo">
@@ -132,7 +110,6 @@
                 <a href="#" onclick="return linkExterno()" aria-label="YouTube"><img src="../img/principal/icons/youtube.png" alt="YouTube" /></a>
                 <a href="#" onclick="return linkExterno()" aria-label="Instagram"><img src="../img/principal/icons/instagram.png" alt="Instagram" /></a>
                 <a href="#" onclick="return linkExterno()" aria-label="WhatsApp"><img src="../img/principal/icons/whatsapp.png" alt="WhatsApp" /></a>
-
             </div>
         </div>
         <div class="rodape__copyright">
@@ -140,7 +117,6 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="../js/script.js"></script>
 </body>
 </html>
