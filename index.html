@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+    
+    <!-- HEADER PADRÃO CLIC -->
+    
     <header class="topo">
         <div class="container topo__conteudo">
             <a href="index.html" class="topo__logo" aria-label="CLIC - Página Inicial">
@@ -15,18 +18,12 @@
             <nav class="topo__menu" aria-label="Menu principal">
                 <ul>
                     <li><a href="index.html" class="ativo">Página Inicial</a></li>
-                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/quem-somos')">
-                        Quem Somos</a></li>
-                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/mapa-da-clic')">
-                        Mapa da CLIC</a></li>
-                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/fale-com-a-cogep')">
-                        Fale com a COGEP</a></li>
-                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/fale-com-sua-urh')">
-                        Fale com sua URH</a></li>
-                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/acesso-rapido')">
-                        Links Úteis</a></li>
-                    <li><a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/glossario')">
-                        Glossário</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Quem Somos</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Mapa da CLIC</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Fale com a COGEP</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Fale com sua URH</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Links Úteis</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Glossário</a></li>
                 </ul>
             </nav>
         </div>
@@ -52,15 +49,16 @@
             </form>
         </section>
 
-        <!-- ============================================= -->
-        <!-- SEÇÃO: CLIC NOTÍCIAS                           -->
-        <!-- ============================================= -->
+
+        <!-- SEÇÃO: CLIC NOTÍCIAS -->
+
         <section class="noticias">
             <div class="container">
                 <h2 class="titulo-secao">CLIC NOTÍCIAS</h2>
 
-                <div class="noticias__grid">
-                    <!-- INÍCIO CARD NOTÍCIA (repetir 4x ou via foreach no PHP) -->
+                <!-- INÍCIO GRID DAS 4 NOTÍCIAS -->
+                <div class="noticias__grid"> 
+
                     <article class="card-noticia">
                         <div class="card-noticia__foto" aria-hidden="true">
                             <img src="img/pagina_inicial/noticia-conecturhs.png" alt="Seminário de Gestão de Pessoas" class="card-noticia__foto-img" />
@@ -68,7 +66,7 @@
                         <h3 class="card-noticia__titulo">
                             Seminário de Gestão de Pessoas debate liderança, inovação e transformação no setor público
                         </h3>
-                        <a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/18-seminario-pessoas')" class="card-noticia__link">
+                        <a href="#" onclick="return linkExterno()" class="card-noticia__link">
                             + Ver Notícia</a>
                     </article>
 
@@ -79,7 +77,7 @@
                         <h3 class="card-noticia__titulo">
                             Prefeitura define expediente nos dias de jogos do Brasil na Copa do Mundo 2026
                         </h3>
-                         <a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/expediente-copa-2026')" class="card-noticia__link">
+                         <a href="#" onclick="return linkExterno()" class="card-noticia__link">
                             + Ver Notícia</a>
                     </article>
 
@@ -90,7 +88,7 @@
                         <h3 class="card-noticia__titulo">
                             Prefeitura realiza pagamento da Bonificação por Resultados na folha de Junho/26
                         </h3>
-                        <a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/bonificacao-resultados-2026')" class="card-noticia__link">
+                        <a href="#" onclick="return linkExterno()" class="card-noticia__link">
                             + Ver Notícia</a>
                     </article>
 
@@ -101,52 +99,52 @@
                         <h3 class="card-noticia__titulo">
                             [É HOJE!] LIVE TIRA DÚVIDAS - 15º Prêmio Melhores Práticas de Estágio
                         </h3>
-                        <a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/live-melhores-praticas-2026')" class="card-noticia__link">
+                        <a href="#" onclick="return linkExterno()" class="card-noticia__link">
                             + Ver Notícia</a>
                     </article>
                     <!-- FIM CARD NOTÍCIA -->
                 </div>
 
                 <div class="noticias__ver-mais">
-                    <a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/destaques')" class="botao-secundario">
+                    <a href="#" onclick="return linkExterno()" class="botao-secundario">
                         VER TODAS AS NOTÍCIAS</a>
                 </div>
             </div>
         </section>
 
-        <!-- ============================================= -->
-        <!-- SEÇÃO: CLIC NO SEU PERFIL DE USUÁRIO           -->
-        <!-- ============================================= -->
+
+        <!-- SEÇÃO: CLIC NO SEU PERFIL DE USUÁRIO-->
+
         <section class="perfis">
             <div class="container">
                 <h2 class="titulo-secao">CLIC NO SEU PERFIL DE USUÁRIO</h2>
 
                 <div class="perfis__grid">
-                    <a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/login')" class="card-perfil card-perfil--teal">
+                    <a href="#" onclick="return linkExterno()" class="card-perfil card-perfil--teal">
                         <div class="card-perfil__icone">
                             <img src="img/pagina_inicial/perfil de usuario-area da urh.png" alt="Área das URHs" />
                         </div>
                     </a>
 
-                    <a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/servidores-ativos')" class="card-perfil card-perfil--cinza">
+                    <a href="#" onclick="return linkExterno()" class="card-perfil card-perfil--cinza">
                         <div class="card-perfil__icone">
                             <img src="img/pagina_inicial/perfil de usuario-servidores ativos.png" alt="Servidores Ativos" />
                         </div>
                     </a>
 
-                    <a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/servidores-aposentados')" class="card-perfil card-perfil--cinza">
+                    <a href="#" onclick="return linkExterno()" class="card-perfil card-perfil--cinza">
                         <div class="card-perfil__icone">
                             <img src="img/pagina_inicial/perfil de usuario-servidores aposentados.png" alt="Servidores Aposentados" />
                         </div>
                     </a>
 
-                    <a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/cidadaos')" class="card-perfil card-perfil--cinza">
+                    <a href="#" onclick="return linkExterno()" class="card-perfil card-perfil--cinza">
                         <div class="card-perfil__icone">
                             <img src="img/pagina_inicial/perfil de usuario-servidores ativos.png" alt="Cidadãos" />
                         </div>
                     </a>
 
-                    <!-- NOVO CARD SUPORTE SIGPEC -->
+                    <!-- NOVO CARD SUPORTE SIGPEC :)))))) -->
                     <a href="pages/login-sigpec.html" class="card-perfil card-perfil--azul">
                         <div class="card-perfil__icone">
                             <img src="img/pagina_inicial/perfil de usuario-suporte sigpec.png" alt="Suporte SIGPEC" />
@@ -156,34 +154,34 @@
             </div>
         </section>
 
-        <!-- ============================================= -->
+
         <!-- SEÇÃO: MENU DE ATALHOS (círculos coloridos)    -->
-        <!-- ============================================= -->
+
         <section class="atalhos">
             <div class="container">
                 <div class="atalhos__grid">
-                    <a href="#" onclick="return confirmarSaida('https://bicogep.prefeitura.sp.gov.br/')" class="card-atalho">
+                    <a href="#" onclick="return linkExterno()" class="card-atalho">
                         <div class="card-atalho__circulo card-atalho__circulo--azul-claro">
                             <img src="img/pagina_inicial/extras-painel.png" alt="Painel Gestão de Pessoas" />
                         </div>
                         <span class="card-atalho__titulo">PAINEL<br />GESTÃO DE PESSOAS</span>
                     </a>
 
-                    <a href="#" onclick="return confirmarSaida('https://www.areaprivada.prefeitura.sp.gov.br/PortalPMSP/PortalPMSP/Portal/PMSPprt001.tp')" class="card-atalho">
+                    <a href="#" onclick="return linkExterno()" class="card-atalho">
                         <div class="card-atalho__circulo card-atalho__circulo--azul">
                             <img src="img/pagina_inicial/extras-holerite.png" alt="Acesso ao Holerite" />
                         </div>
                         <span class="card-atalho__titulo">ACESSO AO<br />HOLERITE</span>
                     </a>
 
-                    <a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/calendario')" class="card-atalho">
+                    <a href="#" onclick="return linkExterno()" class="card-atalho">
                         <div class="card-atalho__circulo card-atalho__circulo--azul">
                             <img src="img/pagina_inicial/extras-data importante.png" alt="Datas Importantes e Feriados" />
                         </div>
                         <span class="card-atalho__titulo">DATAS IMPORTANTES<br />E FERIADOS</span>
                     </a>
 
-                    <a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/pontos-afeto/register-login')" class="card-atalho">
+                    <a href="#" onclick="return linkExterno()" class="card-atalho">
                         <div class="card-atalho__circulo card-atalho__circulo--azul-claro">
                             <img src="img/pagina_inicial/extras-ponto de afeto.png" alt="Agendamento de Salas" />
                         </div>
@@ -193,9 +191,9 @@
             </div>
         </section>
 
-        <!-- ============================================= -->
-        <!-- SEÇÃO: QUEM SOMOS                              -->
-        <!-- ============================================= -->
+
+        <!-- SEÇÃO: QUEM SOMOS - finalzinho-->
+
         <section class="quem-somos">
             <img src="img/pagina_inicial/quem somos-conceito clic.png" alt="Conceito CLIC" class="quem-somos__imagem" />
             <div class="container">
@@ -206,22 +204,21 @@
                     os servidores e com as unidades responsáveis pelos recursos humanos nas
                     Secretarias e Subprefeituras.
                 </p>
-                <a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/quem-somos')" class="botao-destaque">
+                <a href="#" onclick="return linkExterno()" class="botao-destaque">
                     SAIBA MAIS SOBRE A CLIC</a>
             </div>
         </section>
 
     </main>
 
-    <!-- ============================================= -->
-    <!-- RODAPÉ                                         -->
-    <!-- PHP: pode virar include('partes/rodape.php')   -->
-    <!-- ============================================= -->
+
+    <!-- RODAPÉ-->
+
     <footer class="rodape">
         <div class="container rodape__conteudo">
             <!-- Logo da Prefeitura -->
             <div class="rodape__logo">
-                <a href="#" onclick="return confirmarSaida('https://prefeitura.sp.gov.br/gestao/')">
+                <a href="#" onclick="return linkExterno()">
                     <img src="img/principal/logo_PrefSP_sem fundo_horizontal_fundo claro.png" alt="Prefeitura de São Paulo" class="rodape__logo-img" />
                 </a>
             </div>
@@ -230,7 +227,7 @@
             <div class="rodape__texto">
                 <p><strong>CLIC - Central de Informações e Apoio da COGEP/SEGES</strong></p>
                 <p>
-                    Contate a CLIC pelo <a href="#" onclick="return confirmarSaida('https://clic.prefeitura.sp.gov.br/fale-com-a-cogep')" class="link-fale">
+                    Contate a CLIC pelo <a href="#" onclick="return linkExterno()" class="link-fale">
                         Fale Com a COGEP</a> ou pelo e-mail
                     <a href="mailto:clic@prefeitura.sp.gov.br">clic@prefeitura.sp.gov.br</a>
                 </p>
@@ -243,17 +240,17 @@
 
             <!-- Redes sociais (grid 2x3) -->
             <div class="rodape__redes">
-                <a href="#" onclick="return confirmarSaida('https://www.facebook.com/gestaoprefsp/')" aria-label="Facebook">
+                <a href="#" onclick="return linkExterno()" aria-label="Facebook">
                     <img src="img/principal/icons/facebook.png" alt="Facebook" /></a>
-                <a href="#" onclick="return confirmarSaida('https://open.spotify.com/show/7k40YvPejELy045znwj0Er?si=a718ff29e31a4cf8&utm_medium=share&utm_source=linktree&nd=1&dlsi=200dadb692294a9d')" aria-label="Spotify">
+                <a href="#" onclick="return linkExterno()" aria-label="Spotify">
                     <img src="img/principal/icons/spotify-logo.png" alt="Spotify" /></a>
-                <a href="#" onclick="return confirmarSaida('https://www.linkedin.com/company/segessp/')" aria-label="LinkedIn">
+                <a href="#" onclick="return linkExterno()" aria-label="LinkedIn">
                     <img src="img/principal/icons/linkedin-logo.png" alt="LinkedIn" /></a>
-                <a href="#" onclick="return confirmarSaida('https://www.youtube.com/channel/UCsWU48a61IT4Yh2ZAI06kjw')" aria-label="YouTube">
+                <a href="#" onclick="return linkExterno()" aria-label="YouTube">
                     <img src="img/principal/icons/youtube.png" alt="YouTube" /></a>
-                <a href="#" onclick="return confirmarSaida('https://www.instagram.com/gestaoprefsp/')" aria-label="Instagram">
+                <a href="#" onclick="return linkExterno()" aria-label="Instagram">
                     <img src="img/principal/icons/instagram.png" alt="Instagram" /></a>
-                <a href="#" onclick="return confirmarSaida('https://www.whatsapp.com/channel/0029Vb8LumICBtxLjsXllo3h')" aria-label="WhatsApp">
+                <a href="#" onclick="return linkExterno()" aria-label="WhatsApp">
                     <img src="img/principal/icons/whatsapp.png" alt="WhatsApp" /></a>
             </div>
         </div>
