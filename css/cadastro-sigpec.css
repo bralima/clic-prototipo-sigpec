@@ -4,37 +4,25 @@
 
 .cadastro-page {
     position: relative;
-    overflow: hidden;
+    min-height: 100vh;
     background: #F0EDE6;
-    background-image: url('/img/cadastro-sigpec/fundo-central.png');
+    background-image: url('/img/cadastro-sigpec/fundo-central.png'); /* caminho absoluto */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 100vh;
-    padding: 40px 20px;
     display: flex;
-    align-items: center;      /* centraliza verticalmente */
-    justify-content: flex-end; /* alinha conteúdo à direita */
-}
-
-.cadastro-container {
-    position: relative;
-    z-index: 1;
-    max-width: 589px;
-    width: 100%;
-    margin-right: 40px;       /* espaço da borda direita */
-    /* remove justify-content e usa margin-left: auto para empurrar */
-    margin-left: auto;        /* empurra o container para a direita */
+    align-items: center;
+    justify-content: flex-end; /* alinha todo o conteúdo à direita */
+    padding: 40px 60px 40px 40px; /* espaço à direita para o formulário não encostar */
 }
 
 /* AVISO - posicionado absolutamente na esquerda inferior */
 .cadastro-aviso {
     position: absolute;
-    bottom: 40px;        /* distância do rodapé */
-    left: 0;             /* encosta na borda esquerda */
+    bottom: 40px;
+    left: 0;
     width: 400px;
-    z-index: 10;         /* fica acima de tudo */
-    /* remove qualquer flex/margin herdado */
+    z-index: 10;
     margin: 0;
 }
 
@@ -63,21 +51,16 @@
     line-height: 1.4;
 }
 
-/* CONTAINER DO FORMULÁRIO */
+/* CONTAINER DO FORMULÁRIO - apenas encapsula o form, sem largura fixa */
 .cadastro-container {
-    position: relative;
-    z-index: 1;
-    max-width: 589px;   /* apenas a largura do formulário */
-    width: 100%;
-    display: flex;
-    justify-content: flex-end; /* alinha o formulário à direita */
-    margin-right: 40px; /* espaço da borda direita */
+    width: 589px;
+    max-width: 100%;
+    flex-shrink: 0; /* não encolhe */
 }
 
 .cadastro-form {
     background: rgba(244, 244, 244, 0.85);
     backdrop-filter: blur(2px);
-    width: 100%;
     padding: 40px 35px 50px;
     border-radius: 20px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.45);
@@ -114,19 +97,12 @@
     background: #FFFFFF;
     transition: border-color 0.2s;
     box-sizing: border-box;
-    appearance: auto;
 }
 
 .campo-cadastro input:focus,
 .campo-cadastro select:focus {
     outline: none;
     border-color: #325FAA;
-}
-
-.campo-cadastro input::placeholder,
-.campo-cadastro select option:first-child {
-    color: #C0C0C0;
-    opacity: 0.8;
 }
 
 .botao-solicitar {
@@ -172,19 +148,15 @@
         padding: 40px 20px;
     }
     .cadastro-container {
-        margin-right: 0;
-        justify-content: center;
+        width: 100%;
+        max-width: 589px;
     }
     .cadastro-aviso {
-        position: relative; /* volta ao fluxo normal */
+        position: relative;
         bottom: auto;
         left: auto;
         width: 100%;
         margin-bottom: 20px;
-    }
-    .cadastro-form {
-        width: 100%;
-        max-width: 589px;
     }
 }
 
