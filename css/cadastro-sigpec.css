@@ -3,12 +3,16 @@
    ================================================================= */
 
 .cadastro-page {
-    background: #FFFFFF;
+    background: #F0EDE6; /* fallback */
+    background-image: url('../img/cadastro-sigpec/fundo central.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     min-height: calc(100vh - 300px);
-    padding: 40px 0; /* remove o padding lateral para o aviso encostar */
+    padding: 40px 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     position: relative;
 }
 
