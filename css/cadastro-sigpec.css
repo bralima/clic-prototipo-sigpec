@@ -18,16 +18,15 @@
     align-items: stretch; /* garante que as colunas tenham a mesma altura */
 }
 
-/* Coluna esquerda: aviso – usa flex para empurrar o aviso para baixo */
 .cadastro-col-esquerda {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; 
-    gap: 20px;
-    padding: 0; 
+    height: 100%; /* ocupa toda a altura da grid */
+    /* sem justify-content, para não forçar */
 }
 
 .aviso-caixa {
+    margin-top: auto; /* empurra o aviso para baixo */
     background: #03989E;
     border-radius: 20px;
     padding: 30px 25px;
