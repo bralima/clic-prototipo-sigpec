@@ -1,29 +1,28 @@
 /* =================================================================
-   CLIC - Página de Cadastro SIGPEC | cadastro-sigpec.css
+   CLIC - Cadastro SIGPEC | cadastro-sigpec.css
    ================================================================= */
 
 .cadastro-page {
-    position: relative;
-    min-height: 100vh;
-    background: #000000;
+    background: #F0EDE6;
     background-image: url('../img/cadastro-sigpec/fundo-central.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end; /* alinha todo o conteúdo à direita */
-    padding: 40px 60px 40px 40px; /* espaço à direita para o formulário não encostar */
+    min-height: calc(100vh - 300px);
+    padding: 40px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+    align-items: start;
 }
 
-/* AVISO - posicionado absolutamente na esquerda inferior */
-.cadastro-aviso {
-    position: absolute;
-    bottom: 40px;
-    left: 0;
-    width: 400px;
-    z-index: 10;
-    margin: 0;
+/* Coluna esquerda: aviso */
+.cadastro-col-esquerda {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .aviso-caixa {
@@ -34,7 +33,6 @@
     gap: 20px;
     align-items: center;
     color: #FFFFFF;
-    width: 100%;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
@@ -51,19 +49,13 @@
     line-height: 1.4;
 }
 
-/* CONTAINER DO FORMULÁRIO - apenas encapsula o form, sem largura fixa */
-.cadastro-container {
-    width: 589px;
-    max-width: 100%;
-    flex-shrink: 0; /* não encolhe */
-}
-
-.cadastro-form {
+/* Coluna direita: formulário */
+.cadastro-col-direita {
     background: rgba(244, 244, 244, 0.85);
     backdrop-filter: blur(2px);
-    padding: 40px 35px 50px;
-    border-radius: 20px;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.45);
+    padding: 30px 35px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .cadastro-header h2 {
@@ -74,8 +66,9 @@
     line-height: 1.2;
 }
 
+/* Campos (idênticos ao login) */
 .campo-cadastro {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .campo-cadastro label {
@@ -91,7 +84,7 @@
     width: 100%;
     padding: 10px 14px;
     border: 1px solid #C0C0C0;
-    border-radius: 5px;
+    border-radius: 6px;
     font-size: 16px;
     color: #333;
     background: #FFFFFF;
@@ -103,21 +96,21 @@
 .campo-cadastro select:focus {
     outline: none;
     border-color: #325FAA;
+    box-shadow: 0 0 0 3px rgba(50, 95, 170, 0.2);
 }
 
 .botao-solicitar {
-    width: 300px;
-    display: block;
-    margin: 20px auto 0;
+    width: 100%;
     background: #325FAA;
     color: #FFFFFF;
     border: none;
-    padding: 12px;
+    padding: 14px;
     border-radius: 60px;
     font-size: 28px;
     font-weight: 700;
     cursor: pointer;
     transition: background 0.2s, transform 0.1s;
+    margin-top: 10px;
 }
 .botao-solicitar:hover {
     background: #1e3f73;
@@ -128,8 +121,8 @@
 
 .login-link {
     text-align: center;
-    margin-top: 20px;
-    font-size: 16px;
+    margin-top: 16px;
+    font-size: 14px;
     color: #000000;
 }
 .login-link a {
@@ -144,19 +137,15 @@
 /* ---------- RESPONSIVO ---------- */
 @media (max-width: 992px) {
     .cadastro-page {
-        justify-content: center;
-        padding: 40px 20px;
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 20px;
     }
-    .cadastro-container {
-        width: 100%;
-        max-width: 589px;
+    .cadastro-col-esquerda {
+        order: 2; /* aviso vai para baixo em telas menores */
     }
-    .cadastro-aviso {
-        position: relative;
-        bottom: auto;
-        left: auto;
-        width: 100%;
-        margin-bottom: 20px;
+    .cadastro-col-direita {
+        order: 1;
     }
 }
 
@@ -164,8 +153,8 @@
     .cadastro-page {
         padding: 20px 10px;
     }
-    .cadastro-form {
-        padding: 25px 20px;
+    .cadastro-col-direita {
+        padding: 20px;
     }
     .cadastro-header h2 {
         font-size: 20px;
@@ -179,8 +168,8 @@
         padding: 8px 12px;
     }
     .botao-solicitar {
-        width: 100%;
         font-size: 22px;
+        padding: 12px;
     }
     .aviso-caixa {
         flex-direction: column;
@@ -192,8 +181,5 @@
     }
     .aviso-texto {
         font-size: 16px;
-    }
-    .login-link {
-        font-size: 14px;
     }
 }
