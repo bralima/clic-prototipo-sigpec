@@ -15,14 +15,16 @@
     gap: 40px;
     max-width: 1300px;
     margin: 0 auto;
-    align-items: start;
+    align-items: stretch; /* garante que as colunas tenham a mesma altura */
 }
 
-/* Coluna esquerda: aviso */
+/* Coluna esquerda: aviso – usa flex para empurrar o aviso para baixo */
 .cadastro-col-esquerda {
     display: flex;
     flex-direction: column;
+    justify-content: flex-end; 
     gap: 20px;
+    padding: 0; 
 }
 
 .aviso-caixa {
@@ -49,13 +51,16 @@
     line-height: 1.4;
 }
 
-/* Coluna direita: formulário */
+/* Coluna direita: formulário com fundo semi-transparente */
 .cadastro-col-direita {
     background: rgba(244, 244, 244, 0.85);
     backdrop-filter: blur(2px);
     padding: 30px 35px 40px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* centraliza verticalmente o conteúdo, mas pode ser start */
 }
 
 .cadastro-header h2 {
@@ -143,6 +148,7 @@
     }
     .cadastro-col-esquerda {
         order: 2; /* aviso vai para baixo em telas menores */
+        justify-content: flex-start; /* volta ao normal */
     }
     .cadastro-col-direita {
         order: 1;
