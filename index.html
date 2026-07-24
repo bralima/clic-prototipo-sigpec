@@ -3,264 +3,231 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CLIC - Página Inicial (Protótipo)</title>
+    <title>Login - GLPI SIGPEC</title>
     <link rel="stylesheet" href="css/style.css" />
+    <style>
+        /* Reset e layout centralizado */
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #F5F7FB;
+            font-family: 'Inter', sans-serif;
+        }
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 61px 281px 117px 267px;
+            gap: 46px;
+            width: 1280px;
+            height: 720px;
+            background: #F5F7FB;
+            box-sizing: border-box;
+        }
+        .logo-gestao {
+            width: 200px;
+            height: 81px;
+            background: url('assets/logo.png') no-repeat center / contain;
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+        }
+        .quadro-branco {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 15px 201px;
+            gap: 15px;
+            width: 732px;
+            height: 358px;
+            background: #FFFFFF;
+            flex: none;
+            order: 1;
+            flex-grow: 0;
+            box-sizing: border-box;
+        }
+        .login-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            gap: 22px;
+            width: 330px;
+            height: 55px;
+            background: #FFFFFF;
+            flex: none;
+            order: 0;
+            align-self: stretch;
+            flex-grow: 0;
+        }
+        .login-title {
+            width: 330px;
+            height: 21px;
+            font-weight: 600;
+            font-size: 17px;
+            line-height: 21px;
+            text-align: center;
+            color: #000000;
+            flex: none;
+            order: 0;
+            align-self: stretch;
+            flex-grow: 0;
+        }
+        .line-separator {
+            width: 345px;
+            height: 0px;
+            border: 1px solid #D9DBDE;
+            flex: none;
+            order: 1;
+            flex-grow: 0;
+        }
+        /* --- Campos com rótulo acima --- */
+        .campo-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            width: 330px;
+            flex: none;
+            align-self: stretch;
+        }
+        .campo-wrapper .rotulo {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 15px;
+            color: #000000;
+        }
+        .campo-wrapper .rotulo-senha {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .campo-wrapper .rotulo-senha .esqueceu {
+            font-size: 11px;
+            color: #3B73A7;
+            cursor: pointer;
+        }
+        .campo-input {
+            box-sizing: border-box;
+            width: 100%;
+            height: 35px;
+            background: #FFFFFF;
+            border: 1px solid #D9DBDE;
+            border-radius: 2px;
+            padding: 0 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+        }
+        .check-lembre {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 0;
+            gap: 4px;
+            width: 330px;
+            height: 24px;
+            background: #FFFFFF;
+            flex: none;
+            order: 5;
+            align-self: stretch;
+            flex-grow: 0;
+        }
+        .check-lembre input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+            accent-color: #1C1B1F;
+        }
+        .check-lembre label {
+            font-size: 12px;
+            line-height: 15px;
+            color: #000000;
+            flex: none;
+            order: 1;
+            flex-grow: 0;
+        }
+        .bt-iniciar {
+            width: 330px;
+            height: 44px;
+            background: #CCEAFD;
+            border-radius: 3px;
+            flex: none;
+            order: 6;
+            align-self: stretch;
+            flex-grow: 0;
+            border: none;
+            font-size: 15px;
+            line-height: 18px;
+            color: #000000;
+            cursor: pointer;
+        }
+        .bt-iniciar:hover {
+            background: #b0d4e8;
+        }
+        .footer-copy {
+            width: 284px;
+            height: 12px;
+            font-size: 11px;
+            line-height: 13px;
+            color: #3B73A7;
+            flex: none;
+            order: 2;
+            flex-grow: 0;
+        }
+    </style>
 </head>
 <body>
-    
-    <!-- HEADER PADRÃO CLIC -->
-    
-    <header class="topo">
-        <div class="container topo__conteudo">
-            <a href="index.html" class="topo__logo" aria-label="CLIC - Página Inicial">
-                <img src="img/clic/logo-clic-completa.png" alt="Logo da CLIC - Central de Informações e Apoio" class="logo-img" />
-            </a>
-            <nav class="topo__menu" aria-label="Menu principal">
-                <ul>
-                    <li><a href="index.html" class="ativo">Página Inicial</a></li>
-                    <li><a href="#" onclick="return linkExterno()">Quem Somos</a></li>
-                    <li><a href="#" onclick="return linkExterno()">Mapa da CLIC</a></li>
-                    <li><a href="#" onclick="return linkExterno()">Fale com a COGEP</a></li>
-                    <li><a href="#" onclick="return linkExterno()">Fale com sua URH</a></li>
-                    <li><a href="#" onclick="return linkExterno()">Links Úteis</a></li>
-                    <li><a href="#" onclick="return linkExterno()">Glossário</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <main>
-        <section class="busca">
-            <form class="busca__form" action="#" method="GET" role="search" onsubmit="return alert('Funcionalidade de busca desabilitada neste protótipo.')">
-                <label for="campo-busca" class="sr-only">Pesquisar</label>
-                <input
-                    type="text"
-                    id="campo-busca"
-                    name="s"
-                    class="busca__input"
-                    placeholder="O que você está procurando?"
-                    autocomplete="off"
-                />
-                <button type="submit" class="busca__botao" aria-label="Pesquisar">
-                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-                        <path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.5 6.5 0 1 0 13 15.5l.27.28v.79l5 5 1.5-1.5-5-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/>
-                    </svg>
-                </button>
-            </form>
-        </section>
+<div class="login-container">
+    <!-- Logo -->
+    <div class="logo-gestao"></div>
 
-
-        <!-- SEÇÃO: CLIC NOTÍCIAS -->
-
-        <section class="noticias">
-            <div class="container">
-                <h2 class="titulo-secao">CLIC NOTÍCIAS</h2>
-
-                <!-- INÍCIO GRID DAS 4 NOTÍCIAS -->
-                <div class="noticias__grid"> 
-
-                    <article class="card-noticia">
-                        <div class="card-noticia__foto" aria-hidden="true">
-                            <img src="img/pagina_inicial/noticia-conecturhs.png" alt="Seminário de Gestão de Pessoas" class="card-noticia__foto-img" />
-                        </div>
-                        <h3 class="card-noticia__titulo">
-                            Seminário de Gestão de Pessoas debate liderança, inovação e transformação no setor público
-                        </h3>
-                        <a href="#" onclick="return linkExterno()" class="card-noticia__link">
-                            + Ver Notícia</a>
-                    </article>
-
-                    <article class="card-noticia">
-                        <div class="card-noticia__foto" aria-hidden="true">
-                            <img src="img/pagina_inicial/noticia-antecipação expediente.png" alt="Expediente nos dias de jogos do Brasil na Copa" class="card-noticia__foto-img" />
-                        </div>
-                        <h3 class="card-noticia__titulo">
-                            Prefeitura define expediente nos dias de jogos do Brasil na Copa do Mundo 2026
-                        </h3>
-                         <a href="#" onclick="return linkExterno()" class="card-noticia__link">
-                            + Ver Notícia</a>
-                    </article>
-
-                    <article class="card-noticia">
-                        <div class="card-noticia__foto" aria-hidden="true">
-                            <img src="img/pagina_inicial/noticia-bonificação.png" alt="Bonificação por Resultados na folha de Junho/26" class="card-noticia__foto-img" />
-                        </div>
-                        <h3 class="card-noticia__titulo">
-                            Prefeitura realiza pagamento da Bonificação por Resultados na folha de Junho/26
-                        </h3>
-                        <a href="#" onclick="return linkExterno()" class="card-noticia__link">
-                            + Ver Notícia</a>
-                    </article>
-
-                    <article class="card-noticia">
-                        <div class="card-noticia__foto" aria-hidden="true">
-                            <img src="img/pagina_inicial/noticia-estagio.png" alt="LIVE Tira Dúvidas - 15º Prêmio Melhores Práticas de Estágio" class="card-noticia__foto-img" />
-                        </div>
-                        <h3 class="card-noticia__titulo">
-                            [É HOJE!] LIVE TIRA DÚVIDAS - 15º Prêmio Melhores Práticas de Estágio
-                        </h3>
-                        <a href="#" onclick="return linkExterno()" class="card-noticia__link">
-                            + Ver Notícia</a>
-                    </article>
-                    <!-- FIM CARD NOTÍCIA -->
-                </div>
-
-                <div class="noticias__ver-mais">
-                    <a href="#" onclick="return linkExterno()" class="botao-secundario">
-                        VER TODAS AS NOTÍCIAS</a>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- SEÇÃO: CLIC NO SEU PERFIL DE USUÁRIO-->
-
-        <section class="perfis">
-            <div class="container">
-                <h2 class="titulo-secao">CLIC NO SEU PERFIL DE USUÁRIO</h2>
-
-                <div class="perfis__grid">
-                    <a href="#" onclick="return linkExterno()" class="card-perfil card-perfil--teal">
-                        <div class="card-perfil__icone">
-                            <img src="img/pagina_inicial/perfil de usuario-area da urh.png" alt="Área das URHs" />
-                        </div>
-                    </a>
-
-                    <a href="#" onclick="return linkExterno()" class="card-perfil card-perfil--cinza">
-                        <div class="card-perfil__icone">
-                            <img src="img/pagina_inicial/perfil de usuario-servidores ativos.png" alt="Servidores Ativos" />
-                        </div>
-                    </a>
-
-                    <a href="#" onclick="return linkExterno()" class="card-perfil card-perfil--cinza">
-                        <div class="card-perfil__icone">
-                            <img src="img/pagina_inicial/perfil de usuario-servidores aposentados.png" alt="Servidores Aposentados" />
-                        </div>
-                    </a>
-
-                    <a href="#" onclick="return linkExterno()" class="card-perfil card-perfil--cinza">
-                        <div class="card-perfil__icone">
-                            <img src="img/pagina_inicial/perfil de usuario-servidores ativos.png" alt="Cidadãos" />
-                        </div>
-                    </a>
-
-                    <!-- NOVO CARD SUPORTE SIGPEC :)))))) -->
-                    <a href="pages/login-sigpec.html" class="card-perfil card-perfil--azul">
-                        <div class="card-perfil__icone">
-                            <img src="img/pagina_inicial/perfil de usuario-suporte sigpec.png" alt="Suporte SIGPEC" />
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- SEÇÃO: MENU DE ATALHOS (círculos coloridos)    -->
-
-        <section class="atalhos">
-            <div class="container">
-                <div class="atalhos__grid">
-                    <a href="#" onclick="return linkExterno()" class="card-atalho">
-                        <div class="card-atalho__circulo card-atalho__circulo--azul-claro">
-                            <img src="img/pagina_inicial/extras-painel.png" alt="Painel Gestão de Pessoas" />
-                        </div>
-                        <span class="card-atalho__titulo">PAINEL<br />GESTÃO DE PESSOAS</span>
-                    </a>
-
-                    <a href="#" onclick="return linkExterno()" class="card-atalho">
-                        <div class="card-atalho__circulo card-atalho__circulo--azul">
-                            <img src="img/pagina_inicial/extras-holerite.png" alt="Acesso ao Holerite" />
-                        </div>
-                        <span class="card-atalho__titulo">ACESSO AO<br />HOLERITE</span>
-                    </a>
-
-                    <a href="#" onclick="return linkExterno()" class="card-atalho">
-                        <div class="card-atalho__circulo card-atalho__circulo--azul">
-                            <img src="img/pagina_inicial/extras-data importante.png" alt="Datas Importantes e Feriados" />
-                        </div>
-                        <span class="card-atalho__titulo">DATAS IMPORTANTES<br />E FERIADOS</span>
-                    </a>
-
-                    <a href="#" onclick="return linkExterno()" class="card-atalho">
-                        <div class="card-atalho__circulo card-atalho__circulo--azul-claro">
-                            <img src="img/pagina_inicial/extras-ponto de afeto.png" alt="Agendamento de Salas" />
-                        </div>
-                        <span class="card-atalho__titulo">AGENDAMENTO<br />DE SALAS</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- SEÇÃO: QUEM SOMOS - finalzinho-->
-
-        <section class="quem-somos">
-            <img src="img/pagina_inicial/quem somos-conceito clic.png" alt="Conceito CLIC" class="quem-somos__imagem" />
-            <div class="container">
-                <h2>QUEM SOMOS?</h2>
-                <p>
-                    A <strong>Central de Informações e Apoio (CLIC)</strong> é a nova plataforma da
-                    Coordenadoria de Gestão de Pessoas (COGEP/SEGES) para facilitar a interação com
-                    os servidores e com as unidades responsáveis pelos recursos humanos nas
-                    Secretarias e Subprefeituras.
-                </p>
-                <a href="#" onclick="return linkExterno()" class="botao-destaque">
-                    SAIBA MAIS SOBRE A CLIC</a>
-            </div>
-        </section>
-
-    </main>
-
-
-    <!-- RODAPÉ-->
-
-    <footer class="rodape">
-        <div class="container rodape__conteudo">
-            <!-- Logo da Prefeitura -->
-            <div class="rodape__logo">
-                <a href="#" onclick="return linkExterno()">
-                    <img src="img/principal/logo_PrefSP_sem fundo_horizontal_fundo claro.png" alt="Prefeitura de São Paulo" class="rodape__logo-img" />
-                </a>
-            </div>
-
-            <!-- Texto central -->
-            <div class="rodape__texto">
-                <p><strong>CLIC - Central de Informações e Apoio da COGEP/SEGES</strong></p>
-                <p>
-                    Contate a CLIC pelo <a href="#" onclick="return linkExterno()" class="link-fale">
-                        Fale Com a COGEP</a> ou pelo e-mail
-                    <a href="mailto:clic@prefeitura.sp.gov.br">clic@prefeitura.sp.gov.br</a>
-                </p>
-                <p><strong>ATENÇÃO:</strong></p>
-                <ul class="rodape__atencao-lista">
-                    <li>Questões específicas sobre a vida funcional devem ser direcionadas à sua Unidade de Recursos Humanos.</li>
-                    <li>Para demandas sobre serviços de outros órgãos, verifique na página consultando o canal de contato.</li>
-                </ul>
-            </div>
-
-            <!-- Redes sociais (grid 2x3) -->
-            <div class="rodape__redes">
-                <a href="#" onclick="return linkExterno()" aria-label="Facebook">
-                    <img src="img/principal/icons/facebook.png" alt="Facebook" /></a>
-                <a href="#" onclick="return linkExterno()" aria-label="Spotify">
-                    <img src="img/principal/icons/spotify-logo.png" alt="Spotify" /></a>
-                <a href="#" onclick="return linkExterno()" aria-label="LinkedIn">
-                    <img src="img/principal/icons/linkedin-logo.png" alt="LinkedIn" /></a>
-                <a href="#" onclick="return linkExterno()" aria-label="YouTube">
-                    <img src="img/principal/icons/youtube.png" alt="YouTube" /></a>
-                <a href="#" onclick="return linkExterno()" aria-label="Instagram">
-                    <img src="img/principal/icons/instagram.png" alt="Instagram" /></a>
-                <a href="#" onclick="return linkExterno()" aria-label="WhatsApp">
-                    <img src="img/principal/icons/whatsapp.png" alt="WhatsApp" /></a>
-            </div>
+    <!-- Quadro branco -->
+    <div class="quadro-branco">
+        <div class="login-inner">
+            <div class="login-title">Login na sua Conta</div>
+            <div class="line-separator"></div>
         </div>
 
-        <!-- Copyright -->
-        <div class="rodape__copyright">
-            Copyright © Prefeitura de São Paulo - SEGES/COTIC 2026
+        <!-- Campo Nome de utilizador -->
+        <div class="campo-wrapper">
+            <span class="rotulo">Nome de utilizador</span>
+            <input class="campo-input" type="text" id="username" placeholder="Digite seu usuário" />
         </div>
-    </footer>
 
-    <script src="js/script.js"></script>
+        <!-- Campo Palavra-passe -->
+        <div class="campo-wrapper">
+            <div class="rotulo rotulo-senha">
+                <span>Palavra-passe</span>
+                <span class="esqueceu">Esqueceu-se da palavra-passe?</span>
+            </div>
+            <input class="campo-input" type="password" id="password" placeholder="Digite sua senha" />
+        </div>
+
+        <!-- Checkbox Lembre-me -->
+        <div class="check-lembre">
+            <input type="checkbox" id="remember" />
+            <label for="remember">Lembre-me</label>
+        </div>
+
+        <!-- Botão -->
+        <button class="bt-iniciar" id="btnLogin">Iniciar sessão</button>
+    </div>
+
+    <div class="footer-copy">GLPI Cpyright (C) 2015-2023 Teclib’ and contributors</div>
+</div>
+
+<script>
+    document.getElementById('btnLogin').addEventListener('click', function() {
+        // Redireciona para o painel do usuário
+        window.location.href = 'usuario.html';
+    });
+</script>
+
 </body>
 </html>
