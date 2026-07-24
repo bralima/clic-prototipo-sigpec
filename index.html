@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login - GLPI SIGPEC</title>
+    <!-- Link para o CSS (que será único) -->
     <link rel="stylesheet" href="css/style.css" />
     <style>
-        /* Reset e layout centralizado */
+        /* Pequenos ajustes específicos para a página de login */
         * { box-sizing: border-box; }
         body {
             margin: 0;
@@ -31,7 +32,7 @@
         .logo-gestao {
             width: 200px;
             height: 81px;
-            background: url('assets/logo.png') no-repeat center / contain;
+            background: url('../assets/logo.png') no-repeat center / contain;
             flex: none;
             order: 0;
             flex-grow: 0;
@@ -85,7 +86,6 @@
             order: 1;
             flex-grow: 0;
         }
-        /* --- Campos com rótulo acima --- */
         .campo-wrapper {
             display: flex;
             flex-direction: column;
@@ -165,6 +165,7 @@
             line-height: 18px;
             color: #000000;
             cursor: pointer;
+            transition: background 0.2s;
         }
         .bt-iniciar:hover {
             background: #b0d4e8;
@@ -224,8 +225,20 @@
 
 <script>
     document.getElementById('btnLogin').addEventListener('click', function() {
-        // Redireciona para o painel do usuário
-        window.location.href = 'usuario.html';
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        // Credenciais definidas
+        const isUsuario = (username === 'd123456' && password === 'brasil2026');
+        const isTecnico = (username === 'd225566' && password === 'sigpec00');
+
+        if (isUsuario) {
+            window.location.href = 'usuario/dashboard.html';
+        } else if (isTecnico) {
+            window.location.href = 'tecnico/dashboard.html';
+        } else {
+            alert('Usuário ou senha inválidos!');
+        }
     });
 </script>
 
