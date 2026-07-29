@@ -80,7 +80,16 @@
             letter-spacing: 0;
         }
 
-        /* Menu desktop */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--azul-sigpec);
+            cursor: pointer;
+            padding: 0 10px;
+        }
+
         .topo__menu ul {
             display: flex;
             flex-wrap: wrap;
@@ -94,17 +103,6 @@
         }
         .topo__menu a:hover,
         .topo__menu a.ativo { color: var(--azul-sigpec); }
-
-        /* Botão hambúrguer (oculto em desktop) */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 2rem;
-            color: var(--azul-sigpec);
-            cursor: pointer;
-            padding: 0 10px;
-        }
 
         /* ---------- BUSCA ---------- */
         .busca {
@@ -225,26 +223,28 @@
         }
         .botao-secundario:hover { background: var(--cinza-borda); }
 
-        /* ---------- PERFIS (retângulos menores, 4 por linha) ---------- */
+        /* ---------- PERFIS (compactos, com quebra de linha) ---------- */
         .perfis { padding: 40px 0; background: var(--branco); }
         .perfis__grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
+            gap: 14px;
+            max-width: 900px;
+            margin: 0 auto;
         }
         .card-perfil {
             border-radius: 12px;
             overflow: hidden;
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            min-height: 70px;
+            gap: 10px;
+            padding: 10px 14px;
+            min-height: 60px;
             transition: transform .2s, box-shadow .2s;
             color: var(--branco);
             font-family: 'Open Sans', sans-serif;
             font-weight: 800;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             box-shadow: var(--sombra-card);
             background: var(--cinza-word);
         }
@@ -253,9 +253,9 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
         .card-perfil__icone {
-            flex: 0 0 45px;
-            width: 45px;
-            height: 45px;
+            flex: 0 0 40px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -265,10 +265,10 @@
             height: 100%;
         }
         .card-perfil__rotulo {
-            font-size: clamp(0.7rem, 0.9vw, 0.9rem);
+            font-size: clamp(0.65rem, 0.8vw, 0.85rem);
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.2px;
             line-height: 1.2;
             flex: 1;
         }
@@ -276,7 +276,7 @@
         .card-perfil--cinza { background: #737373; }
         .card-perfil--azul { background: var(--azul-sigpec); }
 
-        /* ---------- ATALHOS (círculos maiores) ---------- */
+        /* ---------- ATALHOS ---------- */
         .atalhos {
             padding: 50px 0;
             background: linear-gradient(180deg, transparent 0%, transparent 40%, var(--cinza-claro) 40%, var(--cinza-claro) 100%);
@@ -400,6 +400,7 @@
         @media (max-width: 1024px) {
             .perfis__grid {
                 grid-template-columns: repeat(2, 1fr);
+                max-width: 600px;
             }
         }
 
@@ -432,17 +433,18 @@
             }
             .perfis__grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 12px;
+                max-width: 100%;
+                gap: 10px;
             }
             .card-perfil {
-                min-height: 60px;
-                padding: 10px 12px;
-                font-size: 0.75rem;
+                min-height: 55px;
+                padding: 8px 12px;
+                font-size: 0.7rem;
             }
             .card-perfil__icone {
-                flex: 0 0 38px;
-                width: 38px;
-                height: 38px;
+                flex: 0 0 34px;
+                width: 34px;
+                height: 34px;
             }
             .card-atalho__circulo {
                 width: 120px;
@@ -561,7 +563,7 @@
             </div>
         </section>
 
-        <!-- ========== PERFIS DE USUÁRIO ========== -->
+        <!-- ========== PERFIS DE USUÁRIO (compactos com quebra de linha) ========== -->
         <section class="perfis">
             <div class="container">
                 <h2 class="titulo-secao">CLIC NO SEU PERFIL DE USUÁRIO</h2>
@@ -580,7 +582,7 @@
                                 <circle cx="100" cy="90" r="55" fill="none" stroke="white" stroke-width="4" stroke-dasharray="10 10" />
                             </svg>
                         </div>
-                        <span class="card-perfil__rotulo">ÁREA DAS URHS</span>
+                        <span class="card-perfil__rotulo">ÁREA<br />DAS URHS</span>
                     </a>
 
                     <!-- Servidores Ativos -->
@@ -593,7 +595,7 @@
                                 <path d="M126 50 l3 4 l7 -7" stroke="white" stroke-width="3" fill="none" />
                             </svg>
                         </div>
-                        <span class="card-perfil__rotulo">SERVIDORES ATIVOS</span>
+                        <span class="card-perfil__rotulo">SERVIDORES<br />ATIVOS</span>
                     </a>
 
                     <!-- Servidores Aposentados -->
@@ -608,7 +610,7 @@
                                 <path d="M0 150 Q30 140 60 150 Q90 160 120 150 Q150 140 200 150 L200 200 L0 200 Z" fill="#1E90FF" />
                             </svg>
                         </div>
-                        <span class="card-perfil__rotulo">SERVIDORES APOSENTADOS</span>
+                        <span class="card-perfil__rotulo">SERVIDORES<br />APOSENTADOS</span>
                     </a>
 
                     <!-- Cidadãos -->
@@ -647,7 +649,7 @@
                                 <circle cx="100" cy="60" r="10" fill="#325FAA" />
                             </svg>
                         </div>
-                        <span class="card-perfil__rotulo">SUPORTE SIGPEC</span>
+                        <span class="card-perfil__rotulo">SUPORTE<br />SIGPEC</span>
                     </a>
                 </div>
             </div>
@@ -657,7 +659,6 @@
         <section class="atalhos">
             <div class="container">
                 <div class="atalhos__grid">
-                    <!-- Painel Gestão de Pessoas -->
                     <a href="#" onclick="return linkExterno()" class="card-atalho">
                         <div class="card-atalho__circulo card-atalho__circulo--azul-claro">
                             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -674,7 +675,6 @@
                         <span class="card-atalho__titulo">PAINEL<br />GESTÃO DE PESSOAS</span>
                     </a>
 
-                    <!-- Acesso ao Holerite -->
                     <a href="#" onclick="return linkExterno()" class="card-atalho">
                         <div class="card-atalho__circulo card-atalho__circulo--azul">
                             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -691,7 +691,6 @@
                         <span class="card-atalho__titulo">ACESSO AO<br />HOLERITE</span>
                     </a>
 
-                    <!-- Datas Importantes -->
                     <a href="#" onclick="return linkExterno()" class="card-atalho">
                         <div class="card-atalho__circulo card-atalho__circulo--azul">
                             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -710,7 +709,6 @@
                         <span class="card-atalho__titulo">DATAS IMPORTANTES<br />E FERIADOS</span>
                     </a>
 
-                    <!-- Agendamento de Salas -->
                     <a href="#" onclick="return linkExterno()" class="card-atalho">
                         <div class="card-atalho__circulo card-atalho__circulo--azul-claro">
                             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
