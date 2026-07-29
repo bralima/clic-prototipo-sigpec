@@ -285,6 +285,85 @@
             font-size: 13px;
         }
 
+        /* ===== MODAL PERSONALIZADO (CENTRALIZADO) ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(3px);
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-content {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 40px 35px 30px;
+            max-width: 580px;
+            width: 92%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: fadeInUp 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .modal-content .icone-sucesso {
+            font-size: 56px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .modal-content h2 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #1A397A;
+            margin-bottom: 12px;
+        }
+        .modal-content .mensagem-modal {
+            background: #F5F7FC;
+            border-radius: 8px;
+            padding: 18px 20px;
+            text-align: left;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #222;
+            margin: 16px 0 24px;
+            border-left: 4px solid #5B5083;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-family: 'Inter', sans-serif;
+        }
+        .modal-content .btn-modal {
+            background: #1A397A;
+            color: #FFFFFF;
+            border: none;
+            padding: 12px 48px;
+            border-radius: 60px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            font-family: 'Inter', sans-serif;
+        }
+        .modal-content .btn-modal:hover {
+            background: #0e295e;
+        }
+        .modal-content .btn-modal:active {
+            transform: scale(0.97);
+        }
+
         /* ===== RESPONSIVO ===== */
         @media (max-width: 480px) {
             .menu-lateral { width: 60px; padding: 20px 10px; }
@@ -293,6 +372,9 @@
             .multiselect-control { flex-wrap: wrap; }
             .multiselect-control select { flex: 1 1 100%; }
             .multiselect-control button { flex: 1; }
+            .modal-content { padding: 28px 18px; }
+            .modal-content h2 { font-size: 22px; }
+            .modal-content .btn-modal { padding: 10px 32px; font-size: 16px; }
         }
     </style>
 </head>
@@ -361,26 +443,26 @@
                 </div>
             </div>
 
-            <!-- Nome Completo (obrigatório) -->
+            <!-- Nome Completo -->
             <div class="campo">
                 <label for="nome">Nome Completo <span class="obrigatorio">*</span></label>
                 <input type="text" id="nome" placeholder="Digite o nome completo" />
             </div>
 
-            <!-- Campo de identificação (obrigatório) -->
+            <!-- Campo de identificação (dinâmico) -->
             <div class="campo campo-identificacao" id="campoIdentificacao">
                 <label for="identificacao" id="labelIdentificacao">Registro / Vínculo <span class="obrigatorio">*</span></label>
                 <input type="text" id="identificacao" placeholder="Digite o registro ou vínculo" />
                 <div class="helper" id="helperIdentificacao"></div>
             </div>
 
-            <!-- Justificativa para Dados do Usuário (obrigatório) -->
+            <!-- Justificativa para Dados do Usuário -->
             <div class="campo">
                 <label for="justificativaUsuario">Justificativa para Dados do Usuário <span class="obrigatorio">*</span></label>
                 <input type="text" id="justificativaUsuario" placeholder="Descreva a justificativa para os dados do usuário" />
             </div>
 
-            <!-- Padrão de Acesso (multiselect com tags, obrigatório) -->
+            <!-- Padrão de Acesso (multiselect com tags) -->
             <div class="campo">
                 <label>Padrão de Acesso <span class="obrigatorio">*</span></label>
                 <div class="multiselect-wrapper" id="multiselectContainerPadrao">
@@ -397,13 +479,13 @@
                 <input type="hidden" id="padroesSelecionados" value="" />
             </div>
 
-            <!-- Justificativa para Padrão de Acesso (obrigatório) -->
+            <!-- Justificativa para Padrão de Acesso -->
             <div class="campo">
                 <label for="justificativaPadrao">Justificativa para Padrão de Acesso <span class="obrigatorio">*</span></label>
                 <input type="text" id="justificativaPadrao" placeholder="Descreva a justificativa para o padrão de acesso" />
             </div>
 
-            <!-- Perfil de Setor (multiselect com tags, obrigatório) -->
+            <!-- Perfil de Setor (multiselect com tags) -->
             <div class="campo">
                 <label>Perfil de Setor <span class="obrigatorio">*</span></label>
                 <div class="multiselect-wrapper" id="multiselectContainerPerfil">
@@ -420,7 +502,7 @@
                 <input type="hidden" id="perfisSelecionados" value="" />
             </div>
 
-            <!-- Justificativa para Perfil de Setor (obrigatório) -->
+            <!-- Justificativa para Perfil de Setor -->
             <div class="campo">
                 <label for="justificativaPerfil">Justificativa para Perfil de Setor <span class="obrigatorio">*</span></label>
                 <input type="text" id="justificativaPerfil" placeholder="Descreva a justificativa para o perfil de setor" />
@@ -434,16 +516,24 @@
     </div>
 </div>
 
+<!-- ===== MODAL PERSONALIZADO ===== -->
+<div class="modal-overlay" id="modalSucesso">
+    <div class="modal-content">
+        <span class="icone-sucesso">✅</span>
+        <h2>Chamado Enviado com Sucesso!</h2>
+        <div class="mensagem-modal" id="modalMensagem"></div>
+        <button class="btn-modal" id="btnModalOk">OK</button>
+    </div>
+</div>
+
 <script>
     // ===== LISTAS DE DADOS =====
-    // Padrões de Acesso
     const padroes = [
         "BASICO", "CONSULTA_GERAL", "Ergon", "AHM_PARCELAMEN", "CADASTRO",
         "DEBITOS", "FOLHA_UNIDADES", "APOS/EXONER", "SEG HOLERITE", "AUX_FUNERAL",
         "ACESSO_WEB"
     ];
 
-    // Perfis de Setor
     const perfis = [
         "CMSP", "GERAL", "IPREM", "PENSIONISTA", "SFMSP", "TCMSP",
         "AHM_GERAL", "MUNICIPALIZADOS", "SMS", "IPREM_APOS", "APOS_SME",
@@ -457,13 +547,11 @@
     const inputIdentificacao = document.getElementById('identificacao');
     const helperIdentificacao = document.getElementById('helperIdentificacao');
 
-    // Padrão
     const selectPadrao = document.getElementById('selectPadrao');
     const btnAdicionarPadrao = document.getElementById('btnAdicionarPadrao');
     const tagsContainerPadrao = document.getElementById('tagsContainerPadrao');
     const hiddenPadroes = document.getElementById('padroesSelecionados');
 
-    // Perfil
     const selectPerfil = document.getElementById('selectPerfil');
     const btnAdicionarPerfil = document.getElementById('btnAdicionarPerfil');
     const tagsContainerPerfil = document.getElementById('tagsContainerPerfil');
@@ -506,22 +594,17 @@
         }
     }
 
-    // ===== EVENTO PARA RADIOS =====
     radios.forEach(radio => {
         radio.addEventListener('change', function() {
-            if (this.checked) {
-                atualizarIdentificacao(this.value);
-            }
+            if (this.checked) atualizarIdentificacao(this.value);
         });
     });
 
-    // Inicializa
     const inicial = document.querySelector('input[name="tipo"]:checked');
     if (inicial) atualizarIdentificacao(inicial.value);
 
     // ===== COMPONENTE DE SELEÇÃO MÚLTIPLA (PADRÃO) =====
     let tagsPadrao = [];
-
     function renderizarTagsPadrao() {
         tagsContainerPadrao.innerHTML = '';
         if (tagsPadrao.length === 0) {
@@ -536,7 +619,6 @@
             tagsContainerPadrao.appendChild(span);
         });
         hiddenPadroes.value = tagsPadrao.join(', ');
-
         document.querySelectorAll('#tagsContainerPadrao .tag .remove').forEach(el => {
             el.addEventListener('click', function() {
                 const valor = this.getAttribute('data-value');
@@ -550,14 +632,8 @@
 
     btnAdicionarPadrao.addEventListener('click', function() {
         const valor = selectPadrao.value;
-        if (!valor) {
-            alert('Selecione um padrão para adicionar.');
-            return;
-        }
-        if (tagsPadrao.includes(valor)) {
-            alert('Este padrão já foi adicionado.');
-            return;
-        }
+        if (!valor) { alert('Selecione um padrão para adicionar.'); return; }
+        if (tagsPadrao.includes(valor)) { alert('Este padrão já foi adicionado.'); return; }
         tagsPadrao.push(valor);
         renderizarTagsPadrao();
         const option = selectPadrao.querySelector(`option[value="${valor}"]`);
@@ -567,7 +643,6 @@
 
     // ===== COMPONENTE DE SELEÇÃO MÚLTIPLA (PERFIL) =====
     let tagsPerfil = [];
-
     function renderizarTagsPerfil() {
         tagsContainerPerfil.innerHTML = '';
         if (tagsPerfil.length === 0) {
@@ -582,7 +657,6 @@
             tagsContainerPerfil.appendChild(span);
         });
         hiddenPerfis.value = tagsPerfil.join(', ');
-
         document.querySelectorAll('#tagsContainerPerfil .tag .remove').forEach(el => {
             el.addEventListener('click', function() {
                 const valor = this.getAttribute('data-value');
@@ -596,19 +670,37 @@
 
     btnAdicionarPerfil.addEventListener('click', function() {
         const valor = selectPerfil.value;
-        if (!valor) {
-            alert('Selecione um perfil para adicionar.');
-            return;
-        }
-        if (tagsPerfil.includes(valor)) {
-            alert('Este perfil já foi adicionado.');
-            return;
-        }
+        if (!valor) { alert('Selecione um perfil para adicionar.'); return; }
+        if (tagsPerfil.includes(valor)) { alert('Este perfil já foi adicionado.'); return; }
         tagsPerfil.push(valor);
         renderizarTagsPerfil();
         const option = selectPerfil.querySelector(`option[value="${valor}"]`);
         if (option) option.disabled = true;
         selectPerfil.value = '';
+    });
+
+    // ===== MODAL =====
+    const modalOverlay = document.getElementById('modalSucesso');
+    const modalMensagem = document.getElementById('modalMensagem');
+    const btnModalOk = document.getElementById('btnModalOk');
+
+    function exibirModal(mensagem) {
+        modalMensagem.textContent = mensagem;
+        modalOverlay.classList.add('active');
+    }
+
+    function fecharModalERedirecionar() {
+        modalOverlay.classList.remove('active');
+        window.location.href = '../dashboard.html';
+    }
+
+    btnModalOk.addEventListener('click', fecharModalERedirecionar);
+
+    // Fechar modal ao clicar no overlay (fora da caixa)
+    modalOverlay.addEventListener('click', function(e) {
+        if (e.target === modalOverlay) {
+            fecharModalERedirecionar();
+        }
     });
 
     // ===== EVENTO DE ENVIO =====
@@ -622,45 +714,30 @@
         const justPadrao = document.getElementById('justificativaPadrao').value.trim();
         const justPerfil = document.getElementById('justificativaPerfil').value.trim();
 
-        // Validações
-        if (!nome) {
-            alert('Preencha o Nome Completo.');
-            return;
-        }
-        if (!identificacao) {
-            alert('Preencha o campo de identificação.');
-            return;
-        }
-        if (tagsPadrao.length === 0) {
-            alert('Adicione pelo menos um Padrão de Acesso.');
-            return;
-        }
-        if (tagsPerfil.length === 0) {
-            alert('Adicione pelo menos um Perfil de Setor.');
-            return;
-        }
-        if (!justUsuario) {
-            alert('Preencha a Justificativa para Dados do Usuário.');
-            return;
-        }
-        if (!justPadrao) {
-            alert('Preencha a Justificativa para Padrão de Acesso.');
-            return;
-        }
-        if (!justPerfil) {
-            alert('Preencha a Justificativa para Perfil de Setor.');
-            return;
-        }
+        if (!nome) { alert('Preencha o Nome Completo.'); return; }
+        if (!identificacao) { alert('Preencha o campo de identificação.'); return; }
+        if (tagsPadrao.length === 0) { alert('Adicione pelo menos um Padrão de Acesso.'); return; }
+        if (tagsPerfil.length === 0) { alert('Adicione pelo menos um Perfil de Setor.'); return; }
+        if (!justUsuario) { alert('Preencha a Justificativa para Dados do Usuário.'); return; }
+        if (!justPadrao) { alert('Preencha a Justificativa para Padrão de Acesso.'); return; }
+        if (!justPerfil) { alert('Preencha a Justificativa para Perfil de Setor.'); return; }
 
-        const mensagem = `Chamado de inclusão de usuário enviado com sucesso!\n\n` +
-                         `Tipo: ${tipo}\nNome: ${nome}\nIdentificação: ${identificacao}\n` +
-                         `Padrões: ${tagsPadrao.join(', ')}\nPerfis: ${tagsPerfil.join(', ')}\n\n` +
-                         `Justificativa Dados: ${justUsuario}\n` +
-                         `Justificativa Padrão: ${justPadrao}\n` +
-                         `Justificativa Perfil: ${justPerfil}`;
+        // Monta a mensagem
+        const mensagem = `Chamado de inclusão de usuário enviado com sucesso!
 
-        alert(mensagem);
-        // Aqui você pode redirecionar ou limpar o formulário
+Tipo: ${tipo}
+Nome: ${nome}
+Identificação: ${identificacao}
+
+Padrões: ${tagsPadrao.join(', ')}
+Perfis: ${tagsPerfil.join(', ')}
+
+Justificativa Dados: ${justUsuario}
+Justificativa Padrão: ${justPadrao}
+Justificativa Perfil: ${justPerfil}`;
+
+        // Exibe o modal em vez do alert
+        exibirModal(mensagem);
     });
 </script>
 
