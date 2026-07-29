@@ -366,6 +366,12 @@
                 <input type="text" id="loginUsuario" placeholder="Digite o login do usuário" />
             </div>
 
+            <!-- Justificativa -->
+            <div class="campo">
+                <label for="justificativa">Justificativa <span class="obrigatorio">*</span></label>
+                <input type="text" id="justificativa" placeholder="Descreva a justificativa para desativação do acesso" />
+            </div>
+
             <!-- Botão Enviar -->
             <div class="acoes">
                 <button class="btn-enviar" id="btnEnviar">Enviar</button>
@@ -415,6 +421,7 @@
         const tipo = document.querySelector('input[name="tipo"]:checked').value;
         const nome = document.getElementById('nomeCompleto').value.trim();
         const login = document.getElementById('loginUsuario').value.trim();
+        const justificativa = document.getElementById('justificativa').value.trim();
 
         if (!nome) {
             alert('Preencha o Nome Completo.');
@@ -424,12 +431,17 @@
             alert('Preencha o Login de Usuário.');
             return;
         }
+        if (!justificativa) {
+            alert('Preencha a Justificativa.');
+            return;
+        }
 
         const mensagem = `Chamado de desativação de acesso enviado com sucesso!
 
 Tipo de Usuário: ${tipo}
 Nome Completo: ${nome}
-Login de Usuário: ${login}`;
+Login de Usuário: ${login}
+Justificativa: ${justificativa}`;
 
         exibirModal(mensagem);
     });
