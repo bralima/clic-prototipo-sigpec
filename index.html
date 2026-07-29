@@ -3,41 +3,506 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CLIC - Página Inicial (Protótipo)</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>Portal do Servidor – CLIC + GLP (Protótipo)</title>
+    <style>
+        /* =================================================================
+           CSS totalmente embutido – sem dependências externas
+           ================================================================= */
+        :root {
+            --azul-sigpec: #325FAA;
+            --azul-medio: #5F94D9;
+            --azul-claro: #6EABFA;
+            --teal: #03989E;
+            --cinza-word: #565555;
+            --cinza-claro: #F4F4F4;
+            --cinza-borda: #C0C0C0;
+            --laranja: #FFBE5A;
+            --branco: #FFFFFF;
+            --sombra-card: 3px 7px 4px rgba(0, 0, 0, 0.25);
+            --raio-padrao: 8px;
+            --fonte: 'Roboto', 'Segoe UI', Arial, sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--fonte);
+            color: var(--cinza-word);
+            background: var(--branco);
+            line-height: 1.5;
+        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .sr-only {
+            position: absolute; width: 1px; height: 1px;
+            padding: 0; margin: -1px; overflow: hidden;
+            clip: rect(0,0,0,0); border: 0;
+        }
+
+        /* ---------- TOPO ---------- */
+        .topo {
+            background: var(--branco);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            padding: 15px 0;
+        }
+        .topo__conteudo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .topo__menu ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+        .topo__menu a {
+            color: var(--azul-claro);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color .2s;
+        }
+        .topo__menu a:hover,
+        .topo__menu a.ativo { color: var(--azul-sigpec); }
+
+        .logo-svg {
+            display: block;
+            height: 60px;
+            width: auto;
+        }
+
+        /* ---------- BUSCA ---------- */
+        .busca {
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .busca__form {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            max-width: 560px;
+            border: 1px solid var(--cinza-borda);
+            border-radius: 40px;
+            padding: 4px 6px 4px 20px;
+            background: var(--branco);
+            transition: border-color .2s;
+        }
+        .busca__form:focus-within { border-color: var(--azul-claro); }
+        .busca__input {
+            flex: 1;
+            border: 0;
+            outline: 0;
+            padding: 10px 0;
+            font-size: 1rem;
+            background: transparent;
+            color: var(--cinza-word);
+        }
+        .busca__input::placeholder { color: var(--cinza-borda); }
+        .busca__botao {
+            border: 0;
+            background: transparent;
+            color: var(--azul-claro);
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: grid; place-items: center;
+            transition: background .2s;
+        }
+        .busca__botao:hover { background: var(--cinza-claro); }
+
+        /* ---------- TÍTULOS ---------- */
+        .titulo-secao {
+            text-align: center;
+            color: var(--cinza-word);
+            font-size: clamp(1.4rem, 2.2vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        /* ---------- NOTÍCIAS ---------- */
+        .noticias { padding: 40px 0; }
+        .noticias__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .card-noticia {
+            background: var(--cinza-claro);
+            border-radius: var(--raio-padrao);
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: transform .2s, box-shadow .2s;
+        }
+        .card-noticia:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--sombra-card);
+        }
+        .card-noticia__foto {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #d9d9d9;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cinza-word);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 10px;
+        }
+        .card-noticia__foto svg {
+            max-width: 80%;
+            max-height: 80%;
+        }
+        .card-noticia__titulo {
+            font-size: .9rem;
+            font-weight: 600;
+            color: var(--cinza-word);
+            flex-grow: 1;
+        }
+        .card-noticia__link {
+            align-self: flex-end;
+            font-size: .85rem;
+            color: var(--cinza-word);
+            font-weight: 500;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: var(--branco);
+            transition: background .2s;
+        }
+        .card-noticia__link:hover { background: var(--azul-claro); color: var(--branco); }
+        .noticias__ver-mais { text-align: right; margin-top: 20px; }
+        .botao-secundario {
+            display: inline-block;
+            background: var(--cinza-claro);
+            color: var(--cinza-word);
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background .2s;
+        }
+        .botao-secundario:hover { background: var(--cinza-borda); }
+
+        /* ---------- PERFIS ---------- */
+        .perfis { padding: 40px 0; }
+        .perfis__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+        .card-perfil {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 160px;
+            border-radius: var(--raio-padrao);
+            transition: background .2s;
+        }
+        .card-perfil:hover { background: var(--cinza-claro); }
+        .card-perfil__icone {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        .card-perfil__icone svg {
+            width: 100%;
+            height: 100%;
+        }
+        .card-perfil__rotulo {
+            margin-top: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+            color: var(--cinza-word);
+        }
+
+        /* ---------- ATALHOS (círculos) ---------- */
+        .atalhos {
+            padding: 60px 0;
+            background: linear-gradient(180deg, transparent 0%, transparent 40%, var(--cinza-claro) 40%, var(--cinza-claro) 100%);
+        }
+        .atalhos__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            justify-items: center;
+        }
+        .card-atalho {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: 15px;
+            text-align: center;
+            transition: transform .2s;
+        }
+        .card-atalho:hover { transform: translateY(-6px); }
+        .card-atalho__circulo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: var(--sombra-card);
+        }
+        .card-atalho__circulo svg {
+            width: 80%;
+            height: 80%;
+        }
+        .card-atalho__circulo--azul-claro { background: var(--azul-claro); }
+        .card-atalho__circulo--azul       { background: var(--azul-medio); }
+        .card-atalho__titulo {
+            font-weight: 700;
+            color: var(--cinza-word);
+            font-size: 1.1rem;
+        }
+
+        /* ---------- SEÇÃO SUPORTE (GLP) ---------- */
+        .suporte {
+            padding: 40px 0;
+            background: var(--cinza-claro);
+        }
+        .suporte__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .card-suporte {
+            background: var(--branco);
+            border-radius: var(--raio-padrao);
+            padding: 25px;
+            box-shadow: var(--sombra-card);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .card-suporte h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--azul-sigpec);
+        }
+        .card-suporte p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        .botao-chamado {
+            display: inline-block;
+            background: var(--teal);
+            color: var(--branco);
+            padding: 10px 30px;
+            border-radius: 40px;
+            font-weight: 700;
+            transition: background .2s;
+        }
+        .botao-chamado:hover { background: #027a7e; }
+        .botao-chamado--secundario {
+            background: var(--azul-medio);
+        }
+        .botao-chamado--secundario:hover { background: #4a7fc7; }
+
+        .lista-chamados {
+            list-style: none;
+            text-align: left;
+            width: 100%;
+        }
+        .lista-chamados li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--cinza-claro);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+        }
+        .lista-chamados li:last-child { border-bottom: 0; }
+        .status {
+            font-weight: 600;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+        .status--andamento { background: #ffd966; color: #7a5d00; }
+        .status--resolvido { background: #a3d9a5; color: #1f5e21; }
+        .status--aberto    { background: #f4a6a6; color: #6b1a1a; }
+
+        /* ---------- QUEM SOMOS ---------- */
+        .quem-somos {
+            background: var(--azul-medio);
+            color: var(--branco);
+            padding: 0;
+            text-align: center;
+        }
+        .quem-somos__imagem {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: #3a7bb5; /* fallback */
+        }
+        .quem-somos .container {
+            padding: 50px 20px;
+        }
+        .quem-somos h2 {
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .quem-somos p {
+            max-width: 1000px;
+            margin: 0 auto 24px;
+            font-size: 1.1rem;
+        }
+        .botao-destaque {
+            display: inline-block;
+            background: var(--laranja);
+            color: var(--branco);
+            padding: 12px 30px;
+            border-radius: 40px;
+            font-weight: 700;
+            transition: transform .2s, filter .2s;
+        }
+        .botao-destaque:hover { transform: scale(1.05); filter: brightness(1.05); }
+
+        /* ---------- RODAPÉ ---------- */
+        .rodape {
+            background: var(--branco);
+            padding: 40px 0 0;
+            border-top: 1px solid var(--cinza-claro);
+            box-shadow: 0 -2px 6px rgba(0,0,0,0.06);
+        }
+        .rodape__conteudo {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            padding-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .rodape__logo {
+            flex: 0 0 auto;
+            line-height: 0;
+        }
+        .rodape__texto {
+            flex: 1;
+        }
+        .rodape__texto p {
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            color: var(--cinza-word);
+        }
+        .rodape__texto a {
+            color: var(--azul-sigpec);
+            text-decoration: none;
+        }
+        .rodape__texto a:hover { text-decoration: underline; }
+        .rodape__atencao-lista {
+            list-style: disc;
+            padding-left: 25px;
+            margin-top: 6px;
+            font-size: 0.95rem;
+            color: var(--cinza-word);
+        }
+        .rodape__atencao-lista li + li { margin-top: 4px; }
+        .rodape__redes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            justify-items: center;
+            align-items: center;
+            flex: 0 0 auto;
+        }
+        .rodape__redes a {
+            display: block;
+            width: 40px;
+            height: 40px;
+            transition: transform 0.2s;
+        }
+        .rodape__redes a:hover { transform: scale(1.1); }
+        .rodape__redes svg {
+            width: 100%;
+            height: 100%;
+        }
+        .rodape__copyright {
+            text-align: center;
+            padding: 12px;
+            background: var(--cinza-claro);
+            font-size: 0.85rem;
+            color: var(--cinza-word);
+        }
+
+        /* ---------- RESPONSIVO ---------- */
+        @media (max-width: 768px) {
+            .topo__conteudo { justify-content: center; }
+            .topo__menu ul { justify-content: center; gap: 10px; }
+            .topo__menu a { font-size: .9rem; }
+            .suporte__grid { grid-template-columns: 1fr; }
+            .rodape__conteudo {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            .rodape__atencao-lista { text-align: left; padding-left: 20px; }
+            .rodape__redes { grid-template-columns: repeat(3, 1fr); }
+            .card-atalho__circulo { width: 120px; height: 120px; }
+            .card-perfil__icone { width: 80px; height: 80px; }
+        }
+    </style>
 </head>
 <body>
+
+    <!-- ========== TOPO ========== -->
     <header class="topo">
         <div class="container topo__conteudo">
-            <a href="index.html" class="topo__logo" aria-label="CLIC - Página Inicial">
-                <img src="img/clic/logo-clic-completa.png" alt="Logo da CLIC - Central de Informações e Apoio" class="logo-img" />
+            <a href="index.html" class="topo__logo" aria-label="Portal do Servidor">
+                <!-- Logo em SVG (texto estilizado) -->
+                <svg class="logo-svg" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="200" height="60" fill="none" />
+                    <text x="10" y="38" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#325FAA">CLIC</text>
+                    <text x="85" y="38" font-family="Arial, sans-serif" font-size="14" fill="#565555">+</text>
+                    <text x="100" y="38" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#03989E">GLP</text>
+                    <text x="10" y="54" font-family="Arial, sans-serif" font-size="10" fill="#6EABFA">Portal do Servidor</text>
+                </svg>
             </a>
             <nav class="topo__menu" aria-label="Menu principal">
                 <ul>
                     <li><a href="index.html" class="ativo">Página Inicial</a></li>
                     <li><a href="#" onclick="return linkExterno()">Quem Somos</a></li>
-                    <li><a href="#" onclick="return linkExterno()">Mapa da CLIC</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Mapa do Portal</a></li>
                     <li><a href="#" onclick="return linkExterno()">Fale com a COGEP</a></li>
-                    <li><a href="#" onclick="return linkExterno()">Fale com sua URH</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Fale com a COTIC</a></li>
                     <li><a href="#" onclick="return linkExterno()">Links Úteis</a></li>
-                    <li><a href="#" onclick="return linkExterno()">Glossário</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
+        <!-- ========== BUSCA ========== -->
         <section class="busca">
-            <form class="busca__form" action="#" method="GET" role="search" onsubmit="return alert('Funcionalidade de busca desabilitada neste protótipo.')">
+            <form class="busca__form" action="#" method="GET" role="search" onsubmit="return alert('Busca desabilitada no protótipo.')">
                 <label for="campo-busca" class="sr-only">Pesquisar</label>
-                <input
-                    type="text"
-                    id="campo-busca"
-                    name="s"
-                    class="busca__input"
-                    placeholder="O que você está procurando?"
-                    autocomplete="off"
-                />
+                <input type="text" id="campo-busca" name="s" class="busca__input"
+                       placeholder="O que você está procurando? (ex: licença, chamado, holerite)" autocomplete="off" />
                 <button type="submit" class="busca__botao" aria-label="Pesquisar">
                     <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
                         <path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.5 6.5 0 1 0 13 15.5l.27.28v.79l5 5 1.5-1.5-5-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/>
@@ -46,121 +511,169 @@
             </form>
         </section>
 
+        <!-- ========== NOTÍCIAS (CLIC) ========== -->
         <section class="noticias">
             <div class="container">
                 <h2 class="titulo-secao">CLIC NOTÍCIAS</h2>
                 <div class="noticias__grid">
                     <article class="card-noticia">
-                        <div class="card-noticia__foto" aria-hidden="true">
-                            <img src="img/pagina_inicial/noticia-conecturhs.png" alt="Seminário de Gestão de Pessoas" class="card-noticia__foto-img" />
+                        <div class="card-noticia__foto">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="40" fill="#5F94D9" />
+                                <text x="50" y="55" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Gestão</text>
+                            </svg>
                         </div>
-                        <h3 class="card-noticia__titulo">
-                            Seminário de Gestão de Pessoas debate liderança, inovação e transformação no setor público
-                        </h3>
+                        <h3 class="card-noticia__titulo">Seminário de Gestão de Pessoas debate liderança, inovação e transformação no setor público</h3>
                         <a href="#" onclick="return linkExterno()" class="card-noticia__link">+ Ver Notícia</a>
                     </article>
 
                     <article class="card-noticia">
-                        <div class="card-noticia__foto" aria-hidden="true">
-                            <img src="img/pagina_inicial/noticia-antecipação expediente.png" alt="Expediente nos dias de jogos do Brasil na Copa" class="card-noticia__foto-img" />
+                        <div class="card-noticia__foto">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="10" y="10" width="80" height="80" fill="#FFBE5A" rx="8" />
+                                <text x="50" y="55" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Copa 2026</text>
+                            </svg>
                         </div>
-                        <h3 class="card-noticia__titulo">
-                            Prefeitura define expediente nos dias de jogos do Brasil na Copa do Mundo 2026
-                        </h3>
+                        <h3 class="card-noticia__titulo">Prefeitura define expediente nos dias de jogos do Brasil na Copa do Mundo 2026</h3>
                         <a href="#" onclick="return linkExterno()" class="card-noticia__link">+ Ver Notícia</a>
                     </article>
 
                     <article class="card-noticia">
-                        <div class="card-noticia__foto" aria-hidden="true">
-                            <img src="img/pagina_inicial/noticia-bonificação.png" alt="Bonificação por Resultados na folha de Junho/26" class="card-noticia__foto-img" />
+                        <div class="card-noticia__foto">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <polygon points="50,10 90,40 75,90 25,90 10,40" fill="#03989E" />
+                                <text x="50" y="60" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Bonificação</text>
+                            </svg>
                         </div>
-                        <h3 class="card-noticia__titulo">
-                            Prefeitura realiza pagamento da Bonificação por Resultados na folha de Junho/26
-                        </h3>
+                        <h3 class="card-noticia__titulo">Prefeitura realiza pagamento da Bonificação por Resultados na folha de Junho/26</h3>
                         <a href="#" onclick="return linkExterno()" class="card-noticia__link">+ Ver Notícia</a>
                     </article>
 
                     <article class="card-noticia">
-                        <div class="card-noticia__foto" aria-hidden="true">
-                            <img src="img/pagina_inicial/noticia-estagio.png" alt="LIVE Tira Dúvidas - 15º Prêmio Melhores Práticas de Estágio" class="card-noticia__foto-img" />
+                        <div class="card-noticia__foto">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="40" fill="#6EABFA" />
+                                <text x="50" y="55" font-family="Arial" font-size="12" fill="white" text-anchor="middle">LIVE</text>
+                            </svg>
                         </div>
-                        <h3 class="card-noticia__titulo">
-                            [É HOJE!] LIVE TIRA DÚVIDAS - 15º Prêmio Melhores Práticas de Estágio
-                        </h3>
+                        <h3 class="card-noticia__titulo">[É HOJE!] LIVE TIRA DÚVIDAS - 15º Prêmio Melhores Práticas de Estágio</h3>
                         <a href="#" onclick="return linkExterno()" class="card-noticia__link">+ Ver Notícia</a>
                     </article>
                 </div>
-
                 <div class="noticias__ver-mais">
                     <a href="#" onclick="return linkExterno()" class="botao-secundario">VER TODAS AS NOTÍCIAS</a>
                 </div>
             </div>
         </section>
 
+        <!-- ========== PERFIS DE USUÁRIO ========== -->
         <section class="perfis">
             <div class="container">
-                <h2 class="titulo-secao">CLIC NO SEU PERFIL DE USUÁRIO</h2>
+                <h2 class="titulo-secao">CLIC NO SEU PERFIL</h2>
                 <div class="perfis__grid">
-                    <a href="#" onclick="return linkExterno()" class="card-perfil card-perfil--teal">
+                    <a href="#" onclick="return linkExterno()" class="card-perfil">
                         <div class="card-perfil__icone">
-                            <img src="img/pagina_inicial/perfil de usuario-area da urh.png" alt="Área das URHs" />
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="40" r="20" fill="#03989E" />
+                                <circle cx="50" cy="80" r="28" fill="#03989E" />
+                                <text x="50" y="52" font-family="Arial" font-size="10" fill="white" text-anchor="middle">URH</text>
+                            </svg>
                         </div>
+                        <span class="card-perfil__rotulo">Área das URHs</span>
                     </a>
 
-                    <a href="#" onclick="return linkExterno()" class="card-perfil card-perfil--cinza">
+                    <a href="#" onclick="return linkExterno()" class="card-perfil">
                         <div class="card-perfil__icone">
-                            <img src="img/pagina_inicial/perfil de usuario-servidores ativos.png" alt="Servidores Ativos" />
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="40" r="20" fill="#565555" />
+                                <circle cx="50" cy="80" r="28" fill="#565555" />
+                                <text x="50" y="52" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Ativo</text>
+                            </svg>
                         </div>
+                        <span class="card-perfil__rotulo">Servidores Ativos</span>
                     </a>
 
-                    <a href="#" onclick="return linkExterno()" class="card-perfil card-perfil--cinza">
+                    <a href="#" onclick="return linkExterno()" class="card-perfil">
                         <div class="card-perfil__icone">
-                            <img src="img/pagina_inicial/perfil de usuario-servidores aposentados.png" alt="Servidores Aposentados" />
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="40" r="20" fill="#C0C0C0" />
+                                <circle cx="50" cy="80" r="28" fill="#C0C0C0" />
+                                <text x="50" y="52" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Apos.</text>
+                            </svg>
                         </div>
+                        <span class="card-perfil__rotulo">Servidores Aposentados</span>
                     </a>
 
-                    <a href="#" onclick="return linkExterno()" class="card-perfil card-perfil--cinza">
+                    <a href="#" onclick="return linkExterno()" class="card-perfil">
                         <div class="card-perfil__icone">
-                            <img src="img/pagina_inicial/perfil de usuario-cidadaos.png" alt="Cidadãos" />
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="40" r="20" fill="#6EABFA" />
+                                <circle cx="50" cy="80" r="28" fill="#6EABFA" />
+                                <text x="50" y="52" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Cidadão</text>
+                            </svg>
                         </div>
+                        <span class="card-perfil__rotulo">Cidadãos</span>
                     </a>
 
-                    <a href="pages/login-sigpec.html" class="card-perfil card-perfil--azul">
+                    <a href="#" onclick="return linkExterno()" class="card-perfil">
                         <div class="card-perfil__icone">
-                            <img src="img/pagina_inicial/perfil de usuario-suporte sigpec.png" alt="Suporte SIGPEC" />
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="20" y="30" width="60" height="40" fill="#325FAA" rx="6" />
+                                <circle cx="50" cy="50" r="10" fill="white" />
+                                <text x="50" y="55" font-family="Arial" font-size="10" fill="#325FAA" text-anchor="middle">SIGPEC</text>
+                            </svg>
                         </div>
+                        <span class="card-perfil__rotulo">Suporte SIGPEC</span>
                     </a>
                 </div>
             </div>
         </section>
 
+        <!-- ========== ATALHOS ========== -->
         <section class="atalhos">
             <div class="container">
                 <div class="atalhos__grid">
                     <a href="#" onclick="return linkExterno()" class="card-atalho">
                         <div class="card-atalho__circulo card-atalho__circulo--azul-claro">
-                            <img src="img/pagina_inicial/extras-painel.png" alt="Painel Gestão de Pessoas" />
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="15" y="20" width="70" height="60" fill="white" rx="8" />
+                                <line x1="25" y1="35" x2="75" y2="35" stroke="#325FAA" stroke-width="4" />
+                                <line x1="25" y1="50" x2="60" y2="50" stroke="#325FAA" stroke-width="4" />
+                                <line x1="25" y1="65" x2="70" y2="65" stroke="#325FAA" stroke-width="4" />
+                            </svg>
                         </div>
                         <span class="card-atalho__titulo">PAINEL<br />GESTÃO DE PESSOAS</span>
                     </a>
 
                     <a href="#" onclick="return linkExterno()" class="card-atalho">
                         <div class="card-atalho__circulo card-atalho__circulo--azul">
-                            <img src="img/pagina_inicial/extras-holerite.png" alt="Acesso ao Holerite" />
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="20" y="30" width="60" height="40" fill="white" rx="4" />
+                                <text x="50" y="55" font-family="Arial" font-size="14" fill="#325FAA" text-anchor="middle">R$</text>
+                            </svg>
                         </div>
                         <span class="card-atalho__titulo">ACESSO AO<br />HOLERITE</span>
                     </a>
 
                     <a href="#" onclick="return linkExterno()" class="card-atalho">
                         <div class="card-atalho__circulo card-atalho__circulo--azul">
-                            <img src="img/pagina_inicial/extras-data importante.png" alt="Datas Importantes e Feriados" />
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="15" y="15" width="70" height="70" fill="white" rx="10" />
+                                <text x="50" y="58" font-family="Arial" font-size="30" fill="#325FAA" text-anchor="middle">📅</text>
+                            </svg>
                         </div>
                         <span class="card-atalho__titulo">DATAS IMPORTANTES<br />E FERIADOS</span>
                     </a>
 
                     <a href="#" onclick="return linkExterno()" class="card-atalho">
                         <div class="card-atalho__circulo card-atalho__circulo--azul-claro">
-                            <img src="img/pagina_inicial/extras-ponto de afeto.png" alt="Agendamento de Salas" />
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="10" y="20" width="80" height="60" fill="white" rx="4" />
+                                <rect x="20" y="30" width="25" height="15" fill="#325FAA" rx="2" />
+                                <rect x="55" y="30" width="25" height="15" fill="#325FAA" rx="2" />
+                                <rect x="20" y="55" width="25" height="15" fill="#325FAA" rx="2" />
+                                <rect x="55" y="55" width="25" height="15" fill="#325FAA" rx="2" />
+                            </svg>
                         </div>
                         <span class="card-atalho__titulo">AGENDAMENTO<br />DE SALAS</span>
                     </a>
@@ -168,54 +681,117 @@
             </div>
         </section>
 
+        <!-- ========== SUPORTE TÉCNICO (GLP) ========== -->
+        <section class="suporte">
+            <div class="container">
+                <h2 class="titulo-secao">SUPORTE TÉCNICO – GLP</h2>
+                <div class="suporte__grid">
+                    <div class="card-suporte">
+                        <h3>🛠️ Abrir Chamado</h3>
+                        <p>Problemas com sistemas, rede, equipamentos ou outros serviços de TI?</p>
+                        <a href="#" onclick="return linkExterno()" class="botao-chamado">ABRIR CHAMADO</a>
+                    </div>
+                    <div class="card-suporte">
+                        <h3>📋 Meus Chamados</h3>
+                        <p>Acompanhe os chamados abertos recentemente:</p>
+                        <ul class="lista-chamados">
+                            <li><span>#2026-1234 – Impressora fora de linha</span> <span class="status status--andamento">Em andamento</span></li>
+                            <li><span>#2026-1230 – Acesso ao SIGPEC</span> <span class="status status--resolvido">Resolvido</span></li>
+                            <li><span>#2026-1225 – E-mail corporativo</span> <span class="status status--aberto">Aberto</span></li>
+                            <li><span>#2026-1218 – VPN não conecta</span> <span class="status status--resolvido">Resolvido</span></li>
+                        </ul>
+                        <a href="#" onclick="return linkExterno()" class="botao-chamado botao-chamado--secundario" style="margin-top:15px;">VER TODOS</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== QUEM SOMOS ========== -->
         <section class="quem-somos">
-            <img src="img/pagina_inicial/quem somos-conceito clic.png" alt="Conceito CLIC" class="quem-somos__imagem" />
+            <!-- SVG ilustrativo (banner) -->
+            <svg class="quem-somos__imagem" viewBox="0 0 1300 150" xmlns="http://www.w3.org/2000/svg">
+                <rect width="1300" height="150" fill="#3a7bb5" />
+                <text x="50%" y="55%" font-family="Arial" font-size="28" fill="white" text-anchor="middle" font-weight="700">
+                    CLIC + GLP – União de informações e suporte ao servidor
+                </text>
+                <text x="50%" y="80%" font-family="Arial" font-size="16" fill="#d9e6f2" text-anchor="middle">
+                    Central de Informações e Apoio (COGEP) · Gestão de Chamados Técnicos (COTIC)
+                </text>
+            </svg>
+
             <div class="container">
                 <h2>QUEM SOMOS?</h2>
                 <p>
-                    A <strong>Central de Informações e Apoio (CLIC)</strong> é a nova plataforma da
-                    Coordenadoria de Gestão de Pessoas (COGEP/SEGES) para facilitar a interação com
-                    os servidores e com as unidades responsáveis pelos recursos humanos nas
-                    Secretarias e Subprefeituras.
+                    O <strong>Portal do Servidor</strong> integra a <strong>CLIC</strong> (Central de Informações e Apoio da COGEP/SEGES)
+                    com o <strong>GLP</strong> (Sistema de Chamados da COTIC/SEGES). Aqui você encontra informações sobre sua vida funcional,
+                    direitos, benefícios, além de abrir e acompanhar chamados técnicos de infraestrutura, sistemas e redes.
                 </p>
-                <a href="#" onclick="return linkExterno()" class="botao-destaque">SAIBA MAIS SOBRE A CLIC</a>
+                <a href="#" onclick="return linkExterno()" class="botao-destaque">SAIBA MAIS SOBRE O PORTAL</a>
             </div>
         </section>
     </main>
 
+    <!-- ========== RODAPÉ ========== -->
     <footer class="rodape">
         <div class="container rodape__conteudo">
             <div class="rodape__logo">
-                <a href="#" onclick="return linkExterno()">
-                    <img src="img/principal/logo_PrefSP_sem fundo_horizontal_fundo claro.png" alt="Prefeitura de São Paulo" class="rodape__logo-img" />
-                </a>
+                <!-- Logo Prefeitura em SVG -->
+                <svg width="200" height="80" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="200" height="80" fill="none" />
+                    <text x="10" y="35" font-family="Arial" font-size="22" font-weight="700" fill="#325FAA">PREFEITURA</text>
+                    <text x="10" y="58" font-family="Arial" font-size="18" fill="#03989E">SÃO PAULO</text>
+                    <text x="10" y="73" font-family="Arial" font-size="10" fill="#565555">SEGES · COGEP · COTIC</text>
+                </svg>
             </div>
             <div class="rodape__texto">
-                <p><strong>CLIC - Central de Informações e Apoio da COGEP/SEGES</strong></p>
+                <p><strong>CLIC + GLP – Portal do Servidor</strong></p>
                 <p>
-                    Contate a CLIC pelo <a href="#" onclick="return linkExterno()" class="link-fale">Fale Com a COGEP</a> ou pelo e-mail
+                    Contate a CLIC pelo <a href="#" onclick="return linkExterno()">Fale com a COGEP</a> ou pelo e-mail
                     <a href="mailto:clic@prefeitura.sp.gov.br">clic@prefeitura.sp.gov.br</a>
+                </p>
+                <p>
+                    Para suporte técnico (GLP): <a href="#" onclick="return linkExterno()">Fale com a COTIC</a> ou
+                    <a href="mailto:suporte@prefeitura.sp.gov.br">suporte@prefeitura.sp.gov.br</a>
                 </p>
                 <p><strong>ATENÇÃO:</strong></p>
                 <ul class="rodape__atencao-lista">
                     <li>Questões específicas sobre a vida funcional devem ser direcionadas à sua Unidade de Recursos Humanos.</li>
-                    <li>Para demandas sobre serviços de outros órgãos, verifique na página consultando o canal de contato.</li>
+                    <li>Demandas técnicas devem ser abertas via GLP (chamados).</li>
                 </ul>
             </div>
             <div class="rodape__redes" aria-label="Redes sociais">
-                <a href="#" onclick="return linkExterno()" aria-label="Facebook"><img src="img/principal/icons/facebook.png" alt="Facebook" /></a>
-                <a href="#" onclick="return linkExterno()" aria-label="Spotify"><img src="img/principal/icons/spotify-logo.png" alt="Spotify" /></a>
-                <a href="#" onclick="return linkExterno()" aria-label="LinkedIn"><img src="img/principal/icons/linkedin-logo.png" alt="LinkedIn" /></a>
-                <a href="#" onclick="return linkExterno()" aria-label="YouTube"><img src="img/principal/icons/youtube.png" alt="YouTube" /></a>
-                <a href="#" onclick="return linkExterno()" aria-label="Instagram"><img src="img/principal/icons/instagram.png" alt="Instagram" /></a>
-                <a href="#" onclick="return linkExterno()" aria-label="WhatsApp"><img src="img/principal/icons/whatsapp.png" alt="WhatsApp" /></a>
+                <a href="#" onclick="return linkExterno()" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                <a href="#" onclick="return linkExterno()" aria-label="Spotify">
+                    <svg viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.36-.72.48-1.08.24-2.88-1.68-6.48-2.16-10.68-1.2-.42.12-.84-.12-.96-.48-.12-.42.12-.84.48-.96 4.56-1.08 8.64-.6 11.88 1.32.36.18.48.6.36.96zm1.56-3.36c-.3.42-.84.6-1.26.3-3.3-1.92-8.28-2.52-12.12-1.32-.48.18-1.02-.06-1.2-.54-.18-.48.06-1.02.54-1.2 4.44-1.32 9.96-.72 13.68 1.44.42.18.54.72.36 1.2zm.12-3.48c-.36.36-.9.48-1.32.24-3.6-2.16-9.72-2.64-13.32-1.44-.48.18-1.02-.06-1.2-.54-.18-.48.06-1.02.54-1.2 4.08-1.32 10.8-.84 14.88 1.56.48.24.6.78.36 1.2z"/></svg>
+                </a>
+                <a href="#" onclick="return linkExterno()" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="#" onclick="return linkExterno()" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+                <a href="#" onclick="return linkExterno()" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="#E4405F"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                </a>
+                <a href="#" onclick="return linkExterno()" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </a>
             </div>
         </div>
         <div class="rodape__copyright">
-            Copyright © Prefeitura de São Paulo - SEGES/COTIC 2026
+            Copyright © Prefeitura de São Paulo – SEGES/COTIC 2026 – Protótipo unificado CLIC + GLP
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+        // Função auxiliar para links placeholder
+        function linkExterno() {
+            alert('Este é um protótipo estático. A funcionalidade será implementada futuramente.');
+            return false;
+        }
+    </script>
+
 </body>
 </html>
