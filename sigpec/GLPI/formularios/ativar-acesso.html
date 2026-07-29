@@ -206,6 +206,9 @@
         .btn-enviar:hover {
             background: #f0f0f0;
         }
+        .campo-identificacao {
+            transition: all 0.2s;
+        }
 
         /* ===== MODAL PERSONALIZADO ===== */
         .modal-overlay {
@@ -362,6 +365,19 @@
                 </div>
             </div>
 
+            <!-- Nome do Usuário -->
+            <div class="campo">
+                <label for="nomeUsuario">Nome do Usuário <span class="obrigatorio">*</span></label>
+                <input type="text" id="nomeUsuario" placeholder="Digite o nome completo do usuário" />
+            </div>
+
+            <!-- Campo de identificação (RF / RG dinâmico) -->
+            <div class="campo campo-identificacao" id="campoIdentificacao">
+                <label for="identificacao" id="labelIdentificacao">RF <span class="obrigatorio">*</span></label>
+                <input type="text" id="identificacao" placeholder="Digite o RF" />
+                <div class="helper" id="helperIdentificacao"></div>
+            </div>
+
             <!-- Login de Usuário -->
             <div class="campo">
                 <label for="loginUsuario">Login de Usuário <span class="obrigatorio">*</span></label>
@@ -393,6 +409,45 @@
 </div>
 
 <script>
+    // ===== ELEMENTOS DO CAMPO DINÂMICO =====
+    const radios = document.querySelectorAll('input[name="tipo"]');
+    const campoIdentificacao = document.getElementById('campoIdentificacao');
+    const labelIdentificacao = document.getElementById('labelIdentificacao');
+    const inputIdentificacao = document.getElementById('identificacao');
+    const helperIdentificacao = document.getElementById('helperIdentificacao');
+
+    // ===== FUNÇÃO PARA ATUALIZAR O CAMPO DE IDENTIFICAÇÃO =====
+    function atualizarIdentificacao(tipo) {
+        helperIdentificacao.innerHTML = '';
+        inputIdentificacao.value = '';
+        if (tipo === 'Servidor' || tipo === 'Residente') {
+            labelIdentificacao.textContent = 'RF *';
+            inputIdentificacao.placeholder = 'Digite o RF';
+            helperIdentificacao.innerHTML = '';
+        } else if (tipo === 'Estagiario') {
+            labelIdentificacao.textContent = 'RG *';
+            inputIdentificacao.placeholder = 'Digite o RG';
+            helperIdentificacao.innerHTML = '<span class="icone-aviso">⚠️</span> Apenas para consultas, sem alterações.';
+        } else if (tipo === 'Terceirizado') {
+            labelIdentificacao.textContent = 'RG *';
+            inputIdentificacao.placeholder = 'Digite o RG';
+            helperIdentificacao.innerHTML = '';
+        }
+    }
+
+    // ===== EVENTO PARA RADIOS =====
+    radios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.checked) {
+                atualizarIdentificacao(this.value);
+            }
+        });
+    });
+
+    // Inicializa com o valor padrão (Servidor)
+    const inicial = document.querySelector('input[name="tipo"]:checked');
+    if (inicial) atualizarIdentificacao(inicial.value);
+
     // ===== MODAL =====
     const modalOverlay = document.getElementById('modalSucesso');
     const modalMensagem = document.getElementById('modalMensagem');
@@ -421,9 +476,19 @@
         e.preventDefault();
 
         const tipo = document.querySelector('input[name="tipo"]:checked').value;
+        const nome = document.getElementById('nomeUsuario').value.trim();
+        const identificacao = document.getElementById('identificacao').value.trim();
         const login = document.getElementById('loginUsuario').value.trim();
         const justificativa = document.getElementById('justificativa').value.trim();
 
+        if (!nome) {
+            alert('Preencha o Nome do Usuário.');
+            return;
+        }
+        if (!identificacao) {
+            alert('Preencha o campo de identificação (RF ou RG).');
+            return;
+        }
         if (!login) {
             alert('Preencha o Login de Usuário.');
             return;
@@ -436,7 +501,9 @@
         const mensagem = `Chamado de ativação de acesso enviado com sucesso!
 
 Tipo de Usuário: ${tipo}
-Login de Usuário: ${login}
+Nome: ${nome}
+${labelIdentificacao.textContent.replace(' *', '')}: ${identificacao}
+Login: ${login}
 
 Justificativa: ${justificativa}`;
 
