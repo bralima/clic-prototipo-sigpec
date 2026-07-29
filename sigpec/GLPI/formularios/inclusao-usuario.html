@@ -374,6 +374,12 @@
                 <div class="helper" id="helperIdentificacao"></div>
             </div>
 
+            <!-- Justificativa para Dados do Usuário (obrigatório) -->
+            <div class="campo">
+                <label for="justificativaUsuario">Justificativa para Dados do Usuário <span class="obrigatorio">*</span></label>
+                <input type="text" id="justificativaUsuario" placeholder="Descreva a justificativa para os dados do usuário" />
+            </div>
+
             <!-- Padrão de Acesso (multiselect com tags, obrigatório) -->
             <div class="campo">
                 <label>Padrão de Acesso <span class="obrigatorio">*</span></label>
@@ -389,6 +395,12 @@
                     </div>
                 </div>
                 <input type="hidden" id="padroesSelecionados" value="" />
+            </div>
+
+            <!-- Justificativa para Padrão de Acesso (obrigatório) -->
+            <div class="campo">
+                <label for="justificativaPadrao">Justificativa para Padrão de Acesso <span class="obrigatorio">*</span></label>
+                <input type="text" id="justificativaPadrao" placeholder="Descreva a justificativa para o padrão de acesso" />
             </div>
 
             <!-- Perfil de Setor (multiselect com tags, obrigatório) -->
@@ -408,10 +420,10 @@
                 <input type="hidden" id="perfisSelecionados" value="" />
             </div>
 
-            <!-- Justificativa (obrigatório) -->
+            <!-- Justificativa para Perfil de Setor (obrigatório) -->
             <div class="campo">
-                <label for="justificativa">Justificativa <span class="obrigatorio">*</span></label>
-                <input type="text" id="justificativa" placeholder="Descreva a justificativa para esta solicitação" />
+                <label for="justificativaPerfil">Justificativa para Perfil de Setor <span class="obrigatorio">*</span></label>
+                <input type="text" id="justificativaPerfil" placeholder="Descreva a justificativa para o perfil de setor" />
             </div>
 
             <!-- Botão Enviar -->
@@ -602,11 +614,15 @@
     // ===== EVENTO DE ENVIO =====
     document.getElementById('btnEnviar').addEventListener('click', function(e) {
         e.preventDefault();
+
         const tipo = document.querySelector('input[name="tipo"]:checked').value;
         const nome = document.getElementById('nome').value.trim();
         const identificacao = document.getElementById('identificacao').value.trim();
-        const justificativa = document.getElementById('justificativa').value.trim();
+        const justUsuario = document.getElementById('justificativaUsuario').value.trim();
+        const justPadrao = document.getElementById('justificativaPadrao').value.trim();
+        const justPerfil = document.getElementById('justificativaPerfil').value.trim();
 
+        // Validações
         if (!nome) {
             alert('Preencha o Nome Completo.');
             return;
@@ -623,18 +639,29 @@
             alert('Adicione pelo menos um Perfil de Setor.');
             return;
         }
-        if (!justificativa) {
-            alert('Preencha a Justificativa.');
+        if (!justUsuario) {
+            alert('Preencha a Justificativa para Dados do Usuário.');
+            return;
+        }
+        if (!justPadrao) {
+            alert('Preencha a Justificativa para Padrão de Acesso.');
+            return;
+        }
+        if (!justPerfil) {
+            alert('Preencha a Justificativa para Perfil de Setor.');
             return;
         }
 
         const mensagem = `Chamado de inclusão de usuário enviado com sucesso!\n\n` +
                          `Tipo: ${tipo}\nNome: ${nome}\nIdentificação: ${identificacao}\n` +
-                         `Padrões: ${tagsPadrao.join(', ')}\nPerfis: ${tagsPerfil.join(', ')}\nJustificativa: ${justificativa}`;
-        alert(mensagem);
-        // Redirecionar ou limpar
-    });
+                         `Padrões: ${tagsPadrao.join(', ')}\nPerfis: ${tagsPerfil.join(', ')}\n\n` +
+                         `Justificativa Dados: ${justUsuario}\n` +
+                         `Justificativa Padrão: ${justPadrao}\n` +
+                         `Justificativa Perfil: ${justPerfil}`;
 
+        alert(mensagem);
+        // Aqui você pode redirecionar ou limpar o formulário
+    });
 </script>
 
 </body>
