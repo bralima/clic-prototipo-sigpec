@@ -327,19 +327,21 @@
             color: var(--azul-sigpec);
         }
 
-        /* Botão */
+        /* ---------- BOTÃO SOLICITAR (AJUSTADO) ---------- */
         .botao-solicitar {
-            width: 100%;
+            display: block;
+            width: auto;
+            min-width: 200px;
+            margin: 10px auto 0;
             background: var(--azul-sigpec);
             color: #FFFFFF;
             border: none;
-            padding: 14px;
+            padding: 10px 28px;
             border-radius: 60px;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
             cursor: pointer;
             transition: background 0.2s, transform 0.1s;
-            margin-top: 4px;
         }
         .botao-solicitar:hover {
             background: #1e3f73;
@@ -493,8 +495,9 @@
                 font-size: 0.85rem;
             }
             .botao-solicitar {
-                font-size: 1.2rem;
-                padding: 12px;
+                font-size: 1rem;
+                padding: 8px 20px;
+                min-width: 160px;
             }
             .aviso-caixa {
                 flex-direction: column;
@@ -536,8 +539,9 @@
                 padding: 16px;
             }
             .botao-solicitar {
-                font-size: 1rem;
-                padding: 10px;
+                font-size: 0.9rem;
+                padding: 8px 16px;
+                min-width: 140px;
             }
             .termo-check {
                 font-size: 0.8rem;
@@ -589,7 +593,6 @@
                         A seleção da “Lotação” definirá quais formulários serão disponibilizados ao usuário.
                     </span>
                 </div>
-                <!-- Espaço adicional se necessário -->
             </div>
 
             <!-- COLUNA DIREITA – FORMULÁRIO -->
@@ -608,7 +611,7 @@
                         <input type="text" id="nome-responsavel" name="nome" placeholder="Fulano Silva Santos" required />
                     </div>
 
-                    <!-- Registro Funcional (RF) com ícone de info -->
+                    <!-- Registro Funcional (RF) -->
                     <div class="campo-cadastro">
                         <label for="rf-responsavel">
                             Registro Funcional (RF) *
@@ -620,7 +623,7 @@
                         <input type="text" id="rf-responsavel" name="rf" placeholder="Ex: 123456-7" required />
                     </div>
 
-                    <!-- E-mail do Responsável com ícone de info -->
+                    <!-- E-mail do Responsável -->
                     <div class="campo-cadastro">
                         <label for="email-responsavel">
                             E-mail do Responsável *
@@ -646,7 +649,7 @@
                         </select>
                     </div>
 
-                    <!-- E-mail do Coordenador com ícone de info -->
+                    <!-- E-mail do Coordenador -->
                     <div class="campo-cadastro">
                         <label for="email-coordenador">
                             E-mail do Coordenador/Chefia *
@@ -658,7 +661,7 @@
                         <input type="email" id="email-coordenador" name="email_coordenador" placeholder="ciclanalima@prefeitura.sp.gov.br" required />
                     </div>
 
-                    <!-- Checkbox de aceite com ícone de info -->
+                    <!-- Checkbox de aceite -->
                     <div class="termo-check">
                         <input type="checkbox" id="aceite-termos" name="aceite" required />
                         <label for="aceite-termos">
@@ -673,6 +676,7 @@
                         </label>
                     </div>
 
+                    <!-- Botão SOLICITAR (ajustado) -->
                     <button type="submit" class="botao-solicitar">SOLICITAR</button>
                 </form>
 
@@ -746,7 +750,8 @@
                 alert('Você precisa aceitar os termos para prosseguir.');
                 return false;
             }
-            alert('Solicitação enviada com sucesso! (protótipo)');
+            // Redireciona para a página de confirmação
+            window.location.href = 'solicitado.html';
             return false;
         }
     </script>
