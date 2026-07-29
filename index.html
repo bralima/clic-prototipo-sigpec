@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portal do Servidor – CLIC + GLP (Protótipo)</title>
+    <title>CLIC - Portal do Servidor (Protótipo)</title>
+    <!-- Favicon SVG inline -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23325FAA'/></svg>" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap" rel="stylesheet" />
     <style>
         /* =================================================================
-           CSS totalmente embutido – sem dependências externas
+           CSS totalmente embutido – sem dependências externas (exceto fontes)
            ================================================================= */
         :root {
             --azul-sigpec: #325FAA;
@@ -20,7 +23,7 @@
             --branco: #FFFFFF;
             --sombra-card: 3px 7px 4px rgba(0, 0, 0, 0.25);
             --raio-padrao: 8px;
-            --fonte: 'Roboto', 'Segoe UI', Arial, sans-serif;
+            --fonte: 'Open Sans', 'Roboto', 'Segoe UI', Arial, sans-serif;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -77,7 +80,7 @@
 
         .logo-svg {
             display: block;
-            height: 60px;
+            height: 80px;
             width: auto;
         }
 
@@ -130,6 +133,7 @@
             font-weight: 700;
             margin-bottom: 30px;
             text-transform: uppercase;
+            font-family: 'Open Sans', sans-serif;
         }
 
         /* ---------- NOTÍCIAS ---------- */
@@ -200,51 +204,67 @@
         .botao-secundario:hover { background: var(--cinza-borda); }
 
         /* ---------- PERFIS ---------- */
-        .perfis { padding: 40px 0; }
+        .perfis { padding: 40px 0; background: var(--branco); }
         .perfis__grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
         }
         .card-perfil {
-            padding: 10px;
+            border-radius: 34px;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 160px;
-            border-radius: var(--raio-padrao);
-            transition: background .2s;
+            padding: 20px 10px;
+            min-height: 225px;
+            transition: transform .2s, box-shadow .2s;
+            color: var(--branco);
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 800;
+            font-size: 25px;
+            line-height: 34px;
+            text-align: center;
+            position: relative;
+            box-shadow: var(--sombra-card);
         }
-        .card-perfil:hover { background: var(--cinza-claro); }
+        .card-perfil:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
         .card-perfil__icone {
             width: 120px;
             height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto;
+            margin-bottom: 8px;
         }
         .card-perfil__icone svg {
             width: 100%;
             height: 100%;
         }
         .card-perfil__rotulo {
-            margin-top: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-align: center;
-            color: var(--cinza-word);
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
         }
+        /* Cores de fundo por tipo */
+        .card-perfil--teal { background: var(--teal); }
+        .card-perfil--cinza { background: #737373; }
+        .card-perfil--azul { background: var(--azul-sigpec); }
 
-        /* ---------- ATALHOS (círculos) ---------- */
+        /* ---------- ATALHOS ---------- */
         .atalhos {
             padding: 60px 0;
             background: linear-gradient(180deg, transparent 0%, transparent 40%, var(--cinza-claro) 40%, var(--cinza-claro) 100%);
         }
         .atalhos__grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 30px;
             justify-items: center;
         }
@@ -255,21 +275,23 @@
             gap: 15px;
             text-align: center;
             transition: transform .2s;
+            max-width: 180px;
         }
         .card-atalho:hover { transform: translateY(-6px); }
         .card-atalho__circulo {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             box-shadow: var(--sombra-card);
+            background: var(--azul-medio);
         }
         .card-atalho__circulo svg {
-            width: 80%;
-            height: 80%;
+            width: 70%;
+            height: 70%;
         }
         .card-atalho__circulo--azul-claro { background: var(--azul-claro); }
         .card-atalho__circulo--azul       { background: var(--azul-medio); }
@@ -277,74 +299,8 @@
             font-weight: 700;
             color: var(--cinza-word);
             font-size: 1.1rem;
+            line-height: 1.3;
         }
-
-        /* ---------- SEÇÃO SUPORTE (GLP) ---------- */
-        .suporte {
-            padding: 40px 0;
-            background: var(--cinza-claro);
-        }
-        .suporte__grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-        .card-suporte {
-            background: var(--branco);
-            border-radius: var(--raio-padrao);
-            padding: 25px;
-            box-shadow: var(--sombra-card);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        .card-suporte h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: var(--azul-sigpec);
-        }
-        .card-suporte p {
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-        }
-        .botao-chamado {
-            display: inline-block;
-            background: var(--teal);
-            color: var(--branco);
-            padding: 10px 30px;
-            border-radius: 40px;
-            font-weight: 700;
-            transition: background .2s;
-        }
-        .botao-chamado:hover { background: #027a7e; }
-        .botao-chamado--secundario {
-            background: var(--azul-medio);
-        }
-        .botao-chamado--secundario:hover { background: #4a7fc7; }
-
-        .lista-chamados {
-            list-style: none;
-            text-align: left;
-            width: 100%;
-        }
-        .lista-chamados li {
-            padding: 8px 0;
-            border-bottom: 1px solid var(--cinza-claro);
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.9rem;
-        }
-        .lista-chamados li:last-child { border-bottom: 0; }
-        .status {
-            font-weight: 600;
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-        }
-        .status--andamento { background: #ffd966; color: #7a5d00; }
-        .status--resolvido { background: #a3d9a5; color: #1f5e21; }
-        .status--aberto    { background: #f4a6a6; color: #6b1a1a; }
 
         /* ---------- QUEM SOMOS ---------- */
         .quem-somos {
@@ -357,7 +313,7 @@
             width: 100%;
             height: auto;
             display: block;
-            background: #3a7bb5; /* fallback */
+            background: #3a7bb5;
         }
         .quem-somos .container {
             padding: 50px 20px;
@@ -401,6 +357,10 @@
         .rodape__logo {
             flex: 0 0 auto;
             line-height: 0;
+        }
+        .rodape__logo-img {
+            height: 80px;
+            width: auto;
         }
         .rodape__texto {
             flex: 1;
@@ -455,7 +415,6 @@
             .topo__conteudo { justify-content: center; }
             .topo__menu ul { justify-content: center; gap: 10px; }
             .topo__menu a { font-size: .9rem; }
-            .suporte__grid { grid-template-columns: 1fr; }
             .rodape__conteudo {
                 flex-direction: column;
                 text-align: center;
@@ -463,8 +422,9 @@
             }
             .rodape__atencao-lista { text-align: left; padding-left: 20px; }
             .rodape__redes { grid-template-columns: repeat(3, 1fr); }
-            .card-atalho__circulo { width: 120px; height: 120px; }
-            .card-perfil__icone { width: 80px; height: 80px; }
+            .card-atalho__circulo { width: 130px; height: 130px; }
+            .card-perfil__icone { width: 90px; height: 90px; }
+            .card-perfil { min-height: 180px; font-size: 20px; }
         }
     </style>
 </head>
@@ -473,24 +433,21 @@
     <!-- ========== TOPO ========== -->
     <header class="topo">
         <div class="container topo__conteudo">
-            <a href="index.html" class="topo__logo" aria-label="Portal do Servidor">
-                <!-- Logo em SVG (texto estilizado) -->
-                <svg class="logo-svg" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="200" height="60" fill="none" />
-                    <text x="10" y="38" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#325FAA">CLIC</text>
-                    <text x="85" y="38" font-family="Arial, sans-serif" font-size="14" fill="#565555">+</text>
-                    <text x="100" y="38" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#03989E">GLP</text>
-                    <text x="10" y="54" font-family="Arial, sans-serif" font-size="10" fill="#6EABFA">Portal do Servidor</text>
+            <a href="index.html" class="topo__logo" aria-label="CLIC - Página Inicial">
+                <!-- Logo CLIC (SVG fornecido) -->
+                <svg class="logo-svg" viewBox="0 0 2440 536" xmlns="http://www.w3.org/2000/svg">
+                    <use href="#logoClic" />
                 </svg>
             </a>
             <nav class="topo__menu" aria-label="Menu principal">
                 <ul>
                     <li><a href="index.html" class="ativo">Página Inicial</a></li>
                     <li><a href="#" onclick="return linkExterno()">Quem Somos</a></li>
-                    <li><a href="#" onclick="return linkExterno()">Mapa do Portal</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Mapa da CLIC</a></li>
                     <li><a href="#" onclick="return linkExterno()">Fale com a COGEP</a></li>
-                    <li><a href="#" onclick="return linkExterno()">Fale com a COTIC</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Fale com sua URH</a></li>
                     <li><a href="#" onclick="return linkExterno()">Links Úteis</a></li>
+                    <li><a href="#" onclick="return linkExterno()">Glossário</a></li>
                 </ul>
             </nav>
         </div>
@@ -499,10 +456,10 @@
     <main>
         <!-- ========== BUSCA ========== -->
         <section class="busca">
-            <form class="busca__form" action="#" method="GET" role="search" onsubmit="return alert('Busca desabilitada no protótipo.')">
+            <form class="busca__form" action="#" method="GET" role="search" onsubmit="return alert('Funcionalidade de busca desabilitada neste protótipo.')">
                 <label for="campo-busca" class="sr-only">Pesquisar</label>
                 <input type="text" id="campo-busca" name="s" class="busca__input"
-                       placeholder="O que você está procurando? (ex: licença, chamado, holerite)" autocomplete="off" />
+                       placeholder="O que você está procurando?" autocomplete="off" />
                 <button type="submit" class="busca__botao" aria-label="Pesquisar">
                     <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
                         <path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.5 6.5 0 1 0 13 15.5l.27.28v.79l5 5 1.5-1.5-5-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/>
@@ -511,7 +468,7 @@
             </form>
         </section>
 
-        <!-- ========== NOTÍCIAS (CLIC) ========== -->
+        <!-- ========== NOTÍCIAS ========== -->
         <section class="noticias">
             <div class="container">
                 <h2 class="titulo-secao">CLIC NOTÍCIAS</h2>
@@ -569,61 +526,105 @@
         <!-- ========== PERFIS DE USUÁRIO ========== -->
         <section class="perfis">
             <div class="container">
-                <h2 class="titulo-secao">CLIC NO SEU PERFIL</h2>
+                <h2 class="titulo-secao">CLIC NO SEU PERFIL DE USUÁRIO</h2>
                 <div class="perfis__grid">
-                    <a href="#" onclick="return linkExterno()" class="card-perfil">
+                    <!-- Área das URHs -->
+                    <a href="#" onclick="return linkExterno()" class="card-perfil card-perfil--teal">
                         <div class="card-perfil__icone">
-                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="40" r="20" fill="#03989E" />
-                                <circle cx="50" cy="80" r="28" fill="#03989E" />
-                                <text x="50" y="52" font-family="Arial" font-size="10" fill="white" text-anchor="middle">URH</text>
+                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Mão -->
+                                <path d="M70 130 Q80 90 100 85 Q120 90 130 130 L130 160 Q100 180 70 160 Z" fill="white" opacity="0.9"/>
+                                <!-- Pessoas -->
+                                <circle cx="80" cy="70" r="18" fill="white" />
+                                <circle cx="100" cy="60" r="22" fill="white" />
+                                <circle cx="120" cy="70" r="18" fill="white" />
+                                <!-- Corpos -->
+                                <rect x="65" y="85" width="30" height="25" rx="10" fill="white" />
+                                <rect x="85" y="78" width="30" height="30" rx="10" fill="white" />
+                                <rect x="105" y="85" width="30" height="25" rx="10" fill="white" />
+                                <!-- Círculo borda -->
+                                <circle cx="100" cy="90" r="55" fill="none" stroke="white" stroke-width="4" stroke-dasharray="10 10" />
                             </svg>
                         </div>
-                        <span class="card-perfil__rotulo">Área das URHs</span>
+                        <span class="card-perfil__rotulo">ÁREA DAS URHS</span>
                     </a>
 
-                    <a href="#" onclick="return linkExterno()" class="card-perfil">
+                    <!-- Servidores Ativos -->
+                    <a href="#" onclick="return linkExterno()" class="card-perfil card-perfil--cinza">
                         <div class="card-perfil__icone">
-                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="40" r="20" fill="#565555" />
-                                <circle cx="50" cy="80" r="28" fill="#565555" />
-                                <text x="50" y="52" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Ativo</text>
+                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Pessoa estilo emoji -->
+                                <circle cx="100" cy="70" r="30" fill="white" />
+                                <rect x="70" y="95" width="60" height="60" rx="20" fill="white" />
+                                <!-- Verificado Twitter -->
+                                <circle cx="130" cy="50" r="15" fill="#1DA1F2" />
+                                <path d="M126 50 l3 4 l7 -7" stroke="white" stroke-width="3" fill="none" />
                             </svg>
                         </div>
-                        <span class="card-perfil__rotulo">Servidores Ativos</span>
+                        <span class="card-perfil__rotulo">SERVIDORES ATIVOS</span>
                     </a>
 
-                    <a href="#" onclick="return linkExterno()" class="card-perfil">
+                    <!-- Servidores Aposentados -->
+                    <a href="#" onclick="return linkExterno()" class="card-perfil card-perfil--cinza">
                         <div class="card-perfil__icone">
-                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="40" r="20" fill="#C0C0C0" />
-                                <circle cx="50" cy="80" r="28" fill="#C0C0C0" />
-                                <text x="50" y="52" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Apos.</text>
+                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Árvore -->
+                                <rect x="90" y="110" width="20" height="40" fill="#8B4513" />
+                                <circle cx="100" cy="90" r="30" fill="#2E8B57" />
+                                <circle cx="80" cy="100" r="20" fill="#2E8B57" />
+                                <circle cx="120" cy="100" r="20" fill="#2E8B57" />
+                                <!-- Sol -->
+                                <circle cx="40" cy="40" r="20" fill="#FFD700" />
+                                <!-- Mar -->
+                                <path d="M0 150 Q30 140 60 150 Q90 160 120 150 Q150 140 200 150 L200 200 L0 200 Z" fill="#1E90FF" />
                             </svg>
                         </div>
-                        <span class="card-perfil__rotulo">Servidores Aposentados</span>
+                        <span class="card-perfil__rotulo">SERVIDORES APOSENTADOS</span>
                     </a>
 
-                    <a href="#" onclick="return linkExterno()" class="card-perfil">
+                    <!-- Cidadãos -->
+                    <a href="#" onclick="return linkExterno()" class="card-perfil card-perfil--cinza">
                         <div class="card-perfil__icone">
-                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="40" r="20" fill="#6EABFA" />
-                                <circle cx="50" cy="80" r="28" fill="#6EABFA" />
-                                <text x="50" y="52" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Cidadão</text>
+                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <!-- 5 bonecos -->
+                                <!-- grupo esquerdo -->
+                                <circle cx="50" cy="80" r="12" fill="white" />
+                                <rect x="40" y="90" width="20" height="25" rx="8" fill="white" />
+                                <circle cx="30" cy="70" r="10" fill="white" opacity="0.7" />
+                                <rect x="22" y="78" width="16" height="20" rx="6" fill="white" opacity="0.7" />
+                                <circle cx="70" cy="70" r="10" fill="white" opacity="0.7" />
+                                <rect x="62" y="78" width="16" height="20" rx="6" fill="white" opacity="0.7" />
+                                <!-- grupo direito -->
+                                <circle cx="150" cy="80" r="12" fill="white" />
+                                <rect x="140" y="90" width="20" height="25" rx="8" fill="white" />
+                                <circle cx="130" cy="70" r="10" fill="white" opacity="0.7" />
+                                <rect x="122" y="78" width="16" height="20" rx="6" fill="white" opacity="0.7" />
+                                <circle cx="170" cy="70" r="10" fill="white" opacity="0.7" />
+                                <rect x="162" y="78" width="16" height="20" rx="6" fill="white" opacity="0.7" />
+                                <!-- boneco central com cabeça azul -->
+                                <circle cx="100" cy="60" r="18" fill="#325FAA" />
+                                <rect x="82" y="75" width="36" height="40" rx="12" fill="white" />
                             </svg>
                         </div>
-                        <span class="card-perfil__rotulo">Cidadãos</span>
+                        <span class="card-perfil__rotulo">CIDADÃOS</span>
                     </a>
 
-                    <a href="#" onclick="return linkExterno()" class="card-perfil">
+                    <!-- Suporte SIGPEC -->
+                    <a href="#" onclick="return linkExterno()" class="card-perfil card-perfil--azul">
                         <div class="card-perfil__icone">
-                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="20" y="30" width="60" height="40" fill="#325FAA" rx="6" />
-                                <circle cx="50" cy="50" r="10" fill="white" />
-                                <text x="50" y="55" font-family="Arial" font-size="10" fill="#325FAA" text-anchor="middle">SIGPEC</text>
+                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Círculo branco -->
+                                <circle cx="100" cy="100" r="70" fill="white" />
+                                <!-- Headset -->
+                                <path d="M50 100 Q50 50 100 50 Q150 50 150 100" stroke="#325FAA" stroke-width="12" fill="none" />
+                                <rect x="40" y="90" width="25" height="30" rx="8" fill="#325FAA" />
+                                <rect x="135" y="90" width="25" height="30" rx="8" fill="#325FAA" />
+                                <rect x="45" y="115" width="15" height="20" rx="5" fill="#325FAA" />
+                                <rect x="140" y="115" width="15" height="20" rx="5" fill="#325FAA" />
+                                <circle cx="100" cy="60" r="10" fill="#325FAA" />
                             </svg>
                         </div>
-                        <span class="card-perfil__rotulo">Suporte SIGPEC</span>
+                        <span class="card-perfil__rotulo">SUPORTE SIGPEC</span>
                     </a>
                 </div>
             </div>
@@ -633,46 +634,71 @@
         <section class="atalhos">
             <div class="container">
                 <div class="atalhos__grid">
+                    <!-- Painel Gestão de Pessoas -->
                     <a href="#" onclick="return linkExterno()" class="card-atalho">
                         <div class="card-atalho__circulo card-atalho__circulo--azul-claro">
                             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="15" y="20" width="70" height="60" fill="white" rx="8" />
-                                <line x1="25" y1="35" x2="75" y2="35" stroke="#325FAA" stroke-width="4" />
-                                <line x1="25" y1="50" x2="60" y2="50" stroke="#325FAA" stroke-width="4" />
-                                <line x1="25" y1="65" x2="70" y2="65" stroke="#325FAA" stroke-width="4" />
+                                <rect x="15" y="15" width="70" height="50" rx="4" fill="white" />
+                                <rect x="25" y="25" width="12" height="10" fill="#325FAA" />
+                                <rect x="42" y="25" width="12" height="10" fill="#325FAA" />
+                                <rect x="59" y="25" width="12" height="10" fill="#325FAA" />
+                                <rect x="25" y="40" width="12" height="10" fill="#325FAA" />
+                                <rect x="42" y="40" width="12" height="10" fill="#325FAA" />
+                                <rect x="59" y="40" width="12" height="10" fill="#325FAA" />
+                                <rect x="35" y="65" width="30" height="15" rx="2" fill="white" />
                             </svg>
                         </div>
                         <span class="card-atalho__titulo">PAINEL<br />GESTÃO DE PESSOAS</span>
                     </a>
 
+                    <!-- Acesso ao Holerite -->
                     <a href="#" onclick="return linkExterno()" class="card-atalho">
                         <div class="card-atalho__circulo card-atalho__circulo--azul">
                             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="20" y="30" width="60" height="40" fill="white" rx="4" />
-                                <text x="50" y="55" font-family="Arial" font-size="14" fill="#325FAA" text-anchor="middle">R$</text>
+                                <!-- Pasta -->
+                                <rect x="20" y="35" width="60" height="45" rx="3" fill="#FFD700" />
+                                <rect x="20" y="35" width="60" height="8" rx="2" fill="#FFA500" />
+                                <!-- Folha saindo -->
+                                <rect x="35" y="25" width="30" height="20" rx="2" fill="white" />
+                                <line x1="40" y1="30" x2="60" y2="30" stroke="#ccc" stroke-width="2" />
+                                <line x1="40" y1="35" x2="55" y2="35" stroke="#ccc" stroke-width="2" />
+                                <!-- Cadeado -->
+                                <rect x="42" y="50" width="16" height="14" rx="2" fill="#325FAA" />
+                                <circle cx="50" cy="54" r="3" fill="white" />
+                                <path d="M45 50 Q45 44 50 44 Q55 44 55 50" stroke="#325FAA" stroke-width="3" fill="none" />
                             </svg>
                         </div>
                         <span class="card-atalho__titulo">ACESSO AO<br />HOLERITE</span>
                     </a>
 
+                    <!-- Datas Importantes -->
                     <a href="#" onclick="return linkExterno()" class="card-atalho">
                         <div class="card-atalho__circulo card-atalho__circulo--azul">
                             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="15" y="15" width="70" height="70" fill="white" rx="10" />
-                                <text x="50" y="58" font-family="Arial" font-size="30" fill="#325FAA" text-anchor="middle">📅</text>
+                                <!-- Calendário -->
+                                <rect x="15" y="20" width="70" height="55" rx="4" fill="white" />
+                                <rect x="15" y="20" width="70" height="12" rx="2" fill="#FF6347" />
+                                <rect x="25" y="15" width="8" height="8" fill="#ccc" />
+                                <rect x="67" y="15" width="8" height="8" fill="#ccc" />
+                                <text x="30" y="45" font-family="Arial" font-size="14" fill="#333">20</text>
+                                <text x="55" y="45" font-family="Arial" font-size="14" fill="#333">OUT</text>
+                                <!-- Relógio -->
+                                <circle cx="70" cy="70" r="18" fill="#325FAA" />
+                                <circle cx="70" cy="70" r="14" fill="white" />
+                                <rect x="69" y="60" width="2" height="10" fill="#325FAA" />
+                                <rect x="70" y="67" width="8" height="2" fill="#325FAA" />
                             </svg>
                         </div>
                         <span class="card-atalho__titulo">DATAS IMPORTANTES<br />E FERIADOS</span>
                     </a>
 
+                    <!-- Agendamento de Salas (Ponto de Afeto) -->
                     <a href="#" onclick="return linkExterno()" class="card-atalho">
                         <div class="card-atalho__circulo card-atalho__circulo--azul-claro">
                             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="10" y="20" width="80" height="60" fill="white" rx="4" />
-                                <rect x="20" y="30" width="25" height="15" fill="#325FAA" rx="2" />
-                                <rect x="55" y="30" width="25" height="15" fill="#325FAA" rx="2" />
-                                <rect x="20" y="55" width="25" height="15" fill="#325FAA" rx="2" />
-                                <rect x="55" y="55" width="25" height="15" fill="#325FAA" rx="2" />
+                                <circle cx="50" cy="50" r="40" fill="white" />
+                                <!-- Coração (ponto de afeto) -->
+                                <path d="M50 35 Q35 20 25 30 Q15 40 25 55 L50 80 L75 55 Q85 40 75 30 Q65 20 50 35 Z" fill="#FF6B6B" />
                             </svg>
                         </div>
                         <span class="card-atalho__titulo">AGENDAMENTO<br />DE SALAS</span>
@@ -681,52 +707,28 @@
             </div>
         </section>
 
-        <!-- ========== SUPORTE TÉCNICO (GLP) ========== -->
-        <section class="suporte">
-            <div class="container">
-                <h2 class="titulo-secao">SUPORTE TÉCNICO – GLP</h2>
-                <div class="suporte__grid">
-                    <div class="card-suporte">
-                        <h3>🛠️ Abrir Chamado</h3>
-                        <p>Problemas com sistemas, rede, equipamentos ou outros serviços de TI?</p>
-                        <a href="#" onclick="return linkExterno()" class="botao-chamado">ABRIR CHAMADO</a>
-                    </div>
-                    <div class="card-suporte">
-                        <h3>📋 Meus Chamados</h3>
-                        <p>Acompanhe os chamados abertos recentemente:</p>
-                        <ul class="lista-chamados">
-                            <li><span>#2026-1234 – Impressora fora de linha</span> <span class="status status--andamento">Em andamento</span></li>
-                            <li><span>#2026-1230 – Acesso ao SIGPEC</span> <span class="status status--resolvido">Resolvido</span></li>
-                            <li><span>#2026-1225 – E-mail corporativo</span> <span class="status status--aberto">Aberto</span></li>
-                            <li><span>#2026-1218 – VPN não conecta</span> <span class="status status--resolvido">Resolvido</span></li>
-                        </ul>
-                        <a href="#" onclick="return linkExterno()" class="botao-chamado botao-chamado--secundario" style="margin-top:15px;">VER TODOS</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- ========== QUEM SOMOS ========== -->
         <section class="quem-somos">
-            <!-- SVG ilustrativo (banner) -->
+            <!-- SVG conceitual (banner) -->
             <svg class="quem-somos__imagem" viewBox="0 0 1300 150" xmlns="http://www.w3.org/2000/svg">
                 <rect width="1300" height="150" fill="#3a7bb5" />
                 <text x="50%" y="55%" font-family="Arial" font-size="28" fill="white" text-anchor="middle" font-weight="700">
-                    CLIC + GLP – União de informações e suporte ao servidor
+                    CLIC – Central de Informações e Apoio
                 </text>
                 <text x="50%" y="80%" font-family="Arial" font-size="16" fill="#d9e6f2" text-anchor="middle">
-                    Central de Informações e Apoio (COGEP) · Gestão de Chamados Técnicos (COTIC)
+                    COGEP/SEGES – Prefeitura de São Paulo
                 </text>
             </svg>
 
             <div class="container">
                 <h2>QUEM SOMOS?</h2>
                 <p>
-                    O <strong>Portal do Servidor</strong> integra a <strong>CLIC</strong> (Central de Informações e Apoio da COGEP/SEGES)
-                    com o <strong>GLP</strong> (Sistema de Chamados da COTIC/SEGES). Aqui você encontra informações sobre sua vida funcional,
-                    direitos, benefícios, além de abrir e acompanhar chamados técnicos de infraestrutura, sistemas e redes.
+                    A <strong>Central de Informações e Apoio (CLIC)</strong> é a nova plataforma da
+                    Coordenadoria de Gestão de Pessoas (COGEP/SEGES) para facilitar a interação com
+                    os servidores e com as unidades responsáveis pelos recursos humanos nas
+                    Secretarias e Subprefeituras.
                 </p>
-                <a href="#" onclick="return linkExterno()" class="botao-destaque">SAIBA MAIS SOBRE O PORTAL</a>
+                <a href="#" onclick="return linkExterno()" class="botao-destaque">SAIBA MAIS SOBRE A CLIC</a>
             </div>
         </section>
     </main>
@@ -735,28 +737,21 @@
     <footer class="rodape">
         <div class="container rodape__conteudo">
             <div class="rodape__logo">
-                <!-- Logo Prefeitura em SVG -->
-                <svg width="200" height="80" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="200" height="80" fill="none" />
-                    <text x="10" y="35" font-family="Arial" font-size="22" font-weight="700" fill="#325FAA">PREFEITURA</text>
-                    <text x="10" y="58" font-family="Arial" font-size="18" fill="#03989E">SÃO PAULO</text>
-                    <text x="10" y="73" font-family="Arial" font-size="10" fill="#565555">SEGES · COGEP · COTIC</text>
+                <!-- Logo Prefeitura (SVG fornecido) -->
+                <svg class="rodape__logo-img" viewBox="0 0 2000 550" xmlns="http://www.w3.org/2000/svg">
+                    <use href="#logoPref" />
                 </svg>
             </div>
             <div class="rodape__texto">
-                <p><strong>CLIC + GLP – Portal do Servidor</strong></p>
+                <p><strong>CLIC - Central de Informações e Apoio da COGEP/SEGES</strong></p>
                 <p>
-                    Contate a CLIC pelo <a href="#" onclick="return linkExterno()">Fale com a COGEP</a> ou pelo e-mail
+                    Contate a CLIC pelo <a href="#" onclick="return linkExterno()" class="link-fale">Fale Com a COGEP</a> ou pelo e-mail
                     <a href="mailto:clic@prefeitura.sp.gov.br">clic@prefeitura.sp.gov.br</a>
-                </p>
-                <p>
-                    Para suporte técnico (GLP): <a href="#" onclick="return linkExterno()">Fale com a COTIC</a> ou
-                    <a href="mailto:suporte@prefeitura.sp.gov.br">suporte@prefeitura.sp.gov.br</a>
                 </p>
                 <p><strong>ATENÇÃO:</strong></p>
                 <ul class="rodape__atencao-lista">
                     <li>Questões específicas sobre a vida funcional devem ser direcionadas à sua Unidade de Recursos Humanos.</li>
-                    <li>Demandas técnicas devem ser abertas via GLP (chamados).</li>
+                    <li>Para demandas sobre serviços de outros órgãos, verifique na página consultando o canal de contato.</li>
                 </ul>
             </div>
             <div class="rodape__redes" aria-label="Redes sociais">
@@ -781,17 +776,17 @@
             </div>
         </div>
         <div class="rodape__copyright">
-            Copyright © Prefeitura de São Paulo – SEGES/COTIC 2026 – Protótipo unificado CLIC + GLP
+            Copyright © Prefeitura de São Paulo - SEGES/COTIC 2026
         </div>
     </footer>
 
-    <script>
-        // Função auxiliar para links placeholder
-        function linkExterno() {
-            alert('Este é um protótipo estático. A funcionalidade será implementada futuramente.');
-            return false;
-        }
-    </script>
-
-</body>
-</html>
+    <!-- ========== DEFINIÇÕES SVG (logos) ========== -->
+    <svg style="display:none;" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <!-- Logo CLIC -->
+            <g id="logoClic">
+                <rect width="2440" height="536" fill="url(#patternClic)"/>
+                <pattern id="patternClic" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <use href="#imageClic" transform="scale(0.000409836 0.00186567)"/>
+                </pattern>
+                <image id="imageClic" width="2440" height="536" preserveAspectRatio="none" xlink:href="data:image/png;base64,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1X/+V/9d//N//X//n/8R/+w/8I//X/8X/9X/0f/+f/7n/8T/6L/+i//v/9l//8f/oX/rv//r/77//H//J/9D/4j//Df/3f/Od/+j//J/+5f/k//P/9r/+Lf/+f/7f/rX/7f/+/+R//x//T//i/++/+x//4P/jf/c//m3/j//H/9O//+d/+z/6f/8P/6f/1f/f/+d/+3/4f/9P/7D/77//X/8P/4X/4n/3P/6v/5//7P/of/Z//9//7/+9//j/8T//T/+y/+M/+0//iv/5v/3f/t//jf/qf/Y/+i//sP/2v/6v/7r//H/73/9v/6n/1f/s//h//v//7/+5/+r/+P/7T/+S/+q/+2//+v/kf/y//+/8T/9t/99/8t//V/+r//b/9n//T/+1//9/+7/+f/9O//e//2//hf/Yv/qv/y//+v/3f/sf/8X/6f/7//f/+Z/+z//F/9r/+3//T/+X/9X/5//w//1/+j//L/+X/+r//7//H//X//H//v/7v//P/4f/4P/9f/2//1//r/+3/9n/7H/6n/9f/7f/6f/2//7f/v//H//H/+j//P/+3/9v/4X//f/7f/p//9//T//5/+t/+b//H//H/+r/+P/+3//1/+//9//3f/rf/5//5//r//L//3//X//P/+v/+v//P//P//r/9v//v//f/+//+//3//P/8f/9//r//3//v/+f//f/5f/7//n/+v/6f/8//8//1//v//P/+f/7f/5//7//n//n//n/+v/6f//f/5//7//n//H//P//f/5//7//3/+f/8//9//7//H//P//f/5//7//n//n//n/+f/6//7//3//P//f/9//3//P//f/+//7//n//P/+//5//7//3/+f/+//9//3//P//f/9//z//X//f/8//9//3//P//f/9//3//P//f/9//3//v/+//7//n//v/+//7//v/+f/+//7//n//v/+//7//v/+f/+//7//v/+v/+//7//v/+f/+//7//v/+f/+//7//v/+v/+//7//v/+f/+//7//v/+v/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+v/+//7//v/+f/+//7//v/+f/+//7//v/+v/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7//v/+f/+//7
