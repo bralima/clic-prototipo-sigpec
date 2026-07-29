@@ -4,12 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CLIC - Portal do Servidor (Protótipo)</title>
-    <!-- Favicon SVG inline -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23325FAA'/></svg>" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap" rel="stylesheet" />
     <style>
         /* =================================================================
-           CSS totalmente embutido
+           CSS embutido
            ================================================================= */
         :root {
             --azul-sigpec: #325FAA;
@@ -56,6 +55,7 @@
             background: var(--branco);
             box-shadow: 0 2px 4px rgba(0,0,0,0.08);
             padding: 15px 0;
+            position: relative;
         }
         .topo__conteudo {
             display: flex;
@@ -79,6 +79,8 @@
             color: var(--cinza-word);
             letter-spacing: 0;
         }
+
+        /* Menu desktop */
         .topo__menu ul {
             display: flex;
             flex-wrap: wrap;
@@ -92,6 +94,17 @@
         }
         .topo__menu a:hover,
         .topo__menu a.ativo { color: var(--azul-sigpec); }
+
+        /* Botão hambúrguer (oculto em desktop) */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--azul-sigpec);
+            cursor: pointer;
+            padding: 0 10px;
+        }
 
         /* ---------- BUSCA ---------- */
         .busca {
@@ -212,37 +225,37 @@
         }
         .botao-secundario:hover { background: var(--cinza-borda); }
 
-        /* ---------- PERFIS (retângulos horizontais) ---------- */
+        /* ---------- PERFIS (retângulos menores, 4 por linha) ---------- */
         .perfis { padding: 40px 0; background: var(--branco); }
         .perfis__grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
         }
         .card-perfil {
             border-radius: 12px;
             overflow: hidden;
             display: flex;
             align-items: center;
-            gap: 16px;
-            padding: 16px 20px;
-            min-height: 100px;
+            gap: 12px;
+            padding: 12px 16px;
+            min-height: 70px;
             transition: transform .2s, box-shadow .2s;
             color: var(--branco);
             font-family: 'Open Sans', sans-serif;
             font-weight: 800;
-            font-size: 1rem;
+            font-size: 0.85rem;
             box-shadow: var(--sombra-card);
-            background: var(--cinza-word); /* fallback */
+            background: var(--cinza-word);
         }
         .card-perfil:hover {
-            transform: translateY(-4px);
+            transform: translateY(-3px);
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
         .card-perfil__icone {
-            flex: 0 0 60px;
-            width: 60px;
-            height: 60px;
+            flex: 0 0 45px;
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -252,26 +265,25 @@
             height: 100%;
         }
         .card-perfil__rotulo {
-            font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+            font-size: clamp(0.7rem, 0.9vw, 0.9rem);
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
             line-height: 1.2;
             flex: 1;
         }
-        /* Cores de fundo */
         .card-perfil--teal { background: var(--teal); }
         .card-perfil--cinza { background: #737373; }
         .card-perfil--azul { background: var(--azul-sigpec); }
 
-        /* ---------- ATALHOS (círculos menores) ---------- */
+        /* ---------- ATALHOS (círculos maiores) ---------- */
         .atalhos {
             padding: 50px 0;
             background: linear-gradient(180deg, transparent 0%, transparent 40%, var(--cinza-claro) 40%, var(--cinza-claro) 100%);
         }
         .atalhos__grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 20px;
             justify-items: center;
         }
@@ -279,15 +291,15 @@
             display: flex;
             flex-direction: column-reverse;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-align: center;
             transition: transform .2s;
-            max-width: 150px;
+            max-width: 170px;
         }
         .card-atalho:hover { transform: translateY(-6px); }
         .card-atalho__circulo {
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -305,7 +317,7 @@
         .card-atalho__titulo {
             font-weight: 700;
             color: var(--cinza-word);
-            font-size: 0.9rem;
+            font-size: 1rem;
             line-height: 1.3;
         }
 
@@ -385,19 +397,73 @@
         }
 
         /* ---------- RESPONSIVO ---------- */
+        @media (max-width: 1024px) {
+            .perfis__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
-            .topo__conteudo { justify-content: center; }
-            .topo__menu ul { justify-content: center; gap: 10px; }
-            .topo__menu a { font-size: .9rem; }
+            .menu-toggle {
+                display: block;
+            }
+            .topo__menu {
+                display: none;
+                width: 100%;
+                flex-basis: 100%;
+            }
+            .topo__menu.open {
+                display: block;
+            }
+            .topo__menu ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                padding: 10px 0;
+            }
+            .topo__conteudo {
+                flex-wrap: wrap;
+            }
+            .topo__logo {
+                font-size: 1.5rem;
+            }
+            .topo__logo small {
+                font-size: 0.7rem;
+            }
+            .perfis__grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .card-perfil {
+                min-height: 60px;
+                padding: 10px 12px;
+                font-size: 0.75rem;
+            }
+            .card-perfil__icone {
+                flex: 0 0 38px;
+                width: 38px;
+                height: 38px;
+            }
+            .card-atalho__circulo {
+                width: 120px;
+                height: 120px;
+            }
             .rodape__conteudo {
                 flex-direction: column;
                 text-align: center;
                 align-items: center;
             }
             .rodape__atencao-lista { text-align: left; padding-left: 20px; }
-            .card-perfil { min-height: 80px; padding: 12px 16px; }
-            .card-perfil__icone { flex: 0 0 50px; width: 50px; height: 50px; }
-            .card-atalho__circulo { width: 100px; height: 100px; }
+        }
+
+        @media (max-width: 480px) {
+            .perfis__grid {
+                grid-template-columns: 1fr;
+            }
+            .card-atalho__circulo {
+                width: 100px;
+                height: 100px;
+            }
         }
     </style>
 </head>
@@ -410,7 +476,8 @@
                 CLIC
                 <small>Central de Informações e Apoio</small>
             </a>
-            <nav class="topo__menu" aria-label="Menu principal">
+            <button class="menu-toggle" aria-label="Abrir menu" onclick="toggleMenu()">☰</button>
+            <nav class="topo__menu" aria-label="Menu principal" id="menuNav">
                 <ul>
                     <li><a href="index.html" class="ativo">Página Inicial</a></li>
                     <li><a href="#" onclick="return linkExterno()">Quem Somos</a></li>
@@ -494,7 +561,7 @@
             </div>
         </section>
 
-        <!-- ========== PERFIS DE USUÁRIO (horizontal) ========== -->
+        <!-- ========== PERFIS DE USUÁRIO ========== -->
         <section class="perfis">
             <div class="container">
                 <h2 class="titulo-secao">CLIC NO SEU PERFIL DE USUÁRIO</h2>
@@ -704,7 +771,11 @@
     </footer>
 
     <script>
-        // Função auxiliar para links placeholder
+        function toggleMenu() {
+            var menu = document.getElementById('menuNav');
+            menu.classList.toggle('open');
+        }
+
         function linkExterno() {
             alert('Este é um protótipo estático. A funcionalidade será implementada futuramente.');
             return false;
