@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exclusão de Padrão - GLPI SIGPEC</title>
+    <title>Exclusão de Setor - GLPI SIGPEC</title>
     <style>
         /* ===== RESET E BASE ===== */
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -161,9 +161,6 @@
             font-size: 11px;
             color: #666;
             margin-top: 2px;
-        }
-        .form-card .campo .helper .icone-aviso {
-            color: #f57c00;
         }
         .form-card .acoes {
             padding: 16px 24px;
@@ -385,7 +382,7 @@
         <div class="breadcrumb">
             <svg class="home-icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
             <span>Home /</span>
-            <span style="color:#000;">Serviços / Exclusão de Padrão</span>
+            <span style="color:#000;">Serviços / Exclusão de Setor</span>
         </div>
         <div class="usuario-dropdown">
             <span>Usuário</span>
@@ -398,8 +395,8 @@
         <div class="form-card">
             <!-- Título -->
             <div class="titulo">
-                <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-                Exclusão de Padrão
+                <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                Exclusão de Setor
             </div>
             <div class="dados-chamado">Dados do Chamado</div>
 
@@ -415,27 +412,21 @@
                 <input type="text" id="loginUsuario" placeholder="Digite o login do usuário" />
             </div>
 
-            <!-- Padrão de Acesso a ser excluído (multiselect) -->
+            <!-- Perfil de Setor a ser excluído (multiselect) -->
             <div class="campo">
-                <label>Padrão de Acesso a ser excluído <span class="obrigatorio">*</span></label>
-                <div class="multiselect-wrapper" id="multiselectContainerPadrao">
+                <label>Perfil de Setor a ser excluído <span class="obrigatorio">*</span></label>
+                <div class="multiselect-wrapper" id="multiselectContainerPerfil">
                     <div class="multiselect-control">
-                        <select id="selectPadrao">
-                            <option value="">Selecione um padrão</option>
+                        <select id="selectPerfil">
+                            <option value="">Selecione um perfil</option>
                         </select>
-                        <button type="button" id="btnAdicionarPadrao">Adicionar</button>
+                        <button type="button" id="btnAdicionarPerfil">Adicionar</button>
                     </div>
-                    <div class="multiselect-tags" id="tagsContainerPadrao">
-                        <span class="vazio">Nenhum padrão selecionado</span>
+                    <div class="multiselect-tags" id="tagsContainerPerfil">
+                        <span class="vazio">Nenhum perfil selecionado</span>
                     </div>
                 </div>
-                <input type="hidden" id="padroesSelecionados" value="" />
-            </div>
-
-            <!-- Justificativa -->
-            <div class="campo">
-                <label for="justificativa">Justificativa <span class="obrigatorio">*</span></label>
-                <input type="text" id="justificativa" placeholder="Descreva a justificativa para a exclusão do padrão" />
+                <input type="hidden" id="perfisSelecionados" value="" />
             </div>
 
             <!-- Botão Enviar -->
@@ -457,18 +448,18 @@
 </div>
 
 <script>
-    // ===== LISTA DE PADRÕES =====
-    const padroes = [
-        "BASICO", "CONSULTA_GERAL", "Ergon", "AHM_PARCELAMEN", "CADASTRO",
-        "DEBITOS", "FOLHA_UNIDADES", "APOS/EXONER", "SEG HOLERITE", "AUX_FUNERAL",
-        "ACESSO_WEB"
+    // ===== LISTA DE PERFIS DE SETOR =====
+    const perfis = [
+        "CMSP", "GERAL", "IPREM", "PENSIONISTA", "SFMSP", "TCMSP",
+        "AHM_GERAL", "MUNICIPALIZADOS", "SMS", "IPREM_APOS", "APOS_SME",
+        "SME", "AFASTADOS", "AHM-JSH", "AMLURB"
     ];
 
     // ===== ELEMENTOS =====
-    const selectPadrao = document.getElementById('selectPadrao');
-    const btnAdicionarPadrao = document.getElementById('btnAdicionarPadrao');
-    const tagsContainerPadrao = document.getElementById('tagsContainerPadrao');
-    const hiddenPadroes = document.getElementById('padroesSelecionados');
+    const selectPerfil = document.getElementById('selectPerfil');
+    const btnAdicionarPerfil = document.getElementById('btnAdicionarPerfil');
+    const tagsContainerPerfil = document.getElementById('tagsContainerPerfil');
+    const hiddenPerfis = document.getElementById('perfisSelecionados');
 
     // ===== POPULAR SELECT =====
     function popularSelect(select, opcoes) {
@@ -485,52 +476,52 @@
         });
     }
 
-    popularSelect(selectPadrao, padroes);
+    popularSelect(selectPerfil, perfis);
 
     // ===== COMPONENTE DE SELEÇÃO MÚLTIPLA =====
-    let tagsPadrao = [];
+    let tagsPerfil = [];
 
     function renderizarTags() {
-        tagsContainerPadrao.innerHTML = '';
-        if (tagsPadrao.length === 0) {
-            tagsContainerPadrao.innerHTML = '<span class="vazio">Nenhum padrão selecionado</span>';
-            hiddenPadroes.value = '';
+        tagsContainerPerfil.innerHTML = '';
+        if (tagsPerfil.length === 0) {
+            tagsContainerPerfil.innerHTML = '<span class="vazio">Nenhum perfil selecionado</span>';
+            hiddenPerfis.value = '';
             return;
         }
-        tagsPadrao.forEach(tag => {
+        tagsPerfil.forEach(tag => {
             const span = document.createElement('span');
             span.className = 'tag';
             span.innerHTML = `${tag} <span class="remove" data-value="${tag}">×</span>`;
-            tagsContainerPadrao.appendChild(span);
+            tagsContainerPerfil.appendChild(span);
         });
-        hiddenPadroes.value = tagsPadrao.join(', ');
+        hiddenPerfis.value = tagsPerfil.join(', ');
 
-        document.querySelectorAll('#tagsContainerPadrao .tag .remove').forEach(el => {
+        document.querySelectorAll('#tagsContainerPerfil .tag .remove').forEach(el => {
             el.addEventListener('click', function() {
                 const valor = this.getAttribute('data-value');
-                tagsPadrao = tagsPadrao.filter(t => t !== valor);
+                tagsPerfil = tagsPerfil.filter(t => t !== valor);
                 renderizarTags();
-                const option = selectPadrao.querySelector(`option[value="${valor}"]`);
+                const option = selectPerfil.querySelector(`option[value="${valor}"]`);
                 if (option) option.disabled = false;
             });
         });
     }
 
-    btnAdicionarPadrao.addEventListener('click', function() {
-        const valor = selectPadrao.value;
+    btnAdicionarPerfil.addEventListener('click', function() {
+        const valor = selectPerfil.value;
         if (!valor) {
-            alert('Selecione um padrão para adicionar.');
+            alert('Selecione um perfil para adicionar.');
             return;
         }
-        if (tagsPadrao.includes(valor)) {
-            alert('Este padrão já foi adicionado.');
+        if (tagsPerfil.includes(valor)) {
+            alert('Este perfil já foi adicionado.');
             return;
         }
-        tagsPadrao.push(valor);
+        tagsPerfil.push(valor);
         renderizarTags();
-        const option = selectPadrao.querySelector(`option[value="${valor}"]`);
+        const option = selectPerfil.querySelector(`option[value="${valor}"]`);
         if (option) option.disabled = true;
-        selectPadrao.value = '';
+        selectPerfil.value = '';
     });
 
     // ===== MODAL =====
@@ -562,7 +553,6 @@
 
         const nomeUsuario = document.getElementById('nomeUsuario').value.trim();
         const loginUsuario = document.getElementById('loginUsuario').value.trim();
-        const justificativa = document.getElementById('justificativa').value.trim();
 
         if (!nomeUsuario) {
             alert('Preencha o Nome de Usuário.');
@@ -572,23 +562,17 @@
             alert('Preencha o Login de Usuário.');
             return;
         }
-        if (tagsPadrao.length === 0) {
-            alert('Adicione pelo menos um Padrão de Acesso para exclusão.');
-            return;
-        }
-        if (!justificativa) {
-            alert('Preencha a Justificativa.');
+        if (tagsPerfil.length === 0) {
+            alert('Adicione pelo menos um Perfil de Setor para exclusão.');
             return;
         }
 
-        const mensagem = `Chamado de exclusão de padrão enviado com sucesso!
+        const mensagem = `Chamado de exclusão de setor enviado com sucesso!
 
 Nome de Usuário: ${nomeUsuario}
 Login de Usuário: ${loginUsuario}
 
-Padrões a serem excluídos: ${tagsPadrao.join(', ')}
-
-Justificativa: ${justificativa}`;
+Perfis a serem excluídos: ${tagsPerfil.join(', ')}`;
 
         exibirModal(mensagem);
     });
