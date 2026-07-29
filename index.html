@@ -223,39 +223,44 @@
         }
         .botao-secundario:hover { background: var(--cinza-borda); }
 
-        /* ---------- PERFIS (compactos, com quebra de linha) ---------- */
+        /* ---------- PERFIS (4 colunas, 5º centralizado) ---------- */
         .perfis { padding: 40px 0; background: var(--branco); }
         .perfis__grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
-            max-width: 900px;
+            gap: 12px;
+            max-width: 800px;
             margin: 0 auto;
         }
+        /* 5º card ocupa as duas colunas centrais */
+        .perfis__grid .card-perfil:last-child {
+            grid-column: 2 / 4;
+        }
+
         .card-perfil {
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 10px 14px;
-            min-height: 60px;
+            gap: 8px;
+            padding: 8px 12px;
+            min-height: 52px;
             transition: transform .2s, box-shadow .2s;
             color: var(--branco);
             font-family: 'Open Sans', sans-serif;
             font-weight: 800;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             box-shadow: var(--sombra-card);
             background: var(--cinza-word);
         }
         .card-perfil:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
         .card-perfil__icone {
-            flex: 0 0 40px;
-            width: 40px;
-            height: 40px;
+            flex: 0 0 34px;
+            width: 34px;
+            height: 34px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -265,7 +270,7 @@
             height: 100%;
         }
         .card-perfil__rotulo {
-            font-size: clamp(0.65rem, 0.8vw, 0.85rem);
+            font-size: clamp(0.6rem, 0.7vw, 0.75rem);
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.2px;
@@ -400,7 +405,10 @@
         @media (max-width: 1024px) {
             .perfis__grid {
                 grid-template-columns: repeat(2, 1fr);
-                max-width: 600px;
+                max-width: 500px;
+            }
+            .perfis__grid .card-perfil:last-child {
+                grid-column: auto;
             }
         }
 
@@ -436,15 +444,18 @@
                 max-width: 100%;
                 gap: 10px;
             }
+            .perfis__grid .card-perfil:last-child {
+                grid-column: auto;
+            }
             .card-perfil {
-                min-height: 55px;
-                padding: 8px 12px;
-                font-size: 0.7rem;
+                min-height: 48px;
+                padding: 6px 10px;
+                font-size: 0.65rem;
             }
             .card-perfil__icone {
-                flex: 0 0 34px;
-                width: 34px;
-                height: 34px;
+                flex: 0 0 30px;
+                width: 30px;
+                height: 30px;
             }
             .card-atalho__circulo {
                 width: 120px;
@@ -563,7 +574,7 @@
             </div>
         </section>
 
-        <!-- ========== PERFIS DE USUÁRIO (compactos com quebra de linha) ========== -->
+        <!-- ========== PERFIS DE USUÁRIO ========== -->
         <section class="perfis">
             <div class="container">
                 <h2 class="titulo-secao">CLIC NO SEU PERFIL DE USUÁRIO</h2>
