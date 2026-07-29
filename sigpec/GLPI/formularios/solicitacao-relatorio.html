@@ -183,6 +183,15 @@
         .form-card .campo .helper .icone-aviso {
             color: #f57c00;
         }
+        .form-card .campo-responsavel {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr;
+            gap: 12px;
+            padding: 0 24px 12px 24px;
+        }
+        .form-card .campo-responsavel .campo {
+            padding: 0;
+        }
         .form-card .checkbox-ciencia {
             display: flex;
             align-items: flex-start;
@@ -304,6 +313,12 @@
         }
 
         /* ===== RESPONSIVO ===== */
+        @media (max-width: 600px) {
+            .form-card .campo-responsavel {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+        }
         @media (max-width: 480px) {
             .menu-lateral { width: 60px; padding: 20px 10px; }
             .menu-lateral .requisicoes .item span { display: none; }
@@ -394,10 +409,20 @@
                 <textarea id="justificativaDados" placeholder="Aplique o princípio da minimização (art. 6º, III)"></textarea>
             </div>
 
-            <!-- Responsável pelo tratamento -->
-            <div class="campo">
-                <label for="responsavel">Indicação do responsável pelo tratamento dos dados no âmbito da unidade <span class="obrigatorio">*</span></label>
-                <input type="text" id="responsavel" placeholder="Nome completo e cargo do responsável" />
+            <!-- Responsável pelo tratamento (3 campos) -->
+            <div class="campo-responsavel">
+                <div class="campo">
+                    <label for="nomeResponsavel">Nome do Responsável <span class="obrigatorio">*</span></label>
+                    <input type="text" id="nomeResponsavel" placeholder="Nome completo" />
+                </div>
+                <div class="campo">
+                    <label for="rfResponsavel">RF <span class="obrigatorio">*</span></label>
+                    <input type="text" id="rfResponsavel" placeholder="RF" />
+                </div>
+                <div class="campo">
+                    <label for="cargoResponsavel">Cargo <span class="obrigatorio">*</span></label>
+                    <input type="text" id="cargoResponsavel" placeholder="Cargo" />
+                </div>
             </div>
 
             <!-- Checkbox de ciência -->
@@ -457,7 +482,9 @@
         const finalidade = document.getElementById('finalidade').value.trim();
         const baseLegal = document.getElementById('baseLegal').value.trim();
         const justificativaDados = document.getElementById('justificativaDados').value.trim();
-        const responsavel = document.getElementById('responsavel').value.trim();
+        const nome = document.getElementById('nomeResponsavel').value.trim();
+        const rf = document.getElementById('rfResponsavel').value.trim();
+        const cargo = document.getElementById('cargoResponsavel').value.trim();
         const ciente = document.getElementById('cienteLGPD').checked;
 
         if (!finalidade) {
@@ -472,8 +499,16 @@
             alert('Preencha a Justificativa da necessidade dos dados.');
             return;
         }
-        if (!responsavel) {
-            alert('Preencha a Indicação do responsável.');
+        if (!nome) {
+            alert('Preencha o Nome do Responsável.');
+            return;
+        }
+        if (!rf) {
+            alert('Preencha o RF do Responsável.');
+            return;
+        }
+        if (!cargo) {
+            alert('Preencha o Cargo do Responsável.');
             return;
         }
         if (!ciente) {
@@ -486,7 +521,12 @@
 Finalidade específica: ${finalidade}
 Base legal: ${baseLegal}
 Justificativa da necessidade: ${justificativaDados}
-Responsável pelo tratamento: ${responsavel}
+
+Responsável:
+Nome: ${nome}
+RF: ${rf}
+Cargo: ${cargo}
+
 Ciência LGPD: Sim`;
 
         exibirModal(mensagem);
