@@ -391,6 +391,12 @@
                 Para viabilizar o fornecimento, solicitamos que a demanda seja complementada com as informações abaixo.
             </div>
 
+            <!-- NOVO CAMPO: Descrição do Relatório Solicitado -->
+            <div class="campo">
+                <label for="descricaoRelatorio">Descrição do Relatório Solicitado <span class="obrigatorio">*</span></label>
+                <textarea id="descricaoRelatorio" placeholder="Descreva detalhadamente qual relatório está sendo solicitado (ex: relação de aposentados da Subprefeitura com e-mail e telefone)"></textarea>
+            </div>
+
             <!-- Finalidade específica -->
             <div class="campo">
                 <label for="finalidade">Finalidade específica da extração e do envio do comunicado <span class="obrigatorio">*</span></label>
@@ -479,6 +485,7 @@
     document.getElementById('btnEnviar').addEventListener('click', function(e) {
         e.preventDefault();
 
+        const descricao = document.getElementById('descricaoRelatorio').value.trim();
         const finalidade = document.getElementById('finalidade').value.trim();
         const baseLegal = document.getElementById('baseLegal').value.trim();
         const justificativaDados = document.getElementById('justificativaDados').value.trim();
@@ -487,6 +494,10 @@
         const cargo = document.getElementById('cargoResponsavel').value.trim();
         const ciente = document.getElementById('cienteLGPD').checked;
 
+        if (!descricao) {
+            alert('Preencha a Descrição do Relatório Solicitado.');
+            return;
+        }
         if (!finalidade) {
             alert('Preencha a Finalidade específica.');
             return;
@@ -518,6 +529,7 @@
 
         const mensagem = `Solicitação de relatório enviada com sucesso!
 
+Descrição do Relatório: ${descricao}
 Finalidade específica: ${finalidade}
 Base legal: ${baseLegal}
 Justificativa da necessidade: ${justificativaDados}
