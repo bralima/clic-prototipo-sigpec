@@ -16,7 +16,7 @@
             overflow: hidden;
         }
 
-        /* ===== MENU LATERAL FIXO ===== */
+        /* ===== MENU LATERAL FIXO (SIMPLES - USUÁRIO) ===== */
         .menu-lateral {
             position: fixed;
             top: 0;
@@ -35,64 +35,32 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 12px;
         }
-        .menu-lateral .menu-categoria {
+        .menu-lateral .menu-item {
             color: #FFFFFF;
-            font-size: 13px;
+            font-size: 14px;
             cursor: pointer;
-            padding: 4px 0;
+            padding: 6px 8px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            transition: 0.1s;
-        }
-        .menu-lateral .menu-categoria:hover {
-            background: rgba(255,255,255,0.08);
-        }
-        .menu-lateral .menu-categoria .menu-icone {
-            width: 18px;
-            height: 18px;
-            fill: #FFFFFF;
-            flex-shrink: 0;
-        }
-        .menu-lateral .menu-categoria .menu-seta {
-            margin-left: auto;
-            transition: transform 0.2s;
-            font-size: 12px;
-        }
-        .menu-lateral .menu-categoria .menu-seta.aberta {
-            transform: rotate(90deg);
-        }
-
-        .menu-lateral .menu-subitens {
-            display: none;
-            flex-direction: column;
-            padding-left: 26px;
-            gap: 4px;
-            width: 100%;
-            margin-bottom: 4px;
-        }
-        .menu-lateral .menu-subitens.aberto {
-            display: flex;
-        }
-        .menu-lateral .menu-subitens .menu-subitem {
-            color: #FFFFFF;
-            font-size: 12px;
+            gap: 10px;
             text-decoration: none;
-            padding: 3px 0;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: 0.1s;
+            border-radius: 4px;
+            transition: 0.15s;
         }
-        .menu-lateral .menu-subitens .menu-subitem:hover {
+        .menu-lateral .menu-item:hover {
             background: rgba(255,255,255,0.1);
-            padding-left: 4px;
         }
-        .menu-lateral .menu-subitens .menu-subitem.ativo {
+        .menu-lateral .menu-item.ativo {
             font-weight: 600;
             background: rgba(255,255,255,0.15);
+        }
+        .menu-lateral .menu-item .menu-icone {
+            width: 20px;
+            height: 20px;
+            fill: #FFFFFF;
+            flex-shrink: 0;
         }
 
         .menu-lateral .menu-recolher {
@@ -102,7 +70,7 @@
             color: #FFFFFF;
             font-size: 14px;
             cursor: pointer;
-            padding-top: 10px;
+            padding-top: 12px;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
@@ -248,12 +216,7 @@
 
         .status-badge { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; }
         .status-badge .circle { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-        .circle-aberto { background: #28a745; }  /* verde */
-        .circle-novo { background: #28a745; }
-        .circle-atendimento { background: #007bff; }
-        .circle-pendente { background: #fd7e14; }
-        .circle-resolvido { background: #17a2b8; }
-        .circle-fechado { background: #6c757d; }
+        .circle-aberto { background: #28a745; }
 
         .entidade {
             background: rgba(217,217,217,0.5);
@@ -275,11 +238,8 @@
 
         @media (max-width: 768px) {
             .menu-lateral { width: 60px; padding: 20px 10px; }
-            .menu-lateral .menu-categoria span:not(.menu-seta) { display: none; }
-            .menu-lateral .menu-subitens { padding-left: 10px; }
-            .menu-lateral .menu-subitens .menu-subitem span { display: none; }
+            .menu-lateral .menu-item span { display: none; }
             .menu-lateral .menu-recolher span { display: none; }
-            .menu-lateral .menu-categoria .menu-seta { display: none; }
             .conteudo-wrapper { margin-left: 60px; padding: 12px; }
             .filtros-status { padding: 10px; }
             .filtros-avancados .linha-cima,
@@ -295,40 +255,18 @@
 </head>
 <body>
 
-<!-- ===== MENU LATERAL FIXO (estilo técnico) ===== -->
+<!-- ===== MENU LATERAL FIXO (USUÁRIO) ===== -->
 <div class="menu-lateral">
     <div class="menu-requisicoes">
-        <!-- Assistência -->
-        <div class="menu-categoria" data-target="sub-assistencia">
+        <!-- Serviços (link para o dashboard) -->
+        <a href="dashboard.html" class="menu-item">
             <svg class="menu-icone" viewBox="0 0 24 24"><path d="M12 1C7.58 1 4 4.58 4 9v3c0 4.42 3.58 8 8 8s8-3.58 8-8v-3c0-4.42-3.58-8-8-8zm0 2c3.31 0 6 2.69 6 6v3c0 3.31-2.69 6-6 6s-6-2.69-6-6v-3c0-3.31 2.69-6 6-6z"/></svg>
-            <span>Assistência</span>
-            <span class="menu-seta aberta">▼</span>
-        </div>
-        <div class="menu-subitens aberto" id="sub-assistencia">
-            <a href="meus-chamados.html" class="menu-subitem ativo"><span>Meus Chamados</span></a>
-            <!-- link para criar chamado pode ser adicionado depois -->
-        </div>
-
-        <!-- Gerência (opcional, mantido para consistência) -->
-        <div class="menu-categoria" data-target="sub-gerencia">
+            <span>Serviços</span>
+        </a>
+        <!-- Meus Chamados (ativo) -->
+        <div class="menu-item ativo">
             <svg class="menu-icone" viewBox="0 0 24 24"><path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"/></svg>
-            <span>Gerência</span>
-            <span class="menu-seta">▶</span>
-        </div>
-        <div class="menu-subitens" id="sub-gerencia">
-            <a href="#" class="menu-subitem"><span>Padrão de Acesso</span></a>
-            <a href="#" class="menu-subitem"><span>Perfil de Setor</span></a>
-        </div>
-
-        <!-- Administração -->
-        <div class="menu-categoria" data-target="sub-administracao">
-            <svg class="menu-icone" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 2c4.41 0 8 3.59 8 8s-3.59 8-8 8-8-3.59-8-8 3.59-8 8-8zm-1 12h2v-2h-2v2zm0-4h2V7h-2v5z"/></svg>
-            <span>Administração</span>
-            <span class="menu-seta">▶</span>
-        </div>
-        <div class="menu-subitens" id="sub-administracao">
-            <a href="#" class="menu-subitem"><span>Usuários</span></a>
-            <a href="#" class="menu-subitem"><span>Grupos</span></a>
+            <span>Meus Chamados</span>
         </div>
     </div>
 
@@ -345,7 +283,6 @@
         <div class="breadcrumb">
             <svg class="home-icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
             <span>Home /</span>
-            <span>Assistência /</span>
             <span style="color:#1A397A; font-weight:600;">Meus Chamados</span>
         </div>
         <div class="usuario-dropdown">
@@ -481,15 +418,13 @@
 
         let html = '';
         dados.forEach(c => {
-            const statusClass = 'circle-aberto'; // todos abertos
-
             html += `
                 <tr>
                     <td class="nome-chamado">${c.nome}</td>
                     <td><strong>${c.id}</strong></td>
                     <td>
                         <span class="status-badge">
-                            <span class="circle ${statusClass}"></span>
+                            <span class="circle circle-aberto"></span>
                             ${c.status}
                         </span>
                     </td>
@@ -516,7 +451,6 @@
 
         document.querySelector('.filtro-status-item.todos').textContent = `${total} Todos`;
         document.querySelector('.filtro-status-item.novo').textContent = `${abertos} Novo`;
-        // os demais ficam com 0 pois não há outros status
         document.querySelector('.filtro-status-item.atribuido').textContent = '0 Atribuído';
         document.querySelector('.filtro-status-item.aguardando').textContent = '0 Aguardando';
         document.querySelector('.filtro-status-item.validar').textContent = '0 Validar';
@@ -530,26 +464,6 @@
     document.addEventListener('DOMContentLoaded', function() {
         renderizarTabela(chamados);
         atualizarContagens(chamados);
-    });
-
-    // ============================================================
-    // INTERAÇÃO: Menu lateral (toggle)
-    // ============================================================
-    document.querySelectorAll('.menu-categoria[data-target]').forEach(cat => {
-        cat.addEventListener('click', function(e) {
-            const targetId = this.dataset.target;
-            const sub = document.getElementById(targetId);
-            if (sub) {
-                sub.classList.toggle('aberto');
-                const seta = this.querySelector('.menu-seta');
-                if (seta) seta.classList.toggle('aberta');
-            }
-        });
-    });
-
-    document.querySelector('.menu-recolher')?.addEventListener('click', function() {
-        document.querySelectorAll('.menu-subitens').forEach(s => s.classList.remove('aberto'));
-        document.querySelectorAll('.menu-seta').forEach(s => s.classList.remove('aberta'));
     });
 
     // Filtros de status (visual)
