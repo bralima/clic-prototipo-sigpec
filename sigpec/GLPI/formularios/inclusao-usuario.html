@@ -157,11 +157,6 @@
             font-family: 'Inter', sans-serif;
             background: #FFFFFF;
         }
-        .form-card .campo .aviso {
-            font-size: 11px;
-            color: #d32f2f;
-            margin-top: 2px;
-        }
         .form-card .campo .helper {
             font-size: 11px;
             color: #666;
@@ -285,7 +280,7 @@
             font-size: 13px;
         }
 
-        /* ===== MODAL PERSONALIZADO (CENTRALIZADO) ===== */
+        /* ===== MODAL PERSONALIZADO ===== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -369,9 +364,6 @@
             .menu-lateral { width: 60px; padding: 20px 10px; }
             .menu-lateral .requisicoes .item span { display: none; }
             .menu-lateral .recolher span { display: none; }
-            .multiselect-control { flex-wrap: wrap; }
-            .multiselect-control select { flex: 1 1 100%; }
-            .multiselect-control button { flex: 1; }
             .modal-content { padding: 28px 18px; }
             .modal-content h2 { font-size: 22px; }
             .modal-content .btn-modal { padding: 10px 32px; font-size: 16px; }
@@ -443,26 +435,52 @@
                 </div>
             </div>
 
+            <!-- Nome Social (Sim/Não) -->
+            <div class="campo">
+                <label>Possui nome social? <span class="obrigatorio">*</span></label>
+                <div class="campo-radio" id="nomeSocialOpcao">
+                    <label><input type="radio" name="nomeSocial" value="sim" /> Sim</label>
+                    <label><input type="radio" name="nomeSocial" value="nao" checked /> Não</label>
+                </div>
+            </div>
+
+            <!-- Campo Nome Social (condicional) -->
+            <div class="campo" id="campoNomeSocial" style="display:none;">
+                <label for="nomeSocialInput">Nome Social <span class="obrigatorio">*</span></label>
+                <input type="text" id="nomeSocialInput" placeholder="Digite o nome social" />
+            </div>
+
             <!-- Nome Completo -->
             <div class="campo">
                 <label for="nome">Nome Completo <span class="obrigatorio">*</span></label>
                 <input type="text" id="nome" placeholder="Digite o nome completo" />
             </div>
 
-            <!-- Campo de identificação (dinâmico) -->
+            <!-- Registro Funcional (antigo Registro / Vínculo) -->
             <div class="campo campo-identificacao" id="campoIdentificacao">
-                <label for="identificacao" id="labelIdentificacao">Registro Funcional (RF)<span class="obrigatorio">*</span></label>
-                <input type="text" id="identificacao" placeholder="Digite o registro ou vínculo" />
+                <label for="identificacao" id="labelIdentificacao">Registro Funcional <span class="obrigatorio">*</span></label>
+                <input type="text" id="identificacao" placeholder="Digite o registro funcional" />
                 <div class="helper" id="helperIdentificacao"></div>
             </div>
 
-            <!-- Justificativa para Dados do Usuário -->
+            <!-- Justificativa para Dados do Usuário (select com opções) -->
             <div class="campo">
-                <label for="justificativaUsuario">Justificativa para Inclusão do Usuário <span class="obrigatorio">*</span></label>
-                <input type="text" id="justificativaUsuario" placeholder="Descreva a justificativa para os dados do usuário" />
+                <label for="justificativaUsuario">Justificativa para Dados do Usuário <span class="obrigatorio">*</span></label>
+                <select id="justificativaUsuario">
+                    <option value="">Selecione...</option>
+                    <option value="Solicitação de novo acesso">Solicitação de novo acesso</option>
+                    <option value="Alteração de permissões">Alteração de permissões</option>
+                    <option value="Correção de dados">Correção de dados</option>
+                    <option value="Desligamento de servidor">Desligamento de servidor</option>
+                    <option value="Reintegração">Reintegração</option>
+                    <option value="Outro">Outro</option>
+                </select>
+                <div id="outroJustificativaUsuario" style="display:none; margin-top:4px;">
+                    <input type="text" id="outroJustificativaUsuarioInput" placeholder="Descreva a justificativa..." style="width:100%; padding:8px 10px; border:1px solid #D9DBDE; border-radius:4px; font-size:13px;" />
+                </div>
             </div>
 
-            <!-- Padrão de Acesso (multiselect com tags) -->
+            <!-- Padrão de Acesso (multiselect) -->
             <div class="campo">
                 <label>Padrão de Acesso <span class="obrigatorio">*</span></label>
                 <div class="multiselect-wrapper" id="multiselectContainerPadrao">
@@ -479,13 +497,24 @@
                 <input type="hidden" id="padroesSelecionados" value="" />
             </div>
 
-            <!-- Justificativa para Padrão de Acesso -->
+            <!-- Justificativa para Padrão de Acesso (select com opções) -->
             <div class="campo">
                 <label for="justificativaPadrao">Justificativa para Padrão de Acesso <span class="obrigatorio">*</span></label>
-                <input type="text" id="justificativaPadrao" placeholder="Descreva a justificativa para o padrão de acesso" />
+                <select id="justificativaPadrao">
+                    <option value="">Selecione...</option>
+                    <option value="Solicitação de novo acesso">Solicitação de novo acesso</option>
+                    <option value="Alteração de permissões">Alteração de permissões</option>
+                    <option value="Correção de dados">Correção de dados</option>
+                    <option value="Desligamento de servidor">Desligamento de servidor</option>
+                    <option value="Reintegração">Reintegração</option>
+                    <option value="Outro">Outro</option>
+                </select>
+                <div id="outroJustificativaPadrao" style="display:none; margin-top:4px;">
+                    <input type="text" id="outroJustificativaPadraoInput" placeholder="Descreva a justificativa..." style="width:100%; padding:8px 10px; border:1px solid #D9DBDE; border-radius:4px; font-size:13px;" />
+                </div>
             </div>
 
-            <!-- Perfil de Setor (multiselect com tags) -->
+            <!-- Perfil de Setor (multiselect) -->
             <div class="campo">
                 <label>Perfil de Setor <span class="obrigatorio">*</span></label>
                 <div class="multiselect-wrapper" id="multiselectContainerPerfil">
@@ -502,10 +531,21 @@
                 <input type="hidden" id="perfisSelecionados" value="" />
             </div>
 
-            <!-- Justificativa para Perfil de Setor -->
+            <!-- Justificativa para Perfil de Setor (select com opções) -->
             <div class="campo">
                 <label for="justificativaPerfil">Justificativa para Perfil de Setor <span class="obrigatorio">*</span></label>
-                <input type="text" id="justificativaPerfil" placeholder="Descreva a justificativa para o perfil de setor" />
+                <select id="justificativaPerfil">
+                    <option value="">Selecione...</option>
+                    <option value="Solicitação de novo acesso">Solicitação de novo acesso</option>
+                    <option value="Alteração de permissões">Alteração de permissões</option>
+                    <option value="Correção de dados">Correção de dados</option>
+                    <option value="Desligamento de servidor">Desligamento de servidor</option>
+                    <option value="Reintegração">Reintegração</option>
+                    <option value="Outro">Outro</option>
+                </select>
+                <div id="outroJustificativaPerfil" style="display:none; margin-top:4px;">
+                    <input type="text" id="outroJustificativaPerfilInput" placeholder="Descreva a justificativa..." style="width:100%; padding:8px 10px; border:1px solid #D9DBDE; border-radius:4px; font-size:13px;" />
+                </div>
             </div>
 
             <!-- Botão Enviar -->
@@ -547,11 +587,31 @@
     const inputIdentificacao = document.getElementById('identificacao');
     const helperIdentificacao = document.getElementById('helperIdentificacao');
 
+    // Nome Social
+    const nomeSocialRadios = document.querySelectorAll('input[name="nomeSocial"]');
+    const campoNomeSocial = document.getElementById('campoNomeSocial');
+    const nomeSocialInput = document.getElementById('nomeSocialInput');
+
+    // Justificativas - exibir campo "Outro"
+    const justificativaUsuarioSelect = document.getElementById('justificativaUsuario');
+    const outroJustificativaUsuario = document.getElementById('outroJustificativaUsuario');
+    const outroJustificativaUsuarioInput = document.getElementById('outroJustificativaUsuarioInput');
+
+    const justificativaPadraoSelect = document.getElementById('justificativaPadrao');
+    const outroJustificativaPadrao = document.getElementById('outroJustificativaPadrao');
+    const outroJustificativaPadraoInput = document.getElementById('outroJustificativaPadraoInput');
+
+    const justificativaPerfilSelect = document.getElementById('justificativaPerfil');
+    const outroJustificativaPerfil = document.getElementById('outroJustificativaPerfil');
+    const outroJustificativaPerfilInput = document.getElementById('outroJustificativaPerfilInput');
+
+    // Padrão
     const selectPadrao = document.getElementById('selectPadrao');
     const btnAdicionarPadrao = document.getElementById('btnAdicionarPadrao');
     const tagsContainerPadrao = document.getElementById('tagsContainerPadrao');
     const hiddenPadroes = document.getElementById('padroesSelecionados');
 
+    // Perfil
     const selectPerfil = document.getElementById('selectPerfil');
     const btnAdicionarPerfil = document.getElementById('btnAdicionarPerfil');
     const tagsContainerPerfil = document.getElementById('tagsContainerPerfil');
@@ -580,8 +640,8 @@
         helperIdentificacao.innerHTML = '';
         inputIdentificacao.value = '';
         if (tipo === 'Servidor' || tipo === 'Residente') {
-            labelIdentificacao.textContent = 'Registro / Vínculo *';
-            inputIdentificacao.placeholder = 'Digite o registro ou vínculo';
+            labelIdentificacao.textContent = 'Registro Funcional *';
+            inputIdentificacao.placeholder = 'Digite o registro funcional';
             helperIdentificacao.innerHTML = '';
         } else if (tipo === 'Estagiario') {
             labelIdentificacao.textContent = 'RG *';
@@ -594,17 +654,58 @@
         }
     }
 
+    // ===== EVENTO PARA RADIOS (Tipo de Usuário) =====
     radios.forEach(radio => {
         radio.addEventListener('change', function() {
-            if (this.checked) atualizarIdentificacao(this.value);
+            if (this.checked) {
+                atualizarIdentificacao(this.value);
+            }
         });
     });
 
+    // Inicializa com o valor padrão (Servidor)
     const inicial = document.querySelector('input[name="tipo"]:checked');
     if (inicial) atualizarIdentificacao(inicial.value);
 
+    // ===== NOME SOCIAL =====
+    nomeSocialRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.value === 'sim') {
+                campoNomeSocial.style.display = 'block';
+                nomeSocialInput.setAttribute('required', 'required');
+            } else {
+                campoNomeSocial.style.display = 'none';
+                nomeSocialInput.removeAttribute('required');
+                nomeSocialInput.value = '';
+            }
+        });
+    });
+
+    // ===== JUSTIFICATIVAS - EXIBIR CAMPO "OUTRO" =====
+    function toggleOutroJustificativa(select, container, input) {
+        if (select.value === 'Outro') {
+            container.style.display = 'block';
+            input.setAttribute('required', 'required');
+        } else {
+            container.style.display = 'none';
+            input.removeAttribute('required');
+            input.value = '';
+        }
+    }
+
+    justificativaUsuarioSelect.addEventListener('change', function() {
+        toggleOutroJustificativa(this, outroJustificativaUsuario, outroJustificativaUsuarioInput);
+    });
+    justificativaPadraoSelect.addEventListener('change', function() {
+        toggleOutroJustificativa(this, outroJustificativaPadrao, outroJustificativaPadraoInput);
+    });
+    justificativaPerfilSelect.addEventListener('change', function() {
+        toggleOutroJustificativa(this, outroJustificativaPerfil, outroJustificativaPerfilInput);
+    });
+
     // ===== COMPONENTE DE SELEÇÃO MÚLTIPLA (PADRÃO) =====
     let tagsPadrao = [];
+
     function renderizarTagsPadrao() {
         tagsContainerPadrao.innerHTML = '';
         if (tagsPadrao.length === 0) {
@@ -619,6 +720,7 @@
             tagsContainerPadrao.appendChild(span);
         });
         hiddenPadroes.value = tagsPadrao.join(', ');
+
         document.querySelectorAll('#tagsContainerPadrao .tag .remove').forEach(el => {
             el.addEventListener('click', function() {
                 const valor = this.getAttribute('data-value');
@@ -632,8 +734,14 @@
 
     btnAdicionarPadrao.addEventListener('click', function() {
         const valor = selectPadrao.value;
-        if (!valor) { alert('Selecione um padrão para adicionar.'); return; }
-        if (tagsPadrao.includes(valor)) { alert('Este padrão já foi adicionado.'); return; }
+        if (!valor) {
+            alert('Selecione um padrão para adicionar.');
+            return;
+        }
+        if (tagsPadrao.includes(valor)) {
+            alert('Este padrão já foi adicionado.');
+            return;
+        }
         tagsPadrao.push(valor);
         renderizarTagsPadrao();
         const option = selectPadrao.querySelector(`option[value="${valor}"]`);
@@ -643,6 +751,7 @@
 
     // ===== COMPONENTE DE SELEÇÃO MÚLTIPLA (PERFIL) =====
     let tagsPerfil = [];
+
     function renderizarTagsPerfil() {
         tagsContainerPerfil.innerHTML = '';
         if (tagsPerfil.length === 0) {
@@ -657,6 +766,7 @@
             tagsContainerPerfil.appendChild(span);
         });
         hiddenPerfis.value = tagsPerfil.join(', ');
+
         document.querySelectorAll('#tagsContainerPerfil .tag .remove').forEach(el => {
             el.addEventListener('click', function() {
                 const valor = this.getAttribute('data-value');
@@ -670,8 +780,14 @@
 
     btnAdicionarPerfil.addEventListener('click', function() {
         const valor = selectPerfil.value;
-        if (!valor) { alert('Selecione um perfil para adicionar.'); return; }
-        if (tagsPerfil.includes(valor)) { alert('Este perfil já foi adicionado.'); return; }
+        if (!valor) {
+            alert('Selecione um perfil para adicionar.');
+            return;
+        }
+        if (tagsPerfil.includes(valor)) {
+            alert('Este perfil já foi adicionado.');
+            return;
+        }
         tagsPerfil.push(valor);
         renderizarTagsPerfil();
         const option = selectPerfil.querySelector(`option[value="${valor}"]`);
@@ -696,7 +812,6 @@
 
     btnModalOk.addEventListener('click', fecharModalERedirecionar);
 
-    // Fechar modal ao clicar no overlay (fora da caixa)
     modalOverlay.addEventListener('click', function(e) {
         if (e.target === modalOverlay) {
             fecharModalERedirecionar();
@@ -708,26 +823,64 @@
         e.preventDefault();
 
         const tipo = document.querySelector('input[name="tipo"]:checked').value;
+        const nomeSocial = document.querySelector('input[name="nomeSocial"]:checked').value;
         const nome = document.getElementById('nome').value.trim();
         const identificacao = document.getElementById('identificacao').value.trim();
-        const justUsuario = document.getElementById('justificativaUsuario').value.trim();
-        const justPadrao = document.getElementById('justificativaPadrao').value.trim();
-        const justPerfil = document.getElementById('justificativaPerfil').value.trim();
 
-        if (!nome) { alert('Preencha o Nome Completo.'); return; }
-        if (!identificacao) { alert('Preencha o campo de identificação.'); return; }
-        if (tagsPadrao.length === 0) { alert('Adicione pelo menos um Padrão de Acesso.'); return; }
-        if (tagsPerfil.length === 0) { alert('Adicione pelo menos um Perfil de Setor.'); return; }
-        if (!justUsuario) { alert('Preencha a Justificativa para Dados do Usuário.'); return; }
-        if (!justPadrao) { alert('Preencha a Justificativa para Padrão de Acesso.'); return; }
-        if (!justPerfil) { alert('Preencha a Justificativa para Perfil de Setor.'); return; }
+        // Justificativas – pegar valor do select ou do campo "Outro"
+        let justUsuario = justificativaUsuarioSelect.value;
+        if (justUsuario === 'Outro') {
+            justUsuario = outroJustificativaUsuarioInput.value.trim();
+        }
+        let justPadrao = justificativaPadraoSelect.value;
+        if (justPadrao === 'Outro') {
+            justPadrao = outroJustificativaPadraoInput.value.trim();
+        }
+        let justPerfil = justificativaPerfilSelect.value;
+        if (justPerfil === 'Outro') {
+            justPerfil = outroJustificativaPerfilInput.value.trim();
+        }
 
-        // Monta a mensagem
+        // Validações
+        if (!nome) {
+            alert('Preencha o Nome Completo.');
+            return;
+        }
+        if (nomeSocial === 'sim' && !document.getElementById('nomeSocialInput').value.trim()) {
+            alert('Preencha o Nome Social.');
+            return;
+        }
+        if (!identificacao) {
+            alert('Preencha o campo de identificação.');
+            return;
+        }
+        if (tagsPadrao.length === 0) {
+            alert('Adicione pelo menos um Padrão de Acesso.');
+            return;
+        }
+        if (tagsPerfil.length === 0) {
+            alert('Adicione pelo menos um Perfil de Setor.');
+            return;
+        }
+        if (!justUsuario) {
+            alert('Preencha a Justificativa para Dados do Usuário.');
+            return;
+        }
+        if (!justPadrao) {
+            alert('Preencha a Justificativa para Padrão de Acesso.');
+            return;
+        }
+        if (!justPerfil) {
+            alert('Preencha a Justificativa para Perfil de Setor.');
+            return;
+        }
+
         const mensagem = `Chamado de inclusão de usuário enviado com sucesso!
 
 Tipo: ${tipo}
+Nome Social: ${nomeSocial === 'sim' ? document.getElementById('nomeSocialInput').value.trim() : 'Não informado'}
 Nome: ${nome}
-Identificação: ${identificacao}
+${labelIdentificacao.textContent.replace(' *', '')}: ${identificacao}
 
 Padrões: ${tagsPadrao.join(', ')}
 Perfis: ${tagsPerfil.join(', ')}
@@ -736,7 +889,6 @@ Justificativa Dados: ${justUsuario}
 Justificativa Padrão: ${justPadrao}
 Justificativa Perfil: ${justPerfil}`;
 
-        // Exibe o modal em vez do alert
         exibirModal(mensagem);
     });
 </script>
