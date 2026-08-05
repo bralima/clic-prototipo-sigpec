@@ -14,70 +14,76 @@
             height: 100vh;
             overflow: hidden;
         }
-        /* ===== MENU LATERAL ===== */
+
+        /* ===== MENU LATERAL FIXO (USUÁRIO - SIMPLIFICADO) ===== */
         .menu-lateral {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 34px 22px;
-            gap: 652px;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 162px;
             height: 100vh;
             background: #1A397A;
-            flex-shrink: 0;
-        }
-        .menu-lateral .requisicoes {
+            z-index: 999999;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: 17px;
-            width: 118px;
+            padding: 34px 10px;
+            box-shadow: 2px 0 12px rgba(0,0,0,0.15);
+            overflow-y: auto;
         }
-        .menu-lateral .requisicoes .item {
+        .menu-lateral .menu-requisicoes {
+            flex: 1;
             display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 10px;
-            width: 100%;
-            color: #FFFFFF;
-            font-size: 13px;
-            line-height: 16px;
-            cursor: pointer;
-            text-decoration: none;
+            flex-direction: column;
+            gap: 12px;
         }
-        .menu-lateral .requisicoes .item svg {
-            width: 18px;
-            height: 18px;
-            fill: #FFFFFF;
-        }
-        .menu-lateral .recolher {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .menu-lateral .menu-item {
             color: #FFFFFF;
             font-size: 14px;
-            line-height: 17px;
             cursor: pointer;
+            padding: 6px 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: 0.15s;
         }
+        .menu-lateral .menu-item:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        .menu-lateral .menu-item.ativo {
+            font-weight: 600;
+            background: rgba(255,255,255,0.15);
+        }
+        .menu-lateral .menu-item .menu-icone {
+            width: 20px;
+            height: 20px;
+            fill: #FFFFFF;
+            flex-shrink: 0;
+        }
+
         /* ===== CONTEÚDO ===== */
         .conteudo {
+            margin-left: 162px;
             flex: 1;
             display: flex;
             flex-direction: column;
             padding: 0 20px 20px 20px;
             overflow-y: auto;
             height: 100vh;
+            background: linear-gradient(145deg, #e8ecf1 0%, #d5dce6 100%);
         }
         .cabecalho {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
-            padding: 12px 13px;
+            align-items: center;
+            padding: 12px 20px;
             background: #FFFFFF;
             width: 100%;
-            flex-shrink: 0;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
             margin-bottom: 20px;
+            flex-shrink: 0;
         }
         .cabecalho .breadcrumb {
             display: flex;
@@ -86,7 +92,7 @@
             font-size: 14px;
             color: #000;
         }
-        .cabecalho .breadcrumb .home-icon { width: 18px; height: 18px; }
+        .cabecalho .breadcrumb .home-icon { width: 18px; height: 18px; fill: #1A397A; }
         .cabecalho .usuario-dropdown {
             display: flex;
             align-items: center;
@@ -95,12 +101,14 @@
             color: #000;
             cursor: pointer;
         }
+
         /* ===== FORMULÁRIO ===== */
         .form-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: 20px 0;
+            flex: 1;
         }
         .form-card {
             background: #FFFFFF;
@@ -319,10 +327,19 @@
                 gap: 8px;
             }
         }
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .menu-lateral { width: 60px; padding: 20px 10px; }
-            .menu-lateral .requisicoes .item span { display: none; }
-            .menu-lateral .recolher span { display: none; }
+            .menu-lateral .menu-item span { display: none; }
+            .conteudo { margin-left: 60px; padding: 12px; }
+            .cabecalho .breadcrumb span { font-size: 12px; }
+            .form-card .titulo { font-size: 20px; }
+        }
+        @media (max-width: 480px) {
+            .menu-lateral { width: 50px; padding: 10px 6px; }
+            .menu-lateral .menu-item { padding: 4px 4px; }
+            .conteudo { margin-left: 50px; padding: 8px; }
+            .form-card .titulo { font-size: 18px; padding: 12px 16px; }
+            .form-card .campo { padding: 8px 16px; }
             .modal-content { padding: 28px 18px; }
             .modal-content h2 { font-size: 22px; }
             .modal-content .btn-modal { padding: 10px 32px; font-size: 16px; }
@@ -331,29 +348,19 @@
 </head>
 <body>
 
-<!-- ===== MENU LATERAL ===== -->
+<!-- ===== MENU LATERAL FIXO (SIMPLIFICADO) ===== -->
 <div class="menu-lateral">
-    <div class="requisicoes">
-        <a href="../dashboard.html" class="item">
-            <svg viewBox="0 0 24 24"><path d="M12 1C7.58 1 4 4.58 4 9v3c0 4.42 3.58 8 8 8s8-3.58 8-8v-3c0-4.42-3.58-8-8-8zm0 2c3.31 0 6 2.69 6 6v3c0 3.31-2.69 6-6 6s-6-2.69-6-6v-3c0-3.31 2.69-6 6-6z"/></svg>
+    <div class="menu-requisicoes">
+        <!-- Serviços -->
+        <a href="../dashboard.html" class="menu-item">
+            <svg class="menu-icone" viewBox="0 0 24 24"><path d="M12 1C7.58 1 4 4.58 4 9v3c0 4.42 3.58 8 8 8s8-3.58 8-8v-3c0-4.42-3.58-8-8-8zm0 2c3.31 0 6 2.69 6 6v3c0 3.31-2.69 6-6 6s-6-2.69-6-6v-3c0-3.31 2.69-6 6-6z"/></svg>
             <span>Serviços</span>
         </a>
-        <a href="../meus-chamados.html" class="item">
-            <svg viewBox="0 0 24 24"><path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"/></svg>
+        <!-- Meus Chamados -->
+        <a href="../meus-chamados.html" class="menu-item">
+            <svg class="menu-icone" viewBox="0 0 24 24"><path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"/></svg>
             <span>Meus Chamados</span>
         </a>
-        <div class="item">
-            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-            <span>FAQ</span>
-        </div>
-        <div class="item">
-            <svg viewBox="0 0 24 24"><path d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>
-            <span>Reservas</span>
-        </div>
-    </div>
-    <div class="recolher">
-        <svg viewBox="0 0 24 24" width="24" height="24"><path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"/></svg>
-        <span>Recolher Menu</span>
     </div>
 </div>
 
@@ -391,7 +398,7 @@
                 Para viabilizar o fornecimento, solicitamos que a demanda seja complementada com as informações abaixo.
             </div>
 
-            <!-- NOVO CAMPO: Descrição do Relatório Solicitado -->
+            <!-- Descrição do Relatório Solicitado -->
             <div class="campo">
                 <label for="descricaoRelatorio">Descrição do Relatório Solicitado <span class="obrigatorio">*</span></label>
                 <textarea id="descricaoRelatorio" placeholder="Descreva detalhadamente qual relatório está sendo solicitado (ex: relação de aposentados da Subprefeitura com e-mail e telefone)"></textarea>
@@ -399,7 +406,7 @@
 
             <!-- Finalidade específica -->
             <div class="campo">
-                <label for="finalidade">Finalidade Específica da extração<span class="obrigatorio">*</span></label>
+                <label for="finalidade">Finalidade específica da extração e do envio do comunicado <span class="obrigatorio">*</span></label>
                 <textarea id="finalidade" placeholder="Descreva a finalidade específica (art. 6º, I, da LGPD)"></textarea>
             </div>
 
@@ -411,11 +418,11 @@
 
             <!-- Justificativa da necessidade -->
             <div class="campo">
-                <label for="justificativaDados">Justificativa da Necessidade dos Dados<span class="obrigatorio">*</span></label>
+                <label for="justificativaDados">Justificativa da necessidade dos dados de contato <span class="obrigatorio">*</span></label>
                 <textarea id="justificativaDados" placeholder="Aplique o princípio da minimização (art. 6º, III)"></textarea>
             </div>
 
-            <!-- Responsável pelo tratamento (3 campos)
+            <!-- Responsável pelo tratamento (3 campos) -->
             <div class="campo-responsavel">
                 <div class="campo">
                     <label for="nomeResponsavel">Nome do Responsável <span class="obrigatorio">*</span></label>
@@ -429,7 +436,7 @@
                     <label for="cargoResponsavel">Cargo <span class="obrigatorio">*</span></label>
                     <input type="text" id="cargoResponsavel" placeholder="Cargo" />
                 </div>
-            </div> -->
+            </div>
 
             <!-- Checkbox de ciência -->
             <div class="checkbox-ciencia">
