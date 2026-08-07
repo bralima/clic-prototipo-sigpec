@@ -472,14 +472,14 @@
 
             <!-- Justificativa para Dados do Usuário (select com opções) -->
             <div class="campo">
-                <label for="justificativaUsuario">Justificativa para Dados do Usuário <span class="obrigatorio">*</span></label>
+                <label for="justificativaUsuario">Justificativa para o acesso do Usuário<span class="obrigatorio">*</span></label>
                 <select id="justificativaUsuario">
                     <option value="">Selecione...</option>
-                    <option value="Solicitação de novo acesso">Solicitação de novo acesso</option>
-                    <option value="Alteração de permissões">Alteração de permissões</option>
-                    <option value="Correção de dados">Correção de dados</option>
-                    <option value="Desligamento de servidor">Desligamento de servidor</option>
-                    <option value="Reintegração">Reintegração</option>
+                    <option value="Atua na URH">Atua na URH</option>
+                    <option value="Cadastro de cursos">Cadastro de cursos</option>
+                    <option value="Cadastro funcionais">Cadastro funcionais</option>
+                    <option value="Consultas gerais">Consultas gerais</option>
+                    <option value="Recuperação de prontuário (REC)">Recuperação de prontuário (REC)</option>
                     <option value="Outro">Outro</option>
                 </select>
                 <div id="outroJustificativaUsuario" style="display:none; margin-top:4px;">
@@ -505,6 +505,7 @@
             </div>
 
             <!-- Justificativa para Padrão de Acesso (select com opções) -->
+            <!--
             <div class="campo">
                 <label for="justificativaPadrao">Justificativa para Padrão de Acesso <span class="obrigatorio">*</span></label>
                 <select id="justificativaPadrao">
@@ -519,7 +520,7 @@
                 <div id="outroJustificativaPadrao" style="display:none; margin-top:4px;">
                     <input type="text" id="outroJustificativaPadraoInput" placeholder="Descreva a justificativa..." style="width:100%; padding:8px 10px; border:1px solid #D9DBDE; border-radius:4px; font-size:13px;" />
                 </div>
-            </div>
+            </div>-->
 
             <!-- Perfil de Setor (multiselect) -->
             <div class="campo">
@@ -543,11 +544,10 @@
                 <label for="justificativaPerfil">Justificativa para Perfil de Setor <span class="obrigatorio">*</span></label>
                 <select id="justificativaPerfil">
                     <option value="">Selecione...</option>
-                    <option value="Solicitação de novo acesso">Solicitação de novo acesso</option>
-                    <option value="Alteração de permissões">Alteração de permissões</option>
-                    <option value="Correção de dados">Correção de dados</option>
-                    <option value="Desligamento de servidor">Desligamento de servidor</option>
-                    <option value="Reintegração">Reintegração</option>
+                    <option value="Setor onde o servidor atua">Solicitação de novo acesso</option>
+                    <option value="Setor agregado">Setor agregado</option>
+                    <option value="Acrescentar setor de acordo com a necessidade da URH">Acrescentar setor de acordo com a necessidade da URH</option>
+                    <option value="Setor extinto que possui servidores">Setor extinto que possui servidores</option>
                     <option value="Outro">Outro</option>
                 </select>
                 <div id="outroJustificativaPerfil" style="display:none; margin-top:4px;">
