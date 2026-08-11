@@ -36,11 +36,10 @@
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
         }
 
-        /* Logo / Título */
         .logo-gestao {
             font-weight: 700;
             font-size: 1.8rem;
-            color: var(--azul-sigpec, #325FAA);
+            color: #325FAA;
             letter-spacing: 1px;
             text-align: center;
         }
@@ -52,7 +51,6 @@
             letter-spacing: 0;
         }
 
-        /* Quadro branco interno */
         .quadro-branco {
             width: 100%;
             display: flex;
@@ -78,7 +76,6 @@
             margin: 8px auto 0;
         }
 
-        /* Campos */
         .campo-wrapper {
             width: 100%;
             display: flex;
@@ -97,7 +94,7 @@
         }
         .campo-wrapper .rotulo-senha .esqueceu {
             font-size: 0.8rem;
-            color: var(--azul-sigpec, #325FAA);
+            color: #325FAA;
             cursor: pointer;
             font-weight: 600;
         }
@@ -118,11 +115,10 @@
             outline: none;
         }
         .campo-input:focus {
-            border-color: var(--azul-sigpec, #325FAA);
+            border-color: #325FAA;
             box-shadow: 0 0 0 3px rgba(50, 95, 170, 0.15);
         }
 
-        /* Checkbox Lembre-me */
         .check-lembre {
             display: flex;
             align-items: center;
@@ -132,7 +128,7 @@
         .check-lembre input[type="checkbox"] {
             width: 18px;
             height: 18px;
-            accent-color: var(--azul-sigpec, #325FAA);
+            accent-color: #325FAA;
             cursor: pointer;
         }
         .check-lembre label {
@@ -141,11 +137,10 @@
             cursor: pointer;
         }
 
-        /* Botão Iniciar sessão */
         .bt-iniciar {
             width: 100%;
             padding: 12px;
-            background: var(--azul-sigpec, #325FAA);
+            background: #325FAA;
             border: none;
             border-radius: 60px;
             font-size: 1.1rem;
@@ -164,13 +159,12 @@
 
         .footer-copy {
             font-size: 0.75rem;
-            color: var(--azul-sigpec, #325FAA);
+            color: #325FAA;
             text-align: center;
             margin-top: 4px;
             opacity: 0.7;
         }
 
-        /* Responsivo */
         @media (max-width: 500px) {
             .login-container {
                 padding: 28px 20px 24px;
@@ -195,26 +189,22 @@
 <body>
 
 <div class="login-container">
-    <!-- Logo / Título -->
     <div class="logo-gestao">
         GLPI – SIGPEC
         <small>Gestão de Chamados</small>
     </div>
 
-    <!-- Quadro branco -->
     <div class="quadro-branco">
         <div class="login-inner">
             <div class="login-title">Login na sua Conta</div>
             <div class="line-separator"></div>
         </div>
 
-        <!-- Campo Nome de utilizador -->
         <div class="campo-wrapper">
             <span class="rotulo">Nome de utilizador</span>
             <input class="campo-input" type="text" id="username" placeholder="Digite seu usuário" />
         </div>
 
-        <!-- Campo Palavra-passe -->
         <div class="campo-wrapper">
             <div class="rotulo rotulo-senha">
                 <span>Palavra-passe</span>
@@ -223,13 +213,11 @@
             <input class="campo-input" type="password" id="password" placeholder="Digite sua senha" />
         </div>
 
-        <!-- Checkbox Lembre-me -->
         <div class="check-lembre">
             <input type="checkbox" id="remember" />
             <label for="remember">Lembre-me</label>
         </div>
 
-        <!-- Botão -->
         <button class="bt-iniciar" id="btnLogin">Iniciar sessão</button>
     </div>
 
@@ -238,15 +226,8 @@
 
 <script>
     document.getElementById('btnLogin').addEventListener('click', function() {
-        const username = document.getElementById('username').value.trim();
-        const password = document.getElementById('password').value.trim();
-
-        // Credencial única para usuário comum
-        if (username === 'd123456' && password === '123456oi') {
-            window.location.href = 'dashboard.html';
-        } else {
-            alert('Usuário ou senha inválidos!');
-        }
+        // Redireciona diretamente para o dashboard, sem validar credenciais
+        window.location.href = 'dashboard.html';
     });
 
     // Permitir login com Enter
