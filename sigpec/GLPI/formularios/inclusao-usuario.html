@@ -392,12 +392,10 @@
 <!-- ===== MENU LATERAL FIXO (SIMPLIFICADO) ===== -->
 <div class="menu-lateral">
     <div class="menu-requisicoes">
-        <!-- Serviços -->
         <a href="../dashboard.html" class="menu-item">
             <svg class="menu-icone" viewBox="0 0 24 24"><path d="M12 1C7.58 1 4 4.58 4 9v3c0 4.42 3.58 8 8 8s8-3.58 8-8v-3c0-4.42-3.58-8-8-8zm0 2c3.31 0 6 2.69 6 6v3c0 3.31-2.69 6-6 6s-6-2.69-6-6v-3c0-3.31 2.69-6 6-6z"/></svg>
             <span>Serviços</span>
         </a>
-        <!-- Meus Chamados -->
         <a href="../meus-chamados.html" class="menu-item">
             <svg class="menu-icone" viewBox="0 0 24 24"><path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"/></svg>
             <span>Meus Chamados</span>
@@ -442,7 +440,7 @@
                 </div>
             </div>
 
-            <!-- Nome Social (Sim/Não) -->
+            <!-- Nome Social -->
             <div class="campo">
                 <label>Possui nome social? <span class="obrigatorio">*</span></label>
                 <div class="campo-radio" id="nomeSocialOpcao">
@@ -470,16 +468,16 @@
                 <div class="helper" id="helperIdentificacao"></div>
             </div>
 
-            <!-- Justificativa para Dados do Usuário (select com opções) -->
+            <!-- Justificativa Usuário -->
             <div class="campo">
-                <label for="justificativaUsuario">Justificativa para o acesso do Usuário<span class="obrigatorio">*</span></label>
+                <label for="justificativaUsuario">Justificativa para Dados do Usuário <span class="obrigatorio">*</span></label>
                 <select id="justificativaUsuario">
                     <option value="">Selecione...</option>
-                    <option value="Atua na URH">Atua na URH</option>
-                    <option value="Cadastro de cursos">Cadastro de cursos</option>
-                    <option value="Cadastro funcionais">Cadastro funcionais</option>
-                    <option value="Consultas gerais">Consultas gerais</option>
-                    <option value="Recuperação de prontuário (REC)">Recuperação de prontuário (REC)</option>
+                    <option value="Solicitação de novo acesso">Solicitação de novo acesso</option>
+                    <option value="Alteração de permissões">Alteração de permissões</option>
+                    <option value="Correção de dados">Correção de dados</option>
+                    <option value="Desligamento de servidor">Desligamento de servidor</option>
+                    <option value="Reintegração">Reintegração</option>
                     <option value="Outro">Outro</option>
                 </select>
                 <div id="outroJustificativaUsuario" style="display:none; margin-top:4px;">
@@ -504,8 +502,7 @@
                 <input type="hidden" id="padroesSelecionados" value="" />
             </div>
 
-            <!-- Justificativa para Padrão de Acesso (select com opções) -->
-            <!--
+            <!-- Justificativa Padrão -->
             <div class="campo">
                 <label for="justificativaPadrao">Justificativa para Padrão de Acesso <span class="obrigatorio">*</span></label>
                 <select id="justificativaPadrao">
@@ -520,7 +517,7 @@
                 <div id="outroJustificativaPadrao" style="display:none; margin-top:4px;">
                     <input type="text" id="outroJustificativaPadraoInput" placeholder="Descreva a justificativa..." style="width:100%; padding:8px 10px; border:1px solid #D9DBDE; border-radius:4px; font-size:13px;" />
                 </div>
-            </div>-->
+            </div>
 
             <!-- Perfil de Setor (multiselect) -->
             <div class="campo">
@@ -539,15 +536,16 @@
                 <input type="hidden" id="perfisSelecionados" value="" />
             </div>
 
-            <!-- Justificativa para Perfil de Setor (select com opções) -->
+            <!-- Justificativa Perfil -->
             <div class="campo">
                 <label for="justificativaPerfil">Justificativa para Perfil de Setor <span class="obrigatorio">*</span></label>
                 <select id="justificativaPerfil">
                     <option value="">Selecione...</option>
-                    <option value="Setor onde o servidor atua">Solicitação de novo acesso</option>
-                    <option value="Setor agregado">Setor agregado</option>
-                    <option value="Acrescentar setor de acordo com a necessidade da URH">Acrescentar setor de acordo com a necessidade da URH</option>
-                    <option value="Setor extinto que possui servidores">Setor extinto que possui servidores</option>
+                    <option value="Solicitação de novo acesso">Solicitação de novo acesso</option>
+                    <option value="Alteração de permissões">Alteração de permissões</option>
+                    <option value="Correção de dados">Correção de dados</option>
+                    <option value="Desligamento de servidor">Desligamento de servidor</option>
+                    <option value="Reintegração">Reintegração</option>
                     <option value="Outro">Outro</option>
                 </select>
                 <div id="outroJustificativaPerfil" style="display:none; margin-top:4px;">
@@ -574,313 +572,316 @@
 </div>
 
 <script>
-    // ===== LISTAS DE DADOS =====
-    const padroes = [
-        "BASICO", "CONSULTA_GERAL", "Ergon", "AHM_PARCELAMEN", "CADASTRO",
-        "DEBITOS", "FOLHA_UNIDADES", "APOS/EXONER", "SEG HOLERITE", "AUX_FUNERAL",
-        "ACESSO_WEB"
-    ];
+    document.addEventListener('DOMContentLoaded', function() {
+        // ===== LISTAS DE DADOS =====
+        const padroes = [
+            "BASICO", "CONSULTA_GERAL", "Ergon", "AHM_PARCELAMEN", "CADASTRO",
+            "DEBITOS", "FOLHA_UNIDADES", "APOS/EXONER", "SEG HOLERITE", "AUX_FUNERAL",
+            "ACESSO_WEB"
+        ];
 
-    const perfis = [
-        "CMSP", "GERAL", "IPREM", "PENSIONISTA", "SFMSP", "TCMSP",
-        "AHM_GERAL", "MUNICIPALIZADOS", "SMS", "IPREM_APOS", "APOS_SME",
-        "SME", "AFASTADOS", "AHM-JSH", "AMLURB"
-    ];
+        const perfis = [
+            "CMSP", "GERAL", "IPREM", "PENSIONISTA", "SFMSP", "TCMSP",
+            "AHM_GERAL", "MUNICIPALIZADOS", "SMS", "IPREM_APOS", "APOS_SME",
+            "SME", "AFASTADOS", "AHM-JSH", "AMLURB"
+        ];
 
-    // ===== ELEMENTOS =====
-    const radios = document.querySelectorAll('input[name="tipo"]');
-    const campoIdentificacao = document.getElementById('campoIdentificacao');
-    const labelIdentificacao = document.getElementById('labelIdentificacao');
-    const inputIdentificacao = document.getElementById('identificacao');
-    const helperIdentificacao = document.getElementById('helperIdentificacao');
+        // ===== ELEMENTOS =====
+        const radios = document.querySelectorAll('input[name="tipo"]');
+        const campoIdentificacao = document.getElementById('campoIdentificacao');
+        const labelIdentificacao = document.getElementById('labelIdentificacao');
+        const inputIdentificacao = document.getElementById('identificacao');
+        const helperIdentificacao = document.getElementById('helperIdentificacao');
 
-    // Nome Social
-    const nomeSocialRadios = document.querySelectorAll('input[name="nomeSocial"]');
-    const campoNomeSocial = document.getElementById('campoNomeSocial');
-    const nomeSocialInput = document.getElementById('nomeSocialInput');
+        // Nome Social
+        const nomeSocialRadios = document.querySelectorAll('input[name="nomeSocial"]');
+        const campoNomeSocial = document.getElementById('campoNomeSocial');
+        const nomeSocialInput = document.getElementById('nomeSocialInput');
 
-    // Justificativas - exibir campo "Outro"
-    const justificativaUsuarioSelect = document.getElementById('justificativaUsuario');
-    const outroJustificativaUsuario = document.getElementById('outroJustificativaUsuario');
-    const outroJustificativaUsuarioInput = document.getElementById('outroJustificativaUsuarioInput');
+        // Justificativas - exibir campo "Outro"
+        const justificativaUsuarioSelect = document.getElementById('justificativaUsuario');
+        const outroJustificativaUsuario = document.getElementById('outroJustificativaUsuario');
+        const outroJustificativaUsuarioInput = document.getElementById('outroJustificativaUsuarioInput');
 
-    const justificativaPadraoSelect = document.getElementById('justificativaPadrao');
-    const outroJustificativaPadrao = document.getElementById('outroJustificativaPadrao');
-    const outroJustificativaPadraoInput = document.getElementById('outroJustificativaPadraoInput');
+        const justificativaPadraoSelect = document.getElementById('justificativaPadrao');
+        const outroJustificativaPadrao = document.getElementById('outroJustificativaPadrao');
+        const outroJustificativaPadraoInput = document.getElementById('outroJustificativaPadraoInput');
 
-    const justificativaPerfilSelect = document.getElementById('justificativaPerfil');
-    const outroJustificativaPerfil = document.getElementById('outroJustificativaPerfil');
-    const outroJustificativaPerfilInput = document.getElementById('outroJustificativaPerfilInput');
+        const justificativaPerfilSelect = document.getElementById('justificativaPerfil');
+        const outroJustificativaPerfil = document.getElementById('outroJustificativaPerfil');
+        const outroJustificativaPerfilInput = document.getElementById('outroJustificativaPerfilInput');
 
-    // Padrão
-    const selectPadrao = document.getElementById('selectPadrao');
-    const btnAdicionarPadrao = document.getElementById('btnAdicionarPadrao');
-    const tagsContainerPadrao = document.getElementById('tagsContainerPadrao');
-    const hiddenPadroes = document.getElementById('padroesSelecionados');
+        // Padrão
+        const selectPadrao = document.getElementById('selectPadrao');
+        const btnAdicionarPadrao = document.getElementById('btnAdicionarPadrao');
+        const tagsContainerPadrao = document.getElementById('tagsContainerPadrao');
+        const hiddenPadroes = document.getElementById('padroesSelecionados');
 
-    // Perfil
-    const selectPerfil = document.getElementById('selectPerfil');
-    const btnAdicionarPerfil = document.getElementById('btnAdicionarPerfil');
-    const tagsContainerPerfil = document.getElementById('tagsContainerPerfil');
-    const hiddenPerfis = document.getElementById('perfisSelecionados');
+        // Perfil
+        const selectPerfil = document.getElementById('selectPerfil');
+        const btnAdicionarPerfil = document.getElementById('btnAdicionarPerfil');
+        const tagsContainerPerfil = document.getElementById('tagsContainerPerfil');
+        const hiddenPerfis = document.getElementById('perfisSelecionados');
 
-    // ===== POPULAR SELECTS =====
-    function popularSelect(select, opcoes) {
-        select.innerHTML = '';
-        const optDefault = document.createElement('option');
-        optDefault.value = '';
-        optDefault.textContent = 'Selecione...';
-        select.appendChild(optDefault);
-        opcoes.forEach(op => {
-            const opt = document.createElement('option');
-            opt.value = op;
-            opt.textContent = op;
-            select.appendChild(opt);
-        });
-    }
-
-    popularSelect(selectPadrao, padroes);
-    popularSelect(selectPerfil, perfis);
-
-    // ===== FUNÇÃO PARA ATUALIZAR O CAMPO DE IDENTIFICAÇÃO =====
-    function atualizarIdentificacao(tipo) {
-        helperIdentificacao.innerHTML = '';
-        inputIdentificacao.value = '';
-        if (tipo === 'Servidor' || tipo === 'Residente') {
-            labelIdentificacao.textContent = 'Registro Funcional *';
-            inputIdentificacao.placeholder = 'Digite o registro funcional';
-            helperIdentificacao.innerHTML = '';
-        } else if (tipo === 'Estagiario') {
-            labelIdentificacao.textContent = 'RG *';
-            inputIdentificacao.placeholder = 'Digite o RG';
-            helperIdentificacao.innerHTML = '<span class="icone-aviso">⚠️</span> Apenas para consultas, sem alterações.';
-        } else if (tipo === 'Terceirizado') {
-            labelIdentificacao.textContent = 'RG *';
-            inputIdentificacao.placeholder = 'Digite o RG';
-            helperIdentificacao.innerHTML = '';
+        // ===== POPULAR SELECTS =====
+        function popularSelect(select, opcoes) {
+            select.innerHTML = '';
+            const optDefault = document.createElement('option');
+            optDefault.value = '';
+            optDefault.textContent = 'Selecione...';
+            select.appendChild(optDefault);
+            opcoes.forEach(op => {
+                const opt = document.createElement('option');
+                opt.value = op;
+                opt.textContent = op;
+                select.appendChild(opt);
+            });
         }
-    }
 
-    // ===== EVENTO PARA RADIOS (Tipo de Usuário) =====
-    radios.forEach(radio => {
-        radio.addEventListener('change', function() {
-            if (this.checked) {
-                atualizarIdentificacao(this.value);
+        popularSelect(selectPadrao, padroes);
+        popularSelect(selectPerfil, perfis);
+
+        // ===== FUNÇÃO PARA ATUALIZAR O CAMPO DE IDENTIFICAÇÃO =====
+        function atualizarIdentificacao(tipo) {
+            helperIdentificacao.innerHTML = '';
+            inputIdentificacao.value = '';
+            if (tipo === 'Servidor' || tipo === 'Residente') {
+                labelIdentificacao.textContent = 'Registro Funcional *';
+                inputIdentificacao.placeholder = 'Digite o registro funcional';
+                helperIdentificacao.innerHTML = '';
+            } else if (tipo === 'Estagiario') {
+                labelIdentificacao.textContent = 'RG *';
+                inputIdentificacao.placeholder = 'Digite o RG';
+                helperIdentificacao.innerHTML = '<span class="icone-aviso">⚠️</span> Apenas para consultas, sem alterações.';
+            } else if (tipo === 'Terceirizado') {
+                labelIdentificacao.textContent = 'RG *';
+                inputIdentificacao.placeholder = 'Digite o RG';
+                helperIdentificacao.innerHTML = '';
             }
+        }
+
+        // ===== EVENTO PARA RADIOS (Tipo de Usuário) =====
+        radios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.checked) {
+                    atualizarIdentificacao(this.value);
+                }
+            });
         });
-    });
 
-    // Inicializa com o valor padrão (Servidor)
-    const inicial = document.querySelector('input[name="tipo"]:checked');
-    if (inicial) atualizarIdentificacao(inicial.value);
+        // Inicializa com o valor padrão (Servidor)
+        const inicial = document.querySelector('input[name="tipo"]:checked');
+        if (inicial) atualizarIdentificacao(inicial.value);
 
-    // ===== NOME SOCIAL =====
-    nomeSocialRadios.forEach(radio => {
-        radio.addEventListener('change', function() {
-            if (this.value === 'sim') {
-                campoNomeSocial.style.display = 'block';
-                nomeSocialInput.setAttribute('required', 'required');
+        // ===== NOME SOCIAL =====
+        nomeSocialRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'sim') {
+                    campoNomeSocial.style.display = 'block';
+                    nomeSocialInput.setAttribute('required', 'required');
+                } else {
+                    campoNomeSocial.style.display = 'none';
+                    nomeSocialInput.removeAttribute('required');
+                    nomeSocialInput.value = '';
+                }
+            });
+        });
+
+        // ===== JUSTIFICATIVAS - EXIBIR CAMPO "OUTRO" =====
+        function toggleOutroJustificativa(select, container, input) {
+            if (select.value === 'Outro') {
+                container.style.display = 'block';
+                input.setAttribute('required', 'required');
             } else {
-                campoNomeSocial.style.display = 'none';
-                nomeSocialInput.removeAttribute('required');
-                nomeSocialInput.value = '';
+                container.style.display = 'none';
+                input.removeAttribute('required');
+                input.value = '';
+            }
+        }
+
+        justificativaUsuarioSelect.addEventListener('change', function() {
+            toggleOutroJustificativa(this, outroJustificativaUsuario, outroJustificativaUsuarioInput);
+        });
+        justificativaPadraoSelect.addEventListener('change', function() {
+            toggleOutroJustificativa(this, outroJustificativaPadrao, outroJustificativaPadraoInput);
+        });
+        justificativaPerfilSelect.addEventListener('change', function() {
+            toggleOutroJustificativa(this, outroJustificativaPerfil, outroJustificativaPerfilInput);
+        });
+
+        // ===== COMPONENTE DE SELEÇÃO MÚLTIPLA (PADRÃO) =====
+        let tagsPadrao = [];
+
+        function renderizarTagsPadrao() {
+            tagsContainerPadrao.innerHTML = '';
+            if (tagsPadrao.length === 0) {
+                tagsContainerPadrao.innerHTML = '<span class="vazio">Nenhum padrão selecionado</span>';
+                hiddenPadroes.value = '';
+                return;
+            }
+            tagsPadrao.forEach(tag => {
+                const span = document.createElement('span');
+                span.className = 'tag';
+                span.innerHTML = `${tag} <span class="remove" data-value="${tag}">×</span>`;
+                tagsContainerPadrao.appendChild(span);
+            });
+            hiddenPadroes.value = tagsPadrao.join(', ');
+
+            document.querySelectorAll('#tagsContainerPadrao .tag .remove').forEach(el => {
+                el.addEventListener('click', function() {
+                    const valor = this.getAttribute('data-value');
+                    tagsPadrao = tagsPadrao.filter(t => t !== valor);
+                    renderizarTagsPadrao();
+                    const option = selectPadrao.querySelector(`option[value="${valor}"]`);
+                    if (option) option.disabled = false;
+                });
+            });
+        }
+
+        // Adicionar evento ao botão de adicionar padrão
+        btnAdicionarPadrao.addEventListener('click', function() {
+            const valor = selectPadrao.value;
+            if (!valor) {
+                alert('Selecione um padrão para adicionar.');
+                return;
+            }
+            if (tagsPadrao.includes(valor)) {
+                alert('Este padrão já foi adicionado.');
+                return;
+            }
+            tagsPadrao.push(valor);
+            renderizarTagsPadrao();
+            const option = selectPadrao.querySelector(`option[value="${valor}"]`);
+            if (option) option.disabled = true;
+            selectPadrao.value = '';
+        });
+
+        // ===== COMPONENTE DE SELEÇÃO MÚLTIPLA (PERFIL) =====
+        let tagsPerfil = [];
+
+        function renderizarTagsPerfil() {
+            tagsContainerPerfil.innerHTML = '';
+            if (tagsPerfil.length === 0) {
+                tagsContainerPerfil.innerHTML = '<span class="vazio">Nenhum perfil selecionado</span>';
+                hiddenPerfis.value = '';
+                return;
+            }
+            tagsPerfil.forEach(tag => {
+                const span = document.createElement('span');
+                span.className = 'tag';
+                span.innerHTML = `${tag} <span class="remove" data-value="${tag}">×</span>`;
+                tagsContainerPerfil.appendChild(span);
+            });
+            hiddenPerfis.value = tagsPerfil.join(', ');
+
+            document.querySelectorAll('#tagsContainerPerfil .tag .remove').forEach(el => {
+                el.addEventListener('click', function() {
+                    const valor = this.getAttribute('data-value');
+                    tagsPerfil = tagsPerfil.filter(t => t !== valor);
+                    renderizarTagsPerfil();
+                    const option = selectPerfil.querySelector(`option[value="${valor}"]`);
+                    if (option) option.disabled = false;
+                });
+            });
+        }
+
+        // Adicionar evento ao botão de adicionar perfil
+        btnAdicionarPerfil.addEventListener('click', function() {
+            const valor = selectPerfil.value;
+            if (!valor) {
+                alert('Selecione um perfil para adicionar.');
+                return;
+            }
+            if (tagsPerfil.includes(valor)) {
+                alert('Este perfil já foi adicionado.');
+                return;
+            }
+            tagsPerfil.push(valor);
+            renderizarTagsPerfil();
+            const option = selectPerfil.querySelector(`option[value="${valor}"]`);
+            if (option) option.disabled = true;
+            selectPerfil.value = '';
+        });
+
+        // ===== MODAL =====
+        const modalOverlay = document.getElementById('modalSucesso');
+        const modalMensagem = document.getElementById('modalMensagem');
+        const btnModalOk = document.getElementById('btnModalOk');
+
+        function exibirModal(mensagem) {
+            modalMensagem.textContent = mensagem;
+            modalOverlay.classList.add('active');
+        }
+
+        function fecharModalERedirecionar() {
+            modalOverlay.classList.remove('active');
+            window.location.href = '../dashboard.html';
+        }
+
+        btnModalOk.addEventListener('click', fecharModalERedirecionar);
+
+        modalOverlay.addEventListener('click', function(e) {
+            if (e.target === modalOverlay) {
+                fecharModalERedirecionar();
             }
         });
-    });
 
-    // ===== JUSTIFICATIVAS - EXIBIR CAMPO "OUTRO" =====
-    function toggleOutroJustificativa(select, container, input) {
-        if (select.value === 'Outro') {
-            container.style.display = 'block';
-            input.setAttribute('required', 'required');
-        } else {
-            container.style.display = 'none';
-            input.removeAttribute('required');
-            input.value = '';
-        }
-    }
+        // ===== EVENTO DE ENVIO =====
+        document.getElementById('btnEnviar').addEventListener('click', function(e) {
+            e.preventDefault();
 
-    justificativaUsuarioSelect.addEventListener('change', function() {
-        toggleOutroJustificativa(this, outroJustificativaUsuario, outroJustificativaUsuarioInput);
-    });
-    justificativaPadraoSelect.addEventListener('change', function() {
-        toggleOutroJustificativa(this, outroJustificativaPadrao, outroJustificativaPadraoInput);
-    });
-    justificativaPerfilSelect.addEventListener('change', function() {
-        toggleOutroJustificativa(this, outroJustificativaPerfil, outroJustificativaPerfilInput);
-    });
+            const tipo = document.querySelector('input[name="tipo"]:checked').value;
+            const nomeSocial = document.querySelector('input[name="nomeSocial"]:checked').value;
+            const nome = document.getElementById('nome').value.trim();
+            const identificacao = document.getElementById('identificacao').value.trim();
 
-    // ===== COMPONENTE DE SELEÇÃO MÚLTIPLA (PADRÃO) =====
-    let tagsPadrao = [];
+            let justUsuario = justificativaUsuarioSelect.value;
+            if (justUsuario === 'Outro') {
+                justUsuario = outroJustificativaUsuarioInput.value.trim();
+            }
+            let justPadrao = justificativaPadraoSelect.value;
+            if (justPadrao === 'Outro') {
+                justPadrao = outroJustificativaPadraoInput.value.trim();
+            }
+            let justPerfil = justificativaPerfilSelect.value;
+            if (justPerfil === 'Outro') {
+                justPerfil = outroJustificativaPerfilInput.value.trim();
+            }
 
-    function renderizarTagsPadrao() {
-        tagsContainerPadrao.innerHTML = '';
-        if (tagsPadrao.length === 0) {
-            tagsContainerPadrao.innerHTML = '<span class="vazio">Nenhum padrão selecionado</span>';
-            hiddenPadroes.value = '';
-            return;
-        }
-        tagsPadrao.forEach(tag => {
-            const span = document.createElement('span');
-            span.className = 'tag';
-            span.innerHTML = `${tag} <span class="remove" data-value="${tag}">×</span>`;
-            tagsContainerPadrao.appendChild(span);
-        });
-        hiddenPadroes.value = tagsPadrao.join(', ');
+            if (!nome) {
+                alert('Preencha o Nome Completo.');
+                return;
+            }
+            if (nomeSocial === 'sim' && !document.getElementById('nomeSocialInput').value.trim()) {
+                alert('Preencha o Nome Social.');
+                return;
+            }
+            if (!identificacao) {
+                alert('Preencha o campo de identificação.');
+                return;
+            }
+            if (tagsPadrao.length === 0) {
+                alert('Adicione pelo menos um Padrão de Acesso.');
+                return;
+            }
+            if (tagsPerfil.length === 0) {
+                alert('Adicione pelo menos um Perfil de Setor.');
+                return;
+            }
+            if (!justUsuario) {
+                alert('Preencha a Justificativa para Dados do Usuário.');
+                return;
+            }
+            if (!justPadrao) {
+                alert('Preencha a Justificativa para Padrão de Acesso.');
+                return;
+            }
+            if (!justPerfil) {
+                alert('Preencha a Justificativa para Perfil de Setor.');
+                return;
+            }
 
-        document.querySelectorAll('#tagsContainerPadrao .tag .remove').forEach(el => {
-            el.addEventListener('click', function() {
-                const valor = this.getAttribute('data-value');
-                tagsPadrao = tagsPadrao.filter(t => t !== valor);
-                renderizarTagsPadrao();
-                const option = selectPadrao.querySelector(`option[value="${valor}"]`);
-                if (option) option.disabled = false;
-            });
-        });
-    }
-
-    btnAdicionarPadrao.addEventListener('click', function() {
-        const valor = selectPadrao.value;
-        if (!valor) {
-            alert('Selecione um padrão para adicionar.');
-            return;
-        }
-        if (tagsPadrao.includes(valor)) {
-            alert('Este padrão já foi adicionado.');
-            return;
-        }
-        tagsPadrao.push(valor);
-        renderizarTagsPadrao();
-        const option = selectPadrao.querySelector(`option[value="${valor}"]`);
-        if (option) option.disabled = true;
-        selectPadrao.value = '';
-    });
-
-    // ===== COMPONENTE DE SELEÇÃO MÚLTIPLA (PERFIL) =====
-    let tagsPerfil = [];
-
-    function renderizarTagsPerfil() {
-        tagsContainerPerfil.innerHTML = '';
-        if (tagsPerfil.length === 0) {
-            tagsContainerPerfil.innerHTML = '<span class="vazio">Nenhum perfil selecionado</span>';
-            hiddenPerfis.value = '';
-            return;
-        }
-        tagsPerfil.forEach(tag => {
-            const span = document.createElement('span');
-            span.className = 'tag';
-            span.innerHTML = `${tag} <span class="remove" data-value="${tag}">×</span>`;
-            tagsContainerPerfil.appendChild(span);
-        });
-        hiddenPerfis.value = tagsPerfil.join(', ');
-
-        document.querySelectorAll('#tagsContainerPerfil .tag .remove').forEach(el => {
-            el.addEventListener('click', function() {
-                const valor = this.getAttribute('data-value');
-                tagsPerfil = tagsPerfil.filter(t => t !== valor);
-                renderizarTagsPerfil();
-                const option = selectPerfil.querySelector(`option[value="${valor}"]`);
-                if (option) option.disabled = false;
-            });
-        });
-    }
-
-    btnAdicionarPerfil.addEventListener('click', function() {
-        const valor = selectPerfil.value;
-        if (!valor) {
-            alert('Selecione um perfil para adicionar.');
-            return;
-        }
-        if (tagsPerfil.includes(valor)) {
-            alert('Este perfil já foi adicionado.');
-            return;
-        }
-        tagsPerfil.push(valor);
-        renderizarTagsPerfil();
-        const option = selectPerfil.querySelector(`option[value="${valor}"]`);
-        if (option) option.disabled = true;
-        selectPerfil.value = '';
-    });
-
-    // ===== MODAL =====
-    const modalOverlay = document.getElementById('modalSucesso');
-    const modalMensagem = document.getElementById('modalMensagem');
-    const btnModalOk = document.getElementById('btnModalOk');
-
-    function exibirModal(mensagem) {
-        modalMensagem.textContent = mensagem;
-        modalOverlay.classList.add('active');
-    }
-
-    function fecharModalERedirecionar() {
-        modalOverlay.classList.remove('active');
-        window.location.href = '../dashboard.html';
-    }
-
-    btnModalOk.addEventListener('click', fecharModalERedirecionar);
-
-    modalOverlay.addEventListener('click', function(e) {
-        if (e.target === modalOverlay) {
-            fecharModalERedirecionar();
-        }
-    });
-
-    // ===== EVENTO DE ENVIO =====
-    document.getElementById('btnEnviar').addEventListener('click', function(e) {
-        e.preventDefault();
-
-        const tipo = document.querySelector('input[name="tipo"]:checked').value;
-        const nomeSocial = document.querySelector('input[name="nomeSocial"]:checked').value;
-        const nome = document.getElementById('nome').value.trim();
-        const identificacao = document.getElementById('identificacao').value.trim();
-
-        let justUsuario = justificativaUsuarioSelect.value;
-        if (justUsuario === 'Outro') {
-            justUsuario = outroJustificativaUsuarioInput.value.trim();
-        }
-        let justPadrao = justificativaPadraoSelect.value;
-        if (justPadrao === 'Outro') {
-            justPadrao = outroJustificativaPadraoInput.value.trim();
-        }
-        let justPerfil = justificativaPerfilSelect.value;
-        if (justPerfil === 'Outro') {
-            justPerfil = outroJustificativaPerfilInput.value.trim();
-        }
-
-        if (!nome) {
-            alert('Preencha o Nome Completo.');
-            return;
-        }
-        if (nomeSocial === 'sim' && !document.getElementById('nomeSocialInput').value.trim()) {
-            alert('Preencha o Nome Social.');
-            return;
-        }
-        if (!identificacao) {
-            alert('Preencha o campo de identificação.');
-            return;
-        }
-        if (tagsPadrao.length === 0) {
-            alert('Adicione pelo menos um Padrão de Acesso.');
-            return;
-        }
-        if (tagsPerfil.length === 0) {
-            alert('Adicione pelo menos um Perfil de Setor.');
-            return;
-        }
-        if (!justUsuario) {
-            alert('Preencha a Justificativa para Dados do Usuário.');
-            return;
-        }
-        if (!justPadrao) {
-            alert('Preencha a Justificativa para Padrão de Acesso.');
-            return;
-        }
-        if (!justPerfil) {
-            alert('Preencha a Justificativa para Perfil de Setor.');
-            return;
-        }
-
-        const mensagem = `Chamado de inclusão de usuário enviado com sucesso!
+            const mensagem = `Chamado de inclusão de usuário enviado com sucesso!
 
 Tipo: ${tipo}
 Nome Social: ${nomeSocial === 'sim' ? document.getElementById('nomeSocialInput').value.trim() : 'Não informado'}
@@ -894,7 +895,8 @@ Justificativa Dados: ${justUsuario}
 Justificativa Padrão: ${justPadrao}
 Justificativa Perfil: ${justPerfil}`;
 
-        exibirModal(mensagem);
+            exibirModal(mensagem);
+        });
     });
 </script>
 
