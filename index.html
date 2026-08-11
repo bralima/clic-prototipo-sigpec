@@ -229,7 +229,6 @@
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 20px;
-            /* sem max-width para ocupar a largura total do container */
         }
 
         .card-perfil {
@@ -276,30 +275,30 @@
         .card-perfil--cinza { background: #737373; }
         .card-perfil--azul { background: var(--azul-sigpec); }
 
-        /* ---------- ATALHOS ---------- */
+        /* ---------- ATALHOS (CÍRCULOS MAIORES) ---------- */
         .atalhos {
             padding: 50px 0;
             background: linear-gradient(180deg, transparent 0%, transparent 40%, var(--cinza-claro) 40%, var(--cinza-claro) 100%);
         }
         .atalhos__grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 24px;
             justify-items: center;
         }
         .card-atalho {
             display: flex;
             flex-direction: column-reverse;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             text-align: center;
             transition: transform .2s;
-            max-width: 170px;
+            max-width: 200px;
         }
         .card-atalho:hover { transform: translateY(-6px); }
         .card-atalho__circulo {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -317,7 +316,7 @@
         .card-atalho__titulo {
             font-weight: 700;
             color: var(--cinza-word);
-            font-size: 1rem;
+            font-size: 1.05rem;
             line-height: 1.3;
         }
 
@@ -443,9 +442,16 @@
                 width: 50px;
                 height: 50px;
             }
+            .atalhos__grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 16px;
+            }
             .card-atalho__circulo {
-                width: 120px;
-                height: 120px;
+                width: 140px;
+                height: 140px;
+            }
+            .card-atalho {
+                max-width: 160px;
             }
             .rodape__conteudo {
                 flex-direction: column;
@@ -459,19 +465,29 @@
             .perfis__grid {
                 grid-template-columns: 1fr;
             }
-            .card-atalho__circulo {
-                width: 100px;
-                height: 100px;
-            }
-            .card-perfil {
+            .perfis__grid .card-perfil {
                 min-height: 70px;
                 padding: 12px 16px;
                 font-size: 0.9rem;
             }
-            .card-perfil__icone {
+            .perfis__grid .card-perfil__icone {
                 flex: 0 0 44px;
                 width: 44px;
                 height: 44px;
+            }
+            .atalhos__grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            .card-atalho__circulo {
+                width: 110px;
+                height: 110px;
+            }
+            .card-atalho {
+                max-width: 130px;
+            }
+            .card-atalho__titulo {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -570,7 +586,7 @@
             </div>
         </section>
 
-        <!-- ========== PERFIS DE USUÁRIO (MAIORES, 5 POR LINHA, SEM LIMITE DE LARGURA) ========== -->
+        <!-- ========== PERFIS DE USUÁRIO ========== -->
         <section class="perfis">
             <div class="container">
                 <h2 class="titulo-secao">CLIC NO SEU PERFIL DE USUÁRIO</h2>
@@ -643,7 +659,7 @@
                         <span class="card-perfil__rotulo">CIDADÃOS</span>
                     </a>
 
-                    <!-- Suporte SIGPEC (AO LADO DOS DEMAIS) -->
+                    <!-- Suporte SIGPEC -->
                     <a href="sigpec/index.html" class="card-perfil card-perfil--azul">
                         <div class="card-perfil__icone">
                             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -662,7 +678,7 @@
             </div>
         </section>
 
-        <!-- ========== ATALHOS ========== -->
+        <!-- ========== ATALHOS (CÍRCULOS MAIORES) ========== -->
         <section class="atalhos">
             <div class="container">
                 <div class="atalhos__grid">
