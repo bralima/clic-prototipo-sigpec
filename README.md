@@ -33,3 +33,51 @@ O design segue a identidade visual da **CLIC**, com cores reutilizadas do layout
 ---
 
 ## 📁 Estrutura de diretórios (atualizada)
+
+```
+clic-prototipo-sigpec/
+├── index.html # Página inicial do portal
+├── sigpec/
+│ ├── index.html # Página de entrada do SIGPEC
+│ ├── formulario/
+│ │ ├── index.html # Formulário de registro
+│ │ ├── solicitado.html # Confirmação de envio
+│ │ ├── novo-usuario.html # Inclusão de usuário
+│ │ ├── inclusao-padrao.html # Inclusão de padrão de acesso
+│ │ ├── inclusao-setor.html # Inclusão de perfil de setor
+│ │ ├── exclusao-padrao.html # Exclusão de padrão
+│ │ ├── exclusao-setor.html # Exclusão de setor
+│ │ ├── ativar-acesso.html # Ativação de acesso
+│ │ ├── desativar-acesso.html # Desativação de acesso
+│ │ └── solicitacao-relatorio.html # Solicitação de relatório
+│ └── GLPI/
+│ ├── index.html # Página de login do GLPI
+│ ├── dashboard.html # Dashboard do usuário
+│ └── meus-chamados.html # Lista de chamados do usuário
+└── README.md
+```
+
+
+---
+
+## 🖥️ Como visualizar o protótipo
+
+1. Acesse o link do GitHub Pages:  
+   `https://bralima.github.io/clic-prototipo-sigpec/`
+2. Navegue pelas páginas usando os menus e botões.
+3. Interaja com formulários e links (todos exibem alertas ou redirecionamentos simulados).
+
+---
+
+## 📌 Observações
+
+- Este é um protótipo **estático** – não há back-end nem armazenamento de dados.
+- Todas as interações (envio de formulários, login, filtros) são simuladas via JavaScript.
+- O projeto foi estruturado para ser **facilmente adaptável** a futuras implementações com back-end, mas, no momento, serve apenas para **validação de fluxos e apresentação visual**.
+
+---
+
+## 📄 Licença
+
+Uso interno – Prefeitura de São Paulo – SEGES/COTIC.
+
