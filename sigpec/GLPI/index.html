@@ -1,242 +1,37 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - GLPI SIGPEC</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23325FAA'/></svg>" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
-    <style>
-        /* ============================================================
-           CSS – Página de Login GLPI (estilo CLIC)
-           ============================================================ */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+# 🛠️ GLPI – Protótipo do Técnico (SEGES/COTIC)
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(145deg, #e8ecf1 0%, #d5dce6 100%);
-            font-family: 'Open Sans', 'Inter', sans-serif;
-            padding: 20px;
-        }
+Este repositório contém o protótipo estático do **GLPI para técnicos**, desenvolvido para a **SEGES** (Secretaria Municipal de Gestão) da Prefeitura de São Paulo. O sistema simula a experiência de um técnico de TI no atendimento de chamados, gerenciamento de padrões de acesso, perfis de setor, usuários, grupos e formulários.
 
-        .login-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-            width: 100%;
-            max-width: 480px;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(4px);
-            padding: 40px 32px 36px;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-        }
+> ⚠️ **Aviso:** Este é um protótipo funcional apenas para demonstrar a experiência do usuário (UX/UI). Todos os dados, links e formulários são simulados e não armazenam informações reais.
 
-        .logo-gestao {
-            font-weight: 700;
-            font-size: 1.8rem;
-            color: #325FAA;
-            letter-spacing: 1px;
-            text-align: center;
-        }
-        .logo-gestao small {
-            display: block;
-            font-weight: 400;
-            font-size: 0.9rem;
-            color: #565555;
-            letter-spacing: 0;
-        }
+---
 
-        .quadro-branco {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 18px;
-        }
+## 🎯 Objetivo do projeto
 
-        .login-inner {
-            width: 100%;
-            text-align: center;
-        }
-        .login-title {
-            font-weight: 600;
-            font-size: 1.3rem;
-            color: #000000;
-        }
-        .line-separator {
-            width: 100%;
-            max-width: 300px;
-            height: 1px;
-            background: #D9DBDE;
-            margin: 8px auto 0;
-        }
+Criar um protótipo de alta fidelidade que replique o ambiente do **GLPI** para técnicos, com foco em:
 
-        .campo-wrapper {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        .campo-wrapper .rotulo {
-            font-weight: 400;
-            font-size: 0.85rem;
-            color: #000000;
-        }
-        .campo-wrapper .rotulo-senha {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
-        .campo-wrapper .rotulo-senha .esqueceu {
-            font-size: 0.8rem;
-            color: #325FAA;
-            cursor: pointer;
-            font-weight: 600;
-        }
-        .campo-wrapper .rotulo-senha .esqueceu:hover {
-            text-decoration: underline;
-        }
+- **Autenticação** – tela de login com campos simulados (sem validação real).
+- **Painel do técnico** – visão geral com lista de chamados.
+- **Gestão de chamados** – visualização, criação e acompanhamento.
+- **Administração** – cadastro e consulta de padrões de acesso, perfis de setor, usuários, grupos e formulários.
 
-        .campo-input {
-            width: 100%;
-            height: 40px;
-            background: #FFFFFF;
-            border: 1px solid #D9DBDE;
-            border-radius: 6px;
-            padding: 0 12px;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 0.95rem;
-            transition: border-color 0.2s, box-shadow 0.2s;
-            outline: none;
-        }
-        .campo-input:focus {
-            border-color: #325FAA;
-            box-shadow: 0 0 0 3px rgba(50, 95, 170, 0.15);
-        }
+O projeto prioriza a **navegação fluida**, a **reutilização de componentes visuais** e a **simulação de fluxos reais** de atendimento e configuração.
 
-        .check-lembre {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            width: 100%;
-        }
-        .check-lembre input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            accent-color: #325FAA;
-            cursor: pointer;
-        }
-        .check-lembre label {
-            font-size: 0.85rem;
-            color: #000000;
-            cursor: pointer;
-        }
+---
 
-        .bt-iniciar {
-            width: 100%;
-            padding: 12px;
-            background: #325FAA;
-            border: none;
-            border-radius: 60px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #FFFFFF;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.1s;
-            box-shadow: 0 4px 10px rgba(50, 95, 170, 0.25);
-        }
-        .bt-iniciar:hover {
-            background: #1e3f73;
-        }
-        .bt-iniciar:active {
-            transform: scale(0.97);
-        }
+## 🧩 Tecnologias utilizadas
 
-        .footer-copy {
-            font-size: 0.75rem;
-            color: #325FAA;
-            text-align: center;
-            margin-top: 4px;
-            opacity: 0.7;
-        }
+- **HTML5** + **CSS3** + **JavaScript (vanilla)**  
+  Todo o código foi desenvolvido em um **único arquivo por página**, com CSS e JS embutidos no próprio HTML. Essa abordagem foi adotada para **simplificar a manutenção**, **facilitar a edição** e **evitar dependências externas** durante a fase de prototipagem, mantendo a portabilidade e a clareza do código.
 
-        @media (max-width: 500px) {
-            .login-container {
-                padding: 28px 20px 24px;
-            }
-            .logo-gestao {
-                font-size: 1.5rem;
-            }
-            .login-title {
-                font-size: 1.1rem;
-            }
-            .campo-input {
-                height: 36px;
-                font-size: 0.9rem;
-            }
-            .bt-iniciar {
-                font-size: 1rem;
-                padding: 10px;
-            }
-        }
-    </style>
-</head>
-<body>
+- **Fontes externas**: Google Fonts (`Open Sans`) para tipografia.
 
-<div class="login-container">
-    <div class="logo-gestao">
-        GLPI – SIGPEC
-        <small>Gestão de Chamados</small>
-    </div>
+---
 
-    <div class="quadro-branco">
-        <div class="login-inner">
-            <div class="login-title">Login na sua Conta</div>
-            <div class="line-separator"></div>
-        </div>
+## 🎨 Identidade visual
 
-        <div class="campo-wrapper">
-            <span class="rotulo">Nome de utilizador</span>
-            <input class="campo-input" type="text" id="username" placeholder="Digite seu usuário" />
-        </div>
+O design segue a identidade visual do **GLPI** e da **Prefeitura de São Paulo**, com cores institucionais (azul `#1A397A`, azul claro `#325FAA`, gradientes suaves e tons neutros). Os componentes visuais (menu lateral, tabelas, cards, botões, filtros e formulários) foram padronizados para garantir consistência em todas as páginas.
 
-        <div class="campo-wrapper">
-            <div class="rotulo rotulo-senha">
-                <span>Palavra-passe</span>
-                <span class="esqueceu" onclick="alert('Função de recuperação de senha (protótipo).')">Esqueceu-se da palavra-passe?</span>
-            </div>
-            <input class="campo-input" type="password" id="password" placeholder="Digite sua senha" />
-        </div>
+---
 
-        <div class="check-lembre">
-            <input type="checkbox" id="remember" />
-            <label for="remember">Lembre-me</label>
-        </div>
-
-        <button class="bt-iniciar" id="btnLogin">Iniciar sessão</button>
-    </div>
-
-    <div class="footer-copy">GLPI Copyright (C) 2015-2023 Teclib’ and contributors</div>
-</div>
-
-<script>
-    document.getElementById('btnLogin').addEventListener('click', function() {
-        // Redireciona diretamente para o dashboard, sem validar credenciais
-        window.location.href = 'dashboard.html';
-    });
-
-    // Permitir login com Enter
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-            document.getElementById('btnLogin').click();
-        }
-    });
-</script>
-
-</body>
-</html>
+## 📁 Estrutura de diretórios
