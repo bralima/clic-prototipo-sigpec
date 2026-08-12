@@ -468,7 +468,7 @@
                 <div class="helper" id="helperIdentificacao"></div>
             </div>
 
-            <!-- Justificativa Usuário -->
+            <!-- Justificativa para Dados do Usuário (NOVA LISTA) -->
             <div class="campo">
                 <label for="justificativaUsuario">Justificativa para Dados do Usuário <span class="obrigatorio">*</span></label>
                 <select id="justificativaUsuario">
@@ -502,23 +502,6 @@
                 <input type="hidden" id="padroesSelecionados" value="" />
             </div>
 
-            <!-- Justificativa Padrão 
-            <div class="campo">
-                <label for="justificativaPadrao">Justificativa para Padrão de Acesso <span class="obrigatorio">*</span></label>
-                <select id="justificativaPadrao">
-                    <option value="">Selecione...</option>
-                    <option value="Solicitação de novo acesso">Solicitação de novo acesso</option>
-                    <option value="Alteração de permissões">Alteração de permissões</option>
-                    <option value="Correção de dados">Correção de dados</option>
-                    <option value="Desligamento de servidor">Desligamento de servidor</option>
-                    <option value="Reintegração">Reintegração</option>
-                    <option value="Outro">Outro</option>
-                </select>
-                <div id="outroJustificativaPadrao" style="display:none; margin-top:4px;">
-                    <input type="text" id="outroJustificativaPadraoInput" placeholder="Descreva a justificativa..." style="width:100%; padding:8px 10px; border:1px solid #D9DBDE; border-radius:4px; font-size:13px;" />
-                </div>
-            </div> -->
-
             <!-- Perfil de Setor (multiselect) -->
             <div class="campo">
                 <label>Perfil de Setor <span class="obrigatorio">*</span></label>
@@ -536,12 +519,12 @@
                 <input type="hidden" id="perfisSelecionados" value="" />
             </div>
 
-            <!-- Justificativa Perfil -->
+            <!-- Justificativa para Perfil de Setor (NOVA LISTA) -->
             <div class="campo">
                 <label for="justificativaPerfil">Justificativa para Perfil de Setor <span class="obrigatorio">*</span></label>
                 <select id="justificativaPerfil">
                     <option value="">Selecione...</option>
-                    <option value="Setor onde o servidor atua">Solicitação de novo acesso</option>
+                    <option value="Solicitação de novo acesso">Solicitação de novo acesso</option>
                     <option value="Setor agregado">Setor agregado</option>
                     <option value="Acrescentar setor de acordo com a necessidade da URH">Acrescentar setor de acordo com a necessidade da URH</option>
                     <option value="Setor extinto que possui servidores">Setor extinto que possui servidores</option>
@@ -597,14 +580,10 @@
         const campoNomeSocial = document.getElementById('campoNomeSocial');
         const nomeSocialInput = document.getElementById('nomeSocialInput');
 
-        // Justificativas - exibir campo "Outro"
+        // Justificativas
         const justificativaUsuarioSelect = document.getElementById('justificativaUsuario');
         const outroJustificativaUsuario = document.getElementById('outroJustificativaUsuario');
         const outroJustificativaUsuarioInput = document.getElementById('outroJustificativaUsuarioInput');
-
-        const justificativaPadraoSelect = document.getElementById('justificativaPadrao');
-        const outroJustificativaPadrao = document.getElementById('outroJustificativaPadrao');
-        const outroJustificativaPadraoInput = document.getElementById('outroJustificativaPadraoInput');
 
         const justificativaPerfilSelect = document.getElementById('justificativaPerfil');
         const outroJustificativaPerfil = document.getElementById('outroJustificativaPerfil');
@@ -701,9 +680,6 @@
         justificativaUsuarioSelect.addEventListener('change', function() {
             toggleOutroJustificativa(this, outroJustificativaUsuario, outroJustificativaUsuarioInput);
         });
-        justificativaPadraoSelect.addEventListener('change', function() {
-            toggleOutroJustificativa(this, outroJustificativaPadrao, outroJustificativaPadraoInput);
-        });
         justificativaPerfilSelect.addEventListener('change', function() {
             toggleOutroJustificativa(this, outroJustificativaPerfil, outroJustificativaPerfilInput);
         });
@@ -737,7 +713,6 @@
             });
         }
 
-        // Adicionar evento ao botão de adicionar padrão
         btnAdicionarPadrao.addEventListener('click', function() {
             const valor = selectPadrao.value;
             if (!valor) {
@@ -784,7 +759,6 @@
             });
         }
 
-        // Adicionar evento ao botão de adicionar perfil
         btnAdicionarPerfil.addEventListener('click', function() {
             const valor = selectPerfil.value;
             if (!valor) {
@@ -838,10 +812,7 @@
             if (justUsuario === 'Outro') {
                 justUsuario = outroJustificativaUsuarioInput.value.trim();
             }
-            let justPadrao = justificativaPadraoSelect.value;
-            if (justPadrao === 'Outro') {
-                justPadrao = outroJustificativaPadraoInput.value.trim();
-            }
+
             let justPerfil = justificativaPerfilSelect.value;
             if (justPerfil === 'Outro') {
                 justPerfil = outroJustificativaPerfilInput.value.trim();
@@ -871,10 +842,6 @@
                 alert('Preencha a Justificativa para Dados do Usuário.');
                 return;
             }
-            if (!justPadrao) {
-                alert('Preencha a Justificativa para Padrão de Acesso.');
-                return;
-            }
             if (!justPerfil) {
                 alert('Preencha a Justificativa para Perfil de Setor.');
                 return;
@@ -891,7 +858,6 @@ Padrões: ${tagsPadrao.join(', ')}
 Perfis: ${tagsPerfil.join(', ')}
 
 Justificativa Dados: ${justUsuario}
-Justificativa Padrão: ${justPadrao}
 Justificativa Perfil: ${justPerfil}`;
 
             exibirModal(mensagem);
