@@ -6,7 +6,7 @@
     <title>Dashboard - GLPI SIGPEC</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
     <style>
-        /* ===== RESET E BASE ===== */
+        /* BASE */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Open Sans', sans-serif;
@@ -16,7 +16,7 @@
             overflow: hidden;
         }
 
-        /* ===== MENU LATERAL FIXO (USUÁRIO) ===== */
+        /* MENU LATERAL FIXO, não fiz a ação de encolher o menu */
         .menu-lateral {
             position: fixed;
             top: 0;
@@ -91,7 +91,7 @@
         .cabecalho .breadcrumb .home-icon { width: 18px; height: 18px; fill: #1A397A; }
         .cabecalho .usuario-dropdown { display: flex; align-items: center; gap: 6px; font-size: 14px; color: #000; cursor: pointer; }
 
-        /* ===== ÁREA DE CHAMADOS COM CATEGORIAS (LADO A LADO) ===== */
+        /*  ÁREA DE CHAMADOS COM CATEGORIAS (LADO A LADO) */
         .chamados-wrapper {
             display: flex;
             gap: 20px;
@@ -99,7 +99,7 @@
             min-height: 0;
         }
 
-        /* ===== BARRA DE CATEGORIAS (LATERAL) ===== */
+        /*  BARRA DE CATEGORIAS (LATERAL)  */
         .barra-categorias {
             width: 160px;
             flex-shrink: 0;
@@ -142,7 +142,7 @@
             border-bottom: none;
         }
 
-        /* ===== GRADE DE SERVIÇOS ===== */
+        /* GRID SERVIÇOS */
         .grid-servicos {
             flex: 1;
             display: grid;
@@ -200,7 +200,7 @@
             border: 1px dashed #ccc;
         }
 
-        /* ===== RESPONSIVO ===== */
+        /* RESPONSIVO */
         @media (max-width: 768px) {
             .menu-lateral { width: 60px; padding: 20px 10px; }
             .menu-lateral .menu-item span { display: none; }
@@ -221,7 +221,7 @@
 </head>
 <body>
 
-<!-- ===== MENU LATERAL FIXO (USUÁRIO) ===== -->
+<!-- MENU LATERAL FIXO -->
 <div class="menu-lateral">
     <div class="menu-requisicoes">
         <!-- Serviços (ativo) -->
@@ -238,7 +238,7 @@
 
 </div>
 
-<!-- ===== CONTEÚDO ===== -->
+<!--  CONTEÚDO -->
 <div class="conteudo-wrapper">
     <!-- Cabeçalho -->
     <div class="cabecalho">
@@ -253,9 +253,9 @@
         </div>
     </div>
 
-    <!-- ===== ÁREA DE CHAMADOS COM CATEGORIAS AO LADO ===== -->
+    <!-- ÁREA DE CHAMADOS COM CATEGORIAS AO LADO -->
     <div class="chamados-wrapper">
-        <!-- Barra lateral de categorias -->
+        <!-- Barra lateral de categorias, igual ao que tem na COTIC e CAF -->
         <div class="barra-categorias" id="barraCategorias">
             <div class="categoria-titulo">Categorias</div>
             <div class="categoria-item ativo" data-categoria="todos">Ver Todos</div>
@@ -272,9 +272,7 @@
 </div>
 
 <script>
-    // ============================================================
     // DADOS DOS SERVIÇOS
-    // ============================================================
     const servicos = [
         {
             titulo: 'Inclusão de Usuário',
@@ -326,9 +324,7 @@
         }
     ];
 
-    // ============================================================
     // RENDERIZAÇÃO DOS CARDS
-    // ============================================================
     function renderizarCards(categoriaFiltro = 'todos') {
         const grid = document.getElementById('gridServicos');
         if (!grid) return;
@@ -359,9 +355,7 @@
         grid.innerHTML = html;
     }
 
-    // ============================================================
-    // FILTRO POR CATEGORIA (clique na barra lateral)
-    // ============================================================
+    // FILTRO POR CATEGORIA 
     document.querySelectorAll('.barra-categorias .categoria-item').forEach(item => {
         item.addEventListener('click', function() {
             // Remove destaque de todos
@@ -373,16 +367,12 @@
         });
     });
 
-    // ============================================================
     // INICIALIZAÇÃO
-    // ============================================================
     document.addEventListener('DOMContentLoaded', function() {
         renderizarCards('todos');
     });
 
-    // ============================================================
     // INTERAÇÕES ADICIONAIS
-    // ============================================================
     document.querySelector('.menu-recolher')?.addEventListener('click', function() {
         alert('Função de recolher menu (protótipo).');
     });
