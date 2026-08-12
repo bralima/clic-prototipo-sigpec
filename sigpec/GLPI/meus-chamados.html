@@ -6,7 +6,6 @@
     <title>Meus Chamados - GLPI SIGPEC</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
     <style>
-        /* ===== RESET E BASE ===== */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Open Sans', sans-serif;
@@ -16,7 +15,7 @@
             overflow: hidden;
         }
 
-        /* ===== MENU LATERAL FIXO (SIMPLES - USUÁRIO) ===== */
+        /* ===== MENU LATERAL FIXO */
         .menu-lateral {
             position: fixed;
             top: 0;
@@ -74,7 +73,7 @@
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* ===== CONTEÚDO ===== */
+        /* CONTEÚDO */
         .conteudo-wrapper {
             margin-left: 162px;
             flex: 1;
@@ -102,7 +101,7 @@
         .cabecalho .breadcrumb .home-icon { width: 18px; height: 18px; fill: #1A397A; }
         .cabecalho .usuario-dropdown { display: flex; align-items: center; gap: 6px; font-size: 14px; color: #000; cursor: pointer; }
 
-        /* ===== FILTROS DE STATUS ===== */
+        /* FILTROS DE STATUS */
         .filtros-status {
             display: flex;
             flex-wrap: wrap;
@@ -132,7 +131,7 @@
         .filtro-status-item.solucionado { background: #D7D7D7; }
         .filtro-status-item.fechado { background: #515151; color: #D9D9D9; }
 
-        /* ===== FILTROS AVANÇADOS ===== */
+        /* FILTROS AVANÇADOS */
         .filtros-avancados {
             background: #FFFFFF;
             border-radius: 12px;
@@ -179,7 +178,7 @@
         .icone-acao.star { fill: #5B5083; }
         .icone-acao.x { fill: #5B5083; }
 
-        /* ===== TABELA ===== */
+        /* TABELA */
         .tabela-wrapper {
             flex: 1;
             overflow-y: auto;
@@ -255,7 +254,7 @@
 </head>
 <body>
 
-<!-- ===== MENU LATERAL FIXO (USUÁRIO) ===== -->
+<!-- MENU LATERAL FIXO -->
 <div class="menu-lateral">
     <div class="menu-requisicoes">
         <!-- Serviços (link para o dashboard) -->
@@ -276,7 +275,7 @@
     </div>
 </div>
 
-<!-- ===== CONTEÚDO ===== -->
+<!-- CONTEÚDO -->
 <div class="conteudo-wrapper">
     <!-- cabeçalho -->
     <div class="cabecalho">
@@ -291,7 +290,7 @@
         </div>
     </div>
 
-    <!-- FILTROS DE STATUS -->
+    <!-- FILTROS DE STATUS, não tem ação nenhuma, é só para representar o que aparece no GLPI usado pela cotic -->
     <div class="filtros-status">
         <span class="filtro-status-item todos">0 Todos</span>
         <span class="filtro-status-item novo">0 Novo</span>
@@ -302,7 +301,7 @@
         <span class="filtro-status-item fechado">0 Fechado</span>
     </div>
 
-    <!-- FILTROS AVANÇADOS -->
+    <!-- FILTROS AVANÇADOS, tambem não tem ação nenhuma -->
     <div class="filtros-avancados">
         <div class="linha-cima">
             <span class="filtro-avancado-item"><svg width="16" height="16" viewBox="0 0 24 24"><rect width="18" height="18" fill="#1C1B1F"/></svg></span>
@@ -340,9 +339,7 @@
 </div>
 
 <script>
-    // ============================================================
-    // DADOS DOS CHAMADOS (MANTIDOS IGUAIS AO ORIGINAL)
-    // ============================================================
+    // DADOS DOS CHAMADOS, nenhum item é clicavel, é para mostrar o que seira a visão de um usuario
     const chamados = [
         {
             nome: 'Inclusão de Usuário',
@@ -409,9 +406,7 @@
         }
     ];
 
-    // ============================================================
     // RENDERIZAÇÃO DA TABELA
-    // ============================================================
     function renderizarTabela(dados) {
         const tbody = document.getElementById('corpo-tabela');
         if (!tbody) return;
@@ -442,9 +437,7 @@
         tbody.innerHTML = html;
     }
 
-    // ============================================================
     // ATUALIZAR CONTAGENS DOS FILTROS
-    // ============================================================
     function atualizarContagens(dados) {
         const total = dados.length;
         const abertos = dados.filter(c => c.status === 'Aberto').length;
@@ -458,9 +451,7 @@
         document.querySelector('.filtro-status-item.fechado').textContent = '0 Fechado';
     }
 
-    // ============================================================
     // INICIALIZAÇÃO
-    // ============================================================
     document.addEventListener('DOMContentLoaded', function() {
         renderizarTabela(chamados);
         atualizarContagens(chamados);
