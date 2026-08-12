@@ -47,7 +47,7 @@
             clip: rect(0,0,0,0); border: 0;
         }
 
-        /* ---------- TOPO ---------- */
+        /* CABEÇALHO */
         .topo {
             background: var(--branco);
             box-shadow: 0 2px 4px rgba(0,0,0,0.08);
@@ -101,7 +101,7 @@
         .topo__menu a:hover,
         .topo__menu a.ativo { color: var(--azul-sigpec); }
 
-        /* ---------- PÁGINA SIGPEC (entrada) ---------- */
+        /*  PÁGINA SIGPEC (entrada) */
         .sigpec-page {
             background: #F0EDE6;
             padding: 40px 20px;
@@ -275,7 +275,7 @@
             background: #027a7e;
         }
 
-        /* ---------- RODAPÉ ---------- */
+        /*  RODAPÉ  */
         .rodape {
             background: var(--branco);
             padding: 40px 0 0;
@@ -350,7 +350,7 @@
             color: var(--cinza-word);
         }
 
-        /* ---------- RESPONSIVO ---------- */
+        /*  RESPONSIVO  */
         @media (max-width: 992px) {
             .sigpec-container {
                 grid-template-columns: 1fr;
@@ -435,7 +435,7 @@
 </head>
 <body>
 
-    <!-- ========== TOPO ========== -->
+    <!-- CABEÇALHO -->
     <header class="topo">
         <div class="container topo__conteudo">
             <a href="../index.html" class="topo__logo" aria-label="CLIC - Página Inicial">
@@ -457,7 +457,7 @@
         </div>
     </header>
 
-    <!-- ========== CONTEÚDO PRINCIPAL ========== -->
+    <!--  CONTEÚDO PRINCIPAL  -->
     <main class="sigpec-page">
         <div class="sigpec-container">
 
@@ -466,18 +466,6 @@
 
                 <!-- Miniatura do vídeo (simulada) -->
                 <div class="sigpec-video" onclick="alert('Abrir tutorial em breve.')">
-                    <!-- <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="800" height="450" fill="#1a1a2e" />
-                        <rect x="40" y="40" width="720" height="370" rx="12" fill="#16213e" />
-                        <rect x="60" y="80" width="680" height="4" rx="2" fill="#325FAA" opacity="0.6" />
-                        <rect x="60" y="200" width="680" height="4" rx="2" fill="#325FAA" opacity="0.6" />
-                        <rect x="60" y="320" width="680" height="4" rx="2" fill="#325FAA" opacity="0.6" />
-                        <text x="400" y="140" font-family="'Open Sans', sans-serif" font-size="36" font-weight="800" fill="white" text-anchor="middle">Tutorial</text>
-                        <text x="400" y="190" font-family="'Open Sans', sans-serif" font-size="28" font-weight="700" fill="#6EABFA" text-anchor="middle">CLIC – SIGPEC</text>
-                        <text x="400" y="240" font-family="'Open Sans', sans-serif" font-size="24" font-weight="400" fill="#cccccc" text-anchor="middle">Cadastro de Pessoas</text>
-                        <circle cx="400" cy="320" r="50" fill="rgba(255,255,255,0.9)" />
-                        <polygon points="380,295 380,345 430,320" fill="#1a1a2e" />
-                    </svg> fundo muito inutil --> 
                     <div class="play-overlay">
                         <div class="play-icon">▶</div>
                         <div class="titulo-tutorial">
@@ -515,7 +503,7 @@
         </div>
     </main>
 
-    <!-- ========== RODAPÉ ========== -->
+    <!--  RODAPÉ  -->
     <footer class="rodape">
         <div class="container rodape__conteudo">
             <div class="rodape__logo">
